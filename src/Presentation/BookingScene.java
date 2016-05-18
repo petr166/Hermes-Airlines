@@ -9,19 +9,22 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
+import java.util.Date;
+
 /**
  * Created by Administrator on 5/18/2016.
  */
+
 public class BookingScene {
 
     //fields
     private static Scene scene;
 
     private static Pane layout;
-    private static TableView<Booking> table;
-    private static TableColumn<Booking, String> dateColumn;
-    private static TableColumn<Booking, String> nameColumn;
-    private static TableColumn<Booking, String> routeColumn;
+    private static TableView table;
+    private static TableColumn dateColumn;
+    private static TableColumn nameColumn;
+    private static TableColumn routeColumn;
     private static Label flightLabel;
     private static Label departure_dateLabel;
     private static Label departure_dateObs;
@@ -56,19 +59,24 @@ public class BookingScene {
     private static Button backButton;
     private static HBox buttonLayout;
 
-    //initialization of fields
+    //initialization method
     public static void initialize(){
-        //table
-        table=new TableView<>();
+
+        //table columns
         dateColumn=new TableColumn<>("Departure date");
         nameColumn=new TableColumn<>("Customer name");
         routeColumn=new TableColumn<>("Route");
-        table.relocate(32,34);
-        table.setMinWidth(540);
-        table.setMinHeight(580);
         dateColumn.setMinWidth(180);
         nameColumn.setMinWidth(180);
         routeColumn.setMinWidth(180);
+
+        //table
+        table=new TableView<>();
+        table.getColumns().addAll(dateColumn, routeColumn, nameColumn);
+        table.relocate(32,34);
+        table.setMinWidth(540);
+        table.setMinHeight(580);
+
         //flightLabel
         flightLabel=new Label("Flight Details");
         flightLabel.relocate(708,61);
@@ -164,10 +172,7 @@ public class BookingScene {
         scene = new Scene(layout,1200,700);
 
 
-
-
-
-
+        System.out.println("bookings scene initialized");
     }
 
 
@@ -311,4 +316,5 @@ public class BookingScene {
     public static HBox getButtonLayout() {
         return buttonLayout;
     }
+
 }

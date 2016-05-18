@@ -24,14 +24,16 @@ public class Main extends Application{
     public void start(Stage primaryStage)throws Exception {
 
         //scenes initialization
+
         LoginScene.initialize();
         BookingScene.initialize();
         MenuScene.initialize();
         FlightsScene.initialize();
+        PlaneScene.initialize();
 
         //primaryStage setup
         primaryStage.setTitle("Hermes Airlines");
-        primaryStage.setScene(FlightsScene.getScene());
+        primaryStage.setScene(PlaneScene.getScene());
         primaryStage.show();
     }
 

@@ -57,6 +57,7 @@ public class BookingScene {
     private static Button add_bookingButton;
     private static Button cancelButton;
     private static Button backButton;
+    private static Button editButton;
     private static HBox buttonLayout;
 
     //initialization method
@@ -154,14 +155,15 @@ public class BookingScene {
         backButton=new Button("Back");
         //add booking
         add_bookingButton=new Button("Add");
-
+        //
+        editButton=new Button("Edit");
         //cancel
         cancelButton=new Button("Cancel");
 
         // layout for buttons
         buttonLayout=new HBox();
-        buttonLayout.getChildren().addAll(backButton,add_bookingButton,cancelButton);
-        buttonLayout.relocate(972,648);
+        buttonLayout.getChildren().addAll(backButton,add_bookingButton,editButton,cancelButton);
+        buttonLayout.relocate(900,648);
         buttonLayout.setSpacing(20);
 
         //LAYOUT

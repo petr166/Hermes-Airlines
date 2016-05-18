@@ -5,6 +5,9 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * MAIN CLASS - HERMES AIRLINES ---
  */
@@ -18,8 +21,7 @@ public class Main extends Application{
 
 
     //start method
-    public void start(Stage primaryStage) {
-
+    public void start(Stage primaryStage)throws Exception {
         Pane pane = new Pane();
 
         primaryStage.setTitle("Hermes Airlines");

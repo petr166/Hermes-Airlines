@@ -23,10 +23,13 @@ public class Main extends Application{
 
         //scenes initialization
         LoginScene.initialize();
+        BookingScene.initialize();
+
 
         //primaryStage setup
         primaryStage.setTitle("Hermes Airlines");
-        primaryStage.setScene(LoginScene.getScene());
+        primaryStage.setScene(BookingScene.getScene());
+
         primaryStage.show();
     }
 

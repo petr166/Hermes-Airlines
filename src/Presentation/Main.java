@@ -1,4 +1,4 @@
-package Application;
+package Presentation;
 
 import Presentation.LoginScene;
 import javafx.application.Application;

@@ -19,11 +19,13 @@ public class Airline {
 
     //constructors
     public Airline(){}
+
     public Airline(int airline_id, String departure_city, String arrival_city){
-        this.airline_id=new SimpleIntegerProperty(airline_id);
-        this.departure_ciy=new SimpleStringProperty(departure_city);
-        this.arrival_city=new SimpleStringProperty(arrival_city);
+        this.airline_id = new SimpleIntegerProperty(airline_id);
+        this.departure_ciy = new SimpleStringProperty(departure_city);
+        this.arrival_city = new SimpleStringProperty(arrival_city);
     }
+
 
     //getters & seters
     public int getAirline_id() {
@@ -62,8 +64,8 @@ public class Airline {
         this.arrival_city.set(arrival_city);
     }
 
-    //toString
 
+    //toString
     @Override
     public String toString() {
         return "Airline{" +
@@ -72,4 +74,5 @@ public class Airline {
                 ", arrival_city=" + arrival_city +
                 '}';
     }
+
 }

@@ -140,6 +140,7 @@ public class BookingScene {
         searchField.setPromptText("Search");
         searchField.setAlignment(Pos.CENTER);
         searchField.relocate(32,648);
+        searchField.setMinWidth(540);
 
         //back
         backButton=new Button("Back");

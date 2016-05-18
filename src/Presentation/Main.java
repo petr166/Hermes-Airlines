@@ -1,9 +1,6 @@
 package Presentation;
 
-import Presentation.LoginScene;
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
@@ -23,10 +20,11 @@ public class Main extends Application{
 
         //scenes initialization
         LoginScene.initialize();
+        MenuScene.initialize();
 
         //primaryStage setup
         primaryStage.setTitle("Hermes Airlines");
-        primaryStage.setScene(LoginScene.getScene());
+        primaryStage.setScene(MenuScene.getScene());
         primaryStage.show();
     }
 

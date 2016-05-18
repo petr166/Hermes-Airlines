@@ -1,5 +1,6 @@
 package Application;
 
+import Presentation.LoginScene;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -19,14 +20,14 @@ public class Main extends Application{
 
     //start method
     public void start(Stage primaryStage)throws Exception {
-        Pane pane = new Pane();
 
+        //scenes initialization
+        LoginScene.initialize();
+
+        //primaryStage setup
         primaryStage.setTitle("Hermes Airlines");
-
-        Scene scene = new Scene(pane, 600, 400);
-
-
-        primaryStage.setScene(scene);
+        primaryStage.setScene(LoginScene.getScene());
         primaryStage.show();
     }
+
 }

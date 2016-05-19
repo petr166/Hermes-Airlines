@@ -15,7 +15,13 @@ public class Booking {
 
 
     //constructors
-    public Booking() {}
+    public Booking() {
+        booking_id = new SimpleIntegerProperty();
+        customer_id = new SimpleIntegerProperty();
+        flight_id = new SimpleIntegerProperty();
+        fare_class = new SimpleStringProperty();
+        reserved = new SimpleBooleanProperty();
+    }
 
     public Booking(int booking_id, int customer_id, int flight_id, String fare_class, boolean reserverd) {
         this.booking_id = new SimpleIntegerProperty(booking_id);

@@ -1,5 +1,6 @@
 package Presentation;
 
+import Application.DataTypes.Booking;
 import Application.DataTypes.Flight;
 import javafx.application.Application;
 import javafx.stage.Stage;

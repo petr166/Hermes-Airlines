@@ -17,9 +17,9 @@ public class PlaneData {
     private static String user = "root";
     private static String password = DataConnection.password;
     private static Statement statement;
-
+    private static  ArrayList<Plane> planes = new ArrayList<>();
     public static ArrayList<Plane> getPlanes(){
-        ArrayList<Plane> planes = new ArrayList<>();
+
         try{
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(DATABASE_URL,user,password);
@@ -29,10 +29,10 @@ public class PlaneData {
                 while (rs.next()) {
                     Plane plane = new Plane();
                     plane.setPlane_id(rs.getInt(1));
-                    plane.setFirst_class(rs.getInt(2));
-                    plane.setCoach(rs.getInt(3));
-                    plane.setEconomy(rs.getInt(4));
-                    plane.setPlane_name(rs.getString(5));
+                    plane.setFirst_class(rs.getInt(3));
+                    plane.setCoach(rs.getInt(4));
+                    plane.setEconomy(rs.getInt(5));
+                    plane.setPlane_name(rs.getString(2));
                     planes.add(plane);
 
                 }
@@ -40,7 +40,23 @@ public class PlaneData {
         catch(Exception e){
             e.printStackTrace();
         }
-
         return planes;
+    }
+
+    public static void insertPlanes(Plane plane)
+    {
+        planes.add(plane);
+        try{
+            Class.forName(JDBC_DRIVER);
+            connection = DriverManager.getConnection(DATABASE_URL,user,password);
+            statement = connection.createStatement();
+            statement.executeUpdate("insert into plane values(default,\'"+plane.getPlane_name()+"\',"+plane.getFirst_class()+","+plane.getCoach()+","+plane.getEconomy()+");");
+
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
+
     }
 }

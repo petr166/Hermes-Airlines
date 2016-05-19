@@ -14,12 +14,12 @@ import javafx.scene.layout.VBox;
 public class PlaneScene {
 
     //table
-    private static TableView table;
-    private static TableColumn plane_idColumn;
-    private static TableColumn plane_nameColumn;
-    private static TableColumn first_classColumn;
-    private static TableColumn coachColumn;
-    private static TableColumn economyColumn;
+    private static TableView<Plane> table;
+    private static TableColumn<Plane, Integer> plane_idColumn;
+    private static TableColumn<Plane, String> plane_nameColumn;
+    private static TableColumn<Plane, Integer> first_classColumn;
+    private static TableColumn<Plane, Integer> coachColumn;
+    private static TableColumn<Plane, Integer> economyColumn;
     private static Button addButton;
     private static Button removeButton;
     private static Button cancelButton;
@@ -38,16 +38,21 @@ public class PlaneScene {
         table.setMinWidth(950);
         //ID
         plane_idColumn=new TableColumn("ID");
+        plane_idColumn.setCellValueFactory(cellData -> cellData.getValue().plane_idProperty().asObject());
         plane_idColumn.setMinWidth(190);
         //plane_name
         plane_nameColumn=new TableColumn("Name");
+        plane_nameColumn.setCellValueFactory(cellData->cellData.getValue().plane_nameProperty());
         plane_nameColumn.setMinWidth(190);
         //classes
         first_classColumn = new TableColumn("First Class");
+        first_classColumn.setCellValueFactory(cellData -> cellData.getValue().first_classProperty().asObject());
         first_classColumn.setMinWidth(190);
         coachColumn = new TableColumn("Coach Class");
+        coachColumn.setCellValueFactory(cellData->cellData.getValue().coachProperty().asObject());
         coachColumn.setMinWidth(190);
         economyColumn = new TableColumn("Economy Class");
+        economyColumn.setCellValueFactory(cellData->cellData.getValue().economyProperty().asObject());
         economyColumn.setMinWidth(190);
         table.getColumns().addAll(plane_idColumn,plane_nameColumn,first_classColumn,coachColumn,economyColumn);
 

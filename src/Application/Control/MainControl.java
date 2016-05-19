@@ -96,7 +96,7 @@ public class MainControl {
         PlaneScene.initialize();
 
         //initialization of controller
-        //PlaneSceneControl.initialize();
+        PlaneSceneControl.initialize();
 
         //set scene
         scene = PlaneScene.getScene();

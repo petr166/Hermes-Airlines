@@ -12,17 +12,24 @@ import javafx.beans.property.StringProperty;
 public class Customer {
 
     //fields
-    private IntegerProperty customer_id, age, passport_number;
-    private StringProperty first_name, last_name, phone_nr;
+    private IntegerProperty customer_id, age;
+    private StringProperty first_name, last_name, phone_nr, passport_number;
 
 
     //constructors
-    public Customer() {}
+    public Customer() {
+        customer_id = new SimpleIntegerProperty(1);
+        age = new SimpleIntegerProperty(1);
+        first_name = new SimpleStringProperty("");
+        last_name = new SimpleStringProperty("");
+        phone_nr = new SimpleStringProperty("");
+        passport_number = new SimpleStringProperty("");
+    }
 
-    public Customer(int customer_id, int age, int passport_number, String first_name, String last_name, String phone_nr) {
+    public Customer(int customer_id, int age, String passport_number, String first_name, String last_name, String phone_nr) {
         this.customer_id = new SimpleIntegerProperty(customer_id);
         this.age = new SimpleIntegerProperty(age);
-        this.passport_number = new SimpleIntegerProperty(passport_number);
+        this.passport_number = new SimpleStringProperty(passport_number);
         this.first_name = new SimpleStringProperty(first_name);
         this.last_name = new SimpleStringProperty(last_name);
         this.phone_nr = new SimpleStringProperty(phone_nr);
@@ -54,15 +61,15 @@ public class Customer {
         this.age.set(age);
     }
 
-    public int getPassport_number() {
+    public String getPassport_number() {
         return passport_number.get();
     }
 
-    public IntegerProperty passport_numberProperty() {
+    public StringProperty passport_numberProperty() {
         return passport_number;
     }
 
-    public void setPassport_number(int passport_number) {
+    public void setPassport_number(String passport_number) {
         this.passport_number.set(passport_number);
     }
 

@@ -13,18 +13,19 @@ public class Customer {
 
     //fields
     private IntegerProperty customer_id, age, passport_number;
-    private StringProperty first_name, last_name;
+    private StringProperty first_name, last_name, phone_nr;
 
 
     //constructors
     public Customer() {}
 
-    public Customer(int customer_id, int age, int passport_number, String first_name, String last_name) {
+    public Customer(int customer_id, int age, int passport_number, String first_name, String last_name, String phone_nr) {
         this.customer_id = new SimpleIntegerProperty(customer_id);
         this.age = new SimpleIntegerProperty(age);
         this.passport_number = new SimpleIntegerProperty(passport_number);
         this.first_name = new SimpleStringProperty(first_name);
         this.last_name = new SimpleStringProperty(last_name);
+        this.phone_nr = new SimpleStringProperty(phone_nr);
     }
 
 
@@ -89,6 +90,18 @@ public class Customer {
         this.last_name.set(last_name);
     }
 
+    public String getPhone_nr() {
+        return phone_nr.get();
+    }
+
+    public StringProperty phone_nrProperty() {
+        return phone_nr;
+    }
+
+    public void setPhone_nr(String phone_nr) {
+        this.phone_nr.set(phone_nr);
+    }
+
 
     //toString method
     @Override
@@ -99,6 +112,7 @@ public class Customer {
                 ", passport_number=" + passport_number +
                 ", first_name=" + first_name +
                 ", last_name=" + last_name +
+                ", phone_nr" + phone_nr +
                 '}';
     }
 

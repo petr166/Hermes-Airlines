@@ -1,11 +1,7 @@
 package Presentation;
 
-import Presentation.LoginScene;
+import Application.DataTypes.Flight;
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Menu;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**

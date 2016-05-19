@@ -8,7 +8,7 @@ import java.util.Date;
 public class Schedule {
 
     //fields
-    private int schedule_id;
+    private  int schedule_id;
     private Date departure_date;
     private String departure_time;
     private Date arrival_date;

@@ -3,7 +3,9 @@ package Presentation;
 import Application.DataTypes.Admin;
 import Application.DataTypes.Booking;
 import Application.DataTypes.Flight;
+import Application.DataTypes.Schedule;
 import DataAccess.AdminData;
+import DataAccess.ScheduleData;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -34,6 +36,8 @@ public class Main extends Application{
         PlaneScene.initialize();
         BookingScene.initialize();
         CustomerScene.initialize();
+        ArrayList<Schedule> schedules= ScheduleData.getSchedules();
+        System.out.println(schedules);
 
 
 

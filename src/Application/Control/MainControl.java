@@ -1,0 +1,117 @@
+package Application.Control;
+
+import Presentation.*;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+/**
+ * Created by Administrator on 5/19/2016.
+ */
+public class MainControl {
+
+    //fields
+    public static Stage window = new Stage();
+    public static Scene scene;
+
+    //start method
+   /* public static void start(){
+
+    }*/
+
+    //show-scene methods
+    public static void showMenuScene(){
+        //initializatinn of scene
+        MenuScene.initialize();
+
+        //initialization of controller
+        MenuSceneControl.initialize();
+
+        //set scene
+        scene = MenuScene.getScene();
+        window.setScene(scene);
+        window.show();
+    }
+
+
+    public static void showLoginScene(){
+        //initialization of scene
+        LoginScene.initialize();
+
+        //initialization of actions
+        LoginSceneControl.initialize();
+
+
+        //set scene
+        scene = LoginScene.getScene();
+        window.setScene(scene);
+
+        window.show();
+
+    }
+
+    //viewBookingScene
+    public static void showViewBookingScene(){
+        //initialization of scene
+        ViewBookingScene.initialize();
+
+        //initialization of actions
+        //ViewBookingSceneControl.initialize();
+
+        //set scene
+        scene = ViewBookingScene.getScene();
+        window.setScene(scene);
+        window.show();
+    }
+
+
+    public static void showCustomerScene(){
+        //initialization of scene
+        CustomerScene.initialize();
+
+        //initialization of controller
+        //CustomerSceneControl.initialize();
+
+        //set scene
+        scene = CustomerScene.getScene();
+        window.setScene(scene);
+        window.show();
+    }
+
+
+    public static void showFlightsScene(){
+        //initialization of scene
+        FlightsScene.initialize();
+
+        //initialization of controller
+        //FlightsSceneControl.initialize();
+
+        //set scene
+        scene = FlightsScene.getScene();
+        window.setScene(scene);
+        window.show();
+    }
+
+    public static void showPlaneScene(){
+        //initialization of scene
+        PlaneScene.initialize();
+
+        //initialization of controller
+        //PlaneSceneControl.initialize();
+
+        //set scene
+        scene = PlaneScene.getScene();
+        window.setScene(scene);
+        window.show();
+    }
+
+
+
+    //getters
+    public static Stage getWindow() {
+        return window;
+    }
+
+    public static Scene getScene() {
+        return scene;
+    }
+}

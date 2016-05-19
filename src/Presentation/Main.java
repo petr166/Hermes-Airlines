@@ -1,5 +1,6 @@
 package Presentation;
 
+import Application.Control.MainControl;
 import Application.DataTypes.*;
 import DataAccess.AdminData;
 import DataAccess.FlightData;
@@ -29,14 +30,12 @@ public class Main extends Application{
 
         //scenes initialization
 
-        LoginScene.initialize();
         ViewBookingScene.initialize();
-        MenuScene.initialize();
         FlightsScene.initialize();
         PlaneScene.initialize();
         BookingScene.initialize();
         CustomerScene.initialize();
-        ArrayList<Schedule> schedules= ScheduleData.getSchedules();
+       /* ArrayList<Schedule> schedules= ScheduleData.getSchedules();
         ArrayList<Flight> flights =  FlightData.getFlight();
         //System.out.println(schedules);
        // System.out.println(flights);
@@ -48,7 +47,8 @@ public class Main extends Application{
         //primaryStage setup
         primaryStage.setTitle("Hermes Airlines");
         primaryStage.setScene(FlightsScene.getScene());
-        primaryStage.show();
+        primaryStage.show();*/
+        MainControl.showLoginScene();
 
 
 

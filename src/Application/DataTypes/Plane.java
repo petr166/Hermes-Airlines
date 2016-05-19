@@ -22,7 +22,6 @@ public class Plane {
         this.plane_name = plane_name;
     }
 
-
     //getters, setters
     public int getPlane_id() {
         return plane_id;
@@ -63,7 +62,6 @@ public class Plane {
     public void setPlane_name(String plane_name) {
         this.plane_name = plane_name;
     }
-
 
     //toString method
     @Override

@@ -18,7 +18,11 @@ public class Airline {
 
 
     //constructors
-    public Airline(){}
+    public Airline(){
+        airline_id = new SimpleIntegerProperty();
+        departure_ciy = new SimpleStringProperty();
+        arrival_city = new SimpleStringProperty();
+    }
 
     public Airline(int airline_id, String departure_city, String arrival_city){
         this.airline_id = new SimpleIntegerProperty(airline_id);

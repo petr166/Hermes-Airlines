@@ -21,7 +21,6 @@ public class AdminData {
     private static String password = DataConnection.password;
     private static Statement statement;
 
-
     //get admins
     public static ArrayList<Admin> getAdmins(){
         ArrayList<Admin> admins = new ArrayList<>();

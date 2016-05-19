@@ -21,6 +21,7 @@ public class Flight {
         flight_id = new SimpleIntegerProperty();
         plane_id = new SimpleIntegerProperty();
         schedule_id = new SimpleIntegerProperty();
+        airline_id = new SimpleIntegerProperty();
         first_class_left = new SimpleIntegerProperty();
         coach_left = new SimpleIntegerProperty();
         economy_left = new SimpleIntegerProperty();

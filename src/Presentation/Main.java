@@ -20,13 +20,13 @@ public class Main extends Application{
     public void start(Stage primaryStage)throws Exception {
 
         //scenes initialization
-
         LoginScene.initialize();
         ViewBookingScene.initialize();
         MenuScene.initialize();
         FlightsScene.initialize();
         PlaneScene.initialize();
         BookingScene.initialize();
+
         //primaryStage setup
         primaryStage.setTitle("Hermes Airlines");
         primaryStage.setScene(BookingScene.getScene());

@@ -29,10 +29,10 @@ public class PlaneData {
                 while (rs.next()) {
                     Plane plane = new Plane();
                     plane.setPlane_id(rs.getInt(1));
-                    plane.setFirst_class(rs.getInt(2));
-                    plane.setCoach(rs.getInt(3));
-                    plane.setEconomy(rs.getInt(4));
-                    plane.setPlane_name(rs.getString(5));
+                    plane.setFirst_class(rs.getInt(3));
+                    plane.setCoach(rs.getInt(4));
+                    plane.setEconomy(rs.getInt(5));
+                    plane.setPlane_name(rs.getString(2));
                     planes.add(plane);
 
                 }

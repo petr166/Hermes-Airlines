@@ -20,9 +20,9 @@ public class ScheduleData {
     private static String user = "root";
     private static String password = DataConnection.password;
     private static Statement statement;
+    private static ArrayList<Schedule> schedules = new ArrayList<>();
 
     public static ArrayList<Schedule> getSchedules(){
-        ArrayList<Schedule> schedules = new ArrayList<>();
         try{
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(DATABASE_URL,user,password);
@@ -45,5 +45,19 @@ public class ScheduleData {
         }
 
         return schedules;
+    }
+
+    public static void insertSchedule(Schedule schedule){
+        schedules.add(schedule);
+        try {
+            Class.forName(JDBC_DRIVER);
+            connection = DriverManager.getConnection(DATABASE_URL, user, password);
+            statement = connection.createStatement();
+            for(int i=0; i<schedules.size(); i++)
+            statement.executeQuery("INSERT INTO schedule VALUES (DEFAULT, "+schedules.get(i).getDeparture_date()+", " +
+                    schedules.get(i).getDeparture_time()+", "+schedules.get(i).getArrival_date()+
+                    ", "+schedules.get(i).getArrival_time());
+            System.out.println(schedules);
+        }catch (Exception e){}
     }
 }

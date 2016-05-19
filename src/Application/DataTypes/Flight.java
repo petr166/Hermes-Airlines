@@ -17,7 +17,15 @@ public class Flight {
 
 
     //constructors
-    public Flight() {}
+    public Flight() {
+        flight_id = new SimpleIntegerProperty();
+        plane_id = new SimpleIntegerProperty();
+        schedule_id = new SimpleIntegerProperty();
+        first_class_left = new SimpleIntegerProperty();
+        coach_left = new SimpleIntegerProperty();
+        economy_left = new SimpleIntegerProperty();
+        price = new SimpleDoubleProperty();
+    }
 
     public Flight(int flight_id, int plane_id, int airline_id, int schedule_id, int first_class_left, int coach_left, int economy_left, int price) {
         this.flight_id = new SimpleIntegerProperty(flight_id);

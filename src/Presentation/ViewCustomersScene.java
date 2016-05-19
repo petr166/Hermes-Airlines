@@ -12,7 +12,8 @@ import javafx.scene.layout.Pane;
 /**
  * Created by DragonClau on 19/5/2016.
  */
-public class CustomersViewScene {
+
+public class ViewCustomersScene {
 
 
         //fields
@@ -73,78 +74,59 @@ public class CustomersViewScene {
         }
 
 
+
         //getters
-        public static Pane getLayout() {
-            return layout;
-        }
+    public static Pane getLayout() {
+        return layout;
+    }
 
-        public static Scene getScene() {
-            return scene;
-        }
+    public static Scene getScene() {
+        return scene;
+    }
 
-        public static TableView getTable() {
-            return table;
-        }
+    public static TableView getTable() {
+        return table;
+    }
 
     public static TableColumn getIdColumn() {
         return idColumn;
-    }
-
-    public static void setIdColumn(TableColumn idColumn) {
-        CustomersViewScene.idColumn = idColumn;
     }
 
     public static TableColumn getNameColumn() {
         return nameColumn;
     }
 
-    public static void setNameColumn(TableColumn nameColumn) {
-        CustomersViewScene.nameColumn = nameColumn;
-    }
-
     public static TableColumn getAgeColumn() {
         return ageColumn;
-    }
-
-    public static void setAgeColumn(TableColumn ageColumn) {
-        CustomersViewScene.ageColumn = ageColumn;
     }
 
     public static TableColumn getPhoneColumn() {
         return phoneColumn;
     }
 
-    public static void setPhoneColumn(TableColumn phoneColumn) {
-        CustomersViewScene.phoneColumn = phoneColumn;
-    }
-
     public static TableColumn getPassportColumn() {
         return passportColumn;
     }
 
-    public static void setPassportColumn(TableColumn passportColumn) {
-        CustomersViewScene.passportColumn = passportColumn;
-    }
-
     public static TextField getSearch() {
-            return search;
-        }
-
-        public static HBox getButtonLayout() {
-            return buttonLayout;
-        }
-
-        public static Button getBackB() {
-            return backB;
-        }
-
-
-        public static Button getAddB() {
-            return addB;
-        }
-
-        public static Button getEditB() {
-            return editB;
-        }
-
+        return search;
     }
+
+    public static HBox getButtonLayout() {
+        return buttonLayout;
+    }
+
+    public static Button getBackB() {
+        return backB;
+    }
+
+    public static Button getAddB() {
+        return addB;
+    }
+
+    public static Button getEditB() {
+        return editB;
+    }
+
+
+}

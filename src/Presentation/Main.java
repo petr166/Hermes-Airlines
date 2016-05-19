@@ -5,6 +5,7 @@ import Application.DataTypes.Booking;
 import Application.DataTypes.Flight;
 import Application.DataTypes.Schedule;
 import DataAccess.AdminData;
+import DataAccess.BookingData;
 import DataAccess.FlightData;
 import DataAccess.ScheduleData;
 import javafx.application.Application;
@@ -39,9 +40,9 @@ public class Main extends Application{
         BookingScene.initialize();
         CustomerScene.initialize();
         ArrayList<Schedule> schedules= ScheduleData.getSchedules();
-        ArrayList<Flight> flights =  FlightData.getFlight();
-        System.out.println(schedules);
-        System.out.println(flights);
+        ArrayList<Booking> bookings =  BookingData.getBookings();
+       // System.out.println(schedules);
+        System.out.println(bookings);
 
 
 

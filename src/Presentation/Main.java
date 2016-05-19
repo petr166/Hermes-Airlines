@@ -26,14 +26,14 @@ public class Main extends Application{
         //scenes initialization
 
         LoginScene.initialize();
-        BookingScene.initialize();
+        ViewBookingScene.initialize();
         MenuScene.initialize();
         FlightsScene.initialize();
         PlaneScene.initialize();
-
+        BookingScene.initialize();
         //primaryStage setup
         primaryStage.setTitle("Hermes Airlines");
-        primaryStage.setScene(PlaneScene.getScene());
+        primaryStage.setScene(BookingScene.getScene());
         primaryStage.show();
     }
 

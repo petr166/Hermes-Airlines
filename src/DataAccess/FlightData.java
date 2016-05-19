@@ -32,7 +32,7 @@ public class FlightData {
                 if(rs != null)
                     while (rs.next()) {
                         Flight flight = new Flight();
-                        flight.setAirline_id(rs.getInt(1));
+                        flight.setFlight_id(rs.getInt(1));
                         flight.setPlane_id(rs.getInt(2));
                         flight.setAirline_id(rs.getInt(3));
                         flight.setSchedule_id(rs.getInt(4));

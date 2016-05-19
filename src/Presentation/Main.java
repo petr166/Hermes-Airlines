@@ -5,11 +5,13 @@ import Application.DataTypes.Booking;
 import Application.DataTypes.Flight;
 import Application.DataTypes.Schedule;
 import DataAccess.AdminData;
+import DataAccess.FlightData;
 import DataAccess.ScheduleData;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
 import javax.swing.text.View;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -37,7 +39,9 @@ public class Main extends Application{
         BookingScene.initialize();
         CustomerScene.initialize();
         ArrayList<Schedule> schedules= ScheduleData.getSchedules();
+        ArrayList<Flight> flights =  FlightData.getFlight();
         System.out.println(schedules);
+        System.out.println(flights);
 
 
 

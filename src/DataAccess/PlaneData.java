@@ -1,13 +1,13 @@
 package DataAccess;
 
 import Application.DataTypes.Plane;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
 public class PlaneData {
     //fields
@@ -17,8 +17,8 @@ public class PlaneData {
     private static String user = "root";
     private static String password = DataConnection.password;
     private static Statement statement;
-    private static  ArrayList<Plane> planes = new ArrayList<>();
-    public static ArrayList<Plane> getPlanes(){
+    private static ObservableList<Plane> planes = FXCollections.observableArrayList();
+    public static ObservableList<Plane> getPlanes(){
 
         try{
             Class.forName(JDBC_DRIVER);
@@ -58,5 +58,18 @@ public class PlaneData {
         }
 
 
+    }
+    public static void deletePlane(Plane plane){
+        planes.remove(plane);
+        try{
+            Class.forName(JDBC_DRIVER);
+            connection = DriverManager.getConnection(DATABASE_URL,user,password);
+            PreparedStatement st= connection.prepareStatement("DELETE FROM  plane WHERE plane_id = ?");
+            st.setInt(1,plane.getPlane_id());
+            st.executeUpdate();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }

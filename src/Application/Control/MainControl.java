@@ -31,7 +31,9 @@ public class MainControl {
         //set scene
         scene = MenuScene.getScene();
         window.setScene(scene);
+        window.centerOnScreen();
         window.show();
+
     }
 
 
@@ -48,7 +50,7 @@ public class MainControl {
         window.setScene(scene);
 
         window.show();
-
+        window.centerOnScreen();
     }
 
     //viewBookingScene
@@ -61,6 +63,7 @@ public class MainControl {
 
         //set scene
         scene = ViewBookingScene.getScene();
+
         window.setScene(scene);
         window.show();
     }

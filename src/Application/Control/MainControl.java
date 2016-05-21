@@ -1,6 +1,8 @@
 package Application.Control;
 
+import Application.DataTypes.Plane;
 import Presentation.*;
+import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -102,6 +104,19 @@ public class MainControl {
         scene = PlaneScene.getScene();
         window.setScene(scene);
         window.show();
+    }
+
+    public static boolean showPlaneEditStage(Plane plane){
+        //initialization of scene
+        PlaneEditScene.initialize();
+
+        //initialization of control
+        PlaneEditSceneControl.initialize();
+
+        PlaneEditSceneControl.setPlane(plane);
+        PlaneEditScene.getDialogStage().initOwner(window);
+        PlaneEditScene.getDialogStage().showAndWait();
+        return PlaneEditSceneControl.isOkPressed();
     }
 
 

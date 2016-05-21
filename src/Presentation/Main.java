@@ -1,6 +1,6 @@
 package Presentation;
 
-import Application.Control.MainControl;
+import Application.Control.*;
 import Application.DataTypes.*;
 import DataAccess.AdminData;
 import DataAccess.FlightData;
@@ -28,27 +28,27 @@ public class Main extends Application{
     //start method
     public void start(Stage primaryStage)throws Exception {
 
-        //scenes initialization
-
+         ///scenes initialization
+/*
         ViewBookingScene.initialize();
         FlightsScene.initialize();
         PlaneScene.initialize();
         BookingScene.initialize();
         CustomerScene.initialize();
-       /* ArrayList<Schedule> schedules= ScheduleData.getSchedules();
-        ArrayList<Flight> flights =  FlightData.getFlight();
-        //System.out.println(schedules);
-       // System.out.println(flights);
-        ArrayList<Plane> planes = PlaneData.getPlanes();
-        Plane plane = new Plane(3, 20, 40, 40, "Hermes01");
-        System.out.println(planes);
-        PlaneData.insertPlanes(plane);
-        System.out.println(planes);
-        //primaryStage setup
-        primaryStage.setTitle("Hermes Airlines");
-        primaryStage.setScene(FlightsScene.getScene());
-        primaryStage.show();*/
+        //PlaneScene.initialize();
+        LoginScene.initialize();
+        ViewCustomersScene.initialize();
+        MenuScene.initialize();
+
+        //initialization of controller
+        LoginSceneControl.initialize();
+        MenuSceneControl.initialize();
+*/
+
+
+        //start app
         MainControl.showLoginScene();
+
 
 
 

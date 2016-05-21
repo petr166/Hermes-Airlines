@@ -1,6 +1,7 @@
 package Presentation;
 
 import Application.DataTypes.Plane;
+import DataAccess.PlaneData;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;

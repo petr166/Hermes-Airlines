@@ -19,7 +19,7 @@ public class PlaneData {
     private static Statement statement;
     private static ObservableList<Plane> planes = FXCollections.observableArrayList();
     public static ObservableList<Plane> getPlanes(){
-
+        planes = FXCollections.observableArrayList();
         try{
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(DATABASE_URL,user,password);
@@ -42,7 +42,6 @@ public class PlaneData {
         }
         return planes;
     }
-
     public static void insertPlanes(Plane plane)
     {
         planes.add(plane);
@@ -66,6 +65,23 @@ public class PlaneData {
             connection = DriverManager.getConnection(DATABASE_URL,user,password);
             PreparedStatement st= connection.prepareStatement("DELETE FROM  plane WHERE plane_id = ?");
             st.setInt(1,plane.getPlane_id());
+            st.executeUpdate();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void updatePlane(Plane plane){
+        try{
+            Class.forName(JDBC_DRIVER);
+            connection = DriverManager.getConnection(DATABASE_URL,user,password);
+            PreparedStatement st= connection.prepareStatement("UPDATE plane SET plane_name = ?, first_class = ?, coach = ?, economy = ? WHERE plane_id = ?");
+            st.setString(1,plane.getPlane_name());
+            st.setInt(2,plane.getFirst_class());
+            st.setInt(3,plane.getCoach());
+            st.setInt(4,plane.getEconomy());
+            st.setInt(5,plane.getPlane_id());
             st.executeUpdate();
         }
         catch(Exception e){

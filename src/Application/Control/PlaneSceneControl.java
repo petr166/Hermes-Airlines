@@ -76,7 +76,11 @@ public class PlaneSceneControl {
         Plane plane = table.getSelectionModel().getSelectedItem();
         if(plane!=null) {
             PlaneData.deletePlane(plane);
-           // table.getItems().remove(plane);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.initOwner(MainControl.getWindow());
+            alert.setContentText("Plane removed!");
+            alert.showAndWait();
+
         }
         else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -94,6 +98,10 @@ public class PlaneSceneControl {
         if(okPresed){
 
             PlaneData.insertPlanes(plane);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.initOwner(MainControl.getWindow());
+            alert.setContentText("Plane added!");
+            alert.showAndWait();
         }
     }
 
@@ -103,6 +111,10 @@ public class PlaneSceneControl {
         if(plane!=null){
             boolean okPressed = MainControl.showPlaneEditStage(plane);
             PlaneData.updatePlane(plane);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.initOwner(MainControl.getWindow());
+            alert.setContentText("Plane edited!");
+            alert.showAndWait();
         }
         else {
             Alert alert = new Alert(Alert.AlertType.WARNING);

@@ -49,7 +49,7 @@ public class MenuSceneControl {
 
     //handle customersB
     public static void handle_customersB(){
-        MainControl.showCustomerScene();
+        MainControl.showViewCustomerScene();
     }
 
     //handle flightsB

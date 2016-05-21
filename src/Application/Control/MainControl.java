@@ -66,15 +66,15 @@ public class MainControl {
     }
 
 
-    public static void showCustomerScene(){
+    public static void showViewCustomerScene(){
         //initialization of scene
-        CustomerScene.initialize();
+        ViewCustomersScene.initialize();
 
         //initialization of controller
         //CustomerSceneControl.initialize();
 
         //set scene
-        scene = CustomerScene.getScene();
+        scene = ViewCustomersScene.getScene();
         window.setScene(scene);
         window.show();
     }

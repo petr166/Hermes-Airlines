@@ -39,6 +39,7 @@ public class LoginSceneControl {
 
         //loginButton
         loginButton = LoginScene.getLoginButton();
+        loginButton.setDefaultButton(true);
         loginButton.setOnAction(e->{
             //username
             username = usernameField.getText();

@@ -49,6 +49,7 @@ public class PlaneEditScene {
 
         //button setup
         okB = new Button("Ok");
+        okB.setDefaultButton(true);
         cancelB = new Button("Cancel");
 
         //layout

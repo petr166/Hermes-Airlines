@@ -27,25 +27,6 @@ public class Main extends Application{
 
     //start method
     public void start(Stage primaryStage)throws Exception {
-
-         ///scenes initialization
-/*
-        ViewBookingScene.initialize();
-        FlightsScene.initialize();
-        PlaneScene.initialize();
-        BookingScene.initialize();
-        CustomerScene.initialize();
-        //PlaneScene.initialize();
-        LoginScene.initialize();
-        ViewCustomersScene.initialize();
-        MenuScene.initialize();
-
-        //initialization of controller
-        LoginSceneControl.initialize();
-        MenuSceneControl.initialize();
-*/
-
-
         //start app
         MainControl.showLoginScene();
 

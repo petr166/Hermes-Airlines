@@ -22,7 +22,7 @@ public class PlaneEditSceneControl {
 
     //initialize method
     public static void initialize(){
-        //buttns
+        //buttons
         okB = PlaneEditScene.getOkB();
         okB.setOnAction(e -> handle_okB());
 

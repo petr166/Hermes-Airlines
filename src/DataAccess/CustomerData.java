@@ -1,11 +1,11 @@
 package DataAccess;
 
 import Application.DataTypes.Customer;
+import Application.DataTypes.Plane;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 /**
@@ -19,12 +19,11 @@ public class CustomerData {
     private static String user = "root";
     private static String password = DataConnection.password;
     private static Statement statement;
+    private static ObservableList<Customer> customers = FXCollections.observableArrayList();
 
 
     //get admins
-    public static ArrayList<Customer> getCustomers(){
-
-        ArrayList<Customer> customers = new ArrayList<>();
+    public static ObservableList<Customer> getCustomers(){
 
         try{
             Class.forName(JDBC_DRIVER);
@@ -52,5 +51,52 @@ public class CustomerData {
         }
 
         return customers;
+    }
+
+    public static void insertCustomer(Customer customer)
+    {
+        customers.add(customer);
+        try{
+            Class.forName(JDBC_DRIVER);
+            connection = DriverManager.getConnection(DATABASE_URL,user,password);
+            statement = connection.createStatement();
+            statement.executeUpdate("insert into customer values(default,'"+customer.getFirst_name()+"','"+customer.getLast_name()+"',"+customer.getAge()+",'"+customer.getPassport_number()+"');");
+
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
+
+    }
+    public static void deleteCustomer(Customer customer){
+        customers.remove(customer);
+        try{
+            Class.forName(JDBC_DRIVER);
+            connection = DriverManager.getConnection(DATABASE_URL,user,password);
+            PreparedStatement st= connection.prepareStatement("DELETE FROM  customer WHERE customer_id = ?");
+            st.setInt(1,customer.getCustomer_id());
+            st.executeUpdate();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void updateCustomer(Customer customer){
+        try{
+            Class.forName(JDBC_DRIVER);
+            connection = DriverManager.getConnection(DATABASE_URL,user,password);
+            PreparedStatement st= connection.prepareStatement("UPDATE customer SET first_name = ?, last_name = ?, age = ?, passport_number = ? WHERE customer_id = ?");
+            st.setString(1,customer.getFirst_name());
+            st.setString(2,customer.getLast_name());
+            st.setInt(3,customer.getAge());
+            st.setString(4,customer.getPassport_number());
+            st.setInt(5,customer.getCustomer_id());
+            st.executeUpdate();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }

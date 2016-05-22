@@ -5,25 +5,27 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 /**
- * Created by DragonClau on 19/5/2016.
+ * Created by Administrator on 5/22/2016.
  */
-public class CustomerScene {
+public class CustomerEditScene {
 
     //fields
+    private static Stage dialogStage;
     private static Scene scene;
     private static GridPane gridPane;
     private static VBox vboxLabel, vboxText;
     private static Label fName, lName, age, phone_nr, passport_nr, title;
-    private static Button completeB;
+    private static Button okB,cancelB;
     private static TextField fNameT, lNameT, ageT, phone_nrT, passport_nrT;
     private static BorderPane borderPane;
+    private static HBox buttons;
 
     //initialize method
     public static void initialize() {
@@ -54,10 +56,12 @@ public class CustomerScene {
         passport_nr.setText("Passport Number");
 
         //button setup
-        completeB = new Button();
-        completeB.setText("Complete Booking");
+        okB = new Button("Ok");
+        cancelB = new Button("Cancel");
 
         //layout
+        buttons = new HBox();
+        buttons.getChildren().addAll(cancelB,okB);
         gridPane = new GridPane();
         borderPane = new BorderPane();
         gridPane.setAlignment(Pos.CENTER);
@@ -67,7 +71,7 @@ public class CustomerScene {
         vboxText.setSpacing(25);
         vboxLabel.setSpacing(34);
         vboxLabel.getChildren().addAll(fName,lName,age,phone_nr,passport_nr);
-        vboxText.getChildren().addAll(fNameT,lNameT,ageT,phone_nrT, passport_nrT, completeB);
+        vboxText.getChildren().addAll(fNameT,lNameT,ageT,phone_nrT, passport_nrT,buttons);
         gridPane.add(vboxLabel, 0, 0);
         gridPane.add(vboxText, 1, 0);
         borderPane.setCenter(gridPane);
@@ -75,14 +79,24 @@ public class CustomerScene {
         borderPane.setAlignment(title, Pos.CENTER);
 
         //scene
+        dialogStage = new Stage();
         scene = new Scene(borderPane, 500, 600);
+        dialogStage.setScene(scene);
         System.out.println("Customer into initialized");
     }
 
     //GETTERS
 
-    public static Button getCompleteB() {
-        return completeB;
+    public static Stage getDialogStage(){
+        return dialogStage;
+    }
+
+    public static Button getOkB() {
+        return okB;
+    }
+
+    public static Button getCancelB() {
+        return cancelB;
     }
 
     public static TextField getfNameT() {
@@ -110,6 +124,6 @@ public class CustomerScene {
     }
 
     public static void setScene(Scene scene) {
-        CustomerScene.scene = scene;
+        CustomerEditScene.scene = scene;
     }
 }

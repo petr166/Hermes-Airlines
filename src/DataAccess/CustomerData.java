@@ -24,7 +24,7 @@ public class CustomerData {
 
     //get admins
     public static ObservableList<Customer> getCustomers(){
-
+        customers = FXCollections.observableArrayList();
         try{
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(DATABASE_URL,user,password);

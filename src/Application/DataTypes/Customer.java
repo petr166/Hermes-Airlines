@@ -16,14 +16,16 @@ public class Customer {
     private StringProperty first_name, last_name, phone_nr, passport_number;
 
 
+
     //constructors
     public Customer() {
         customer_id = new SimpleIntegerProperty(1);
         age = new SimpleIntegerProperty(1);
         first_name = new SimpleStringProperty("");
         last_name = new SimpleStringProperty("");
-        phone_nr = new SimpleStringProperty("");
+        phone_nr = new SimpleStringProperty("123");
         passport_number = new SimpleStringProperty("");
+
     }
 
     public Customer(int customer_id, int age, String passport_number, String first_name, String last_name, String phone_nr) {
@@ -33,6 +35,7 @@ public class Customer {
         this.first_name = new SimpleStringProperty(first_name);
         this.last_name = new SimpleStringProperty(last_name);
         this.phone_nr = new SimpleStringProperty(phone_nr);
+
     }
 
 

@@ -1,11 +1,13 @@
 package Presentation;
 
+import Application.DataTypes.Customer;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
@@ -19,8 +21,9 @@ public class ViewCustomersScene {
         //fields
         private static Pane layout;
         private static Scene scene;
-        private static TableView table;
-        private static TableColumn idColumn, nameColumn, ageColumn, phoneColumn, passportColumn;
+        private static TableView<Customer> table;
+        private static TableColumn<Customer, Integer> idColumn, ageColumn;
+        private static TableColumn<Customer, String> fnameColumn, lnameColumn, passportColumn, phoneColumn;
         private static TextField search;
         private static HBox buttonLayout;
         private static Button backB, addB, editB;
@@ -30,17 +33,30 @@ public class ViewCustomersScene {
         public static void initialize() {
 
             //table columns
-            idColumn = new TableColumn("ID");
-            nameColumn = new TableColumn("Name");
+            idColumn = new TableColumn<>("ID");
+            idColumn.setCellValueFactory(cellData -> cellData.getValue().customer_idProperty().asObject());;
+            fnameColumn = new TableColumn("First Name");
+            fnameColumn.setCellValueFactory(cellData -> cellData.getValue().first_nameProperty());
+
+            lnameColumn = new TableColumn<>("Last Name");
+            lnameColumn.setCellValueFactory(cellData -> cellData.getValue().last_nameProperty());
+
+
             ageColumn = new TableColumn("Age");
+            ageColumn.setCellValueFactory(cellData -> cellData.getValue().ageProperty().asObject());
+
             phoneColumn = new TableColumn("Phone Number");
+            phoneColumn.setCellValueFactory(cellData -> cellData.getValue().phone_nrProperty());
+
             passportColumn = new TableColumn("Passport Number");
+            passportColumn.setCellValueFactory(cellData -> cellData.getValue().passport_numberProperty());
+
 
             //table
-            table = new TableView();
+            table = new TableView<Customer>();
             table.setMinSize(1116,591);
             table.relocate(42,32);
-            table.getColumns().addAll(idColumn, nameColumn, ageColumn, phoneColumn, passportColumn);
+            table.getColumns().addAll(idColumn, fnameColumn, lnameColumn, ageColumn, phoneColumn, passportColumn);
 
             //search field
             search = new TextField();
@@ -76,6 +92,15 @@ public class ViewCustomersScene {
 
 
         //getters
+
+    public static TableColumn<Customer, String> getFnameColumn() {
+        return fnameColumn;
+    }
+
+    public static TableColumn<Customer, String> getLnameColumn() {
+        return lnameColumn;
+    }
+
     public static Pane getLayout() {
         return layout;
     }
@@ -93,7 +118,7 @@ public class ViewCustomersScene {
     }
 
     public static TableColumn getNameColumn() {
-        return nameColumn;
+        return fnameColumn;
     }
 
     public static TableColumn getAgeColumn() {

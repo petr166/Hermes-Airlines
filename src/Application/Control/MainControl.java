@@ -1,5 +1,6 @@
 package Application.Control;
 
+import Application.DataTypes.Customer;
 import Application.DataTypes.Plane;
 import Presentation.*;
 import javafx.collections.ObservableList;
@@ -37,7 +38,7 @@ public class MainControl {
     }
 
 
-    public static void showLoginScene(){
+    public static void showLoginScene() {
         //initialization of scene
         LoginScene.initialize();
 
@@ -53,13 +54,14 @@ public class MainControl {
         window.centerOnScreen();
     }
 
+
     //viewBookingScene
     public static void showViewBookingScene(){
         //initialization of scene
         ViewBookingScene.initialize();
 
         //initialization of actions
-        //ViewBookingSceneControl.initialize();
+       // ViewBookingSceneControl.initialize();
 
         //set scene
         scene = ViewBookingScene.getScene();
@@ -74,7 +76,7 @@ public class MainControl {
         ViewCustomersScene.initialize();
 
         //initialization of controller
-        //CustomerSceneControl.initialize();
+        ViewCustomerSceneControl.initialize();
 
         //set scene
         scene = ViewCustomersScene.getScene();
@@ -120,6 +122,20 @@ public class MainControl {
         PlaneEditScene.getDialogStage().initOwner(window);
         PlaneEditScene.getDialogStage().showAndWait();
         return PlaneEditSceneControl.isOkPressed();
+    }
+
+
+    public static boolean showCustomerEditScene(Customer customer){
+        //initialization of scene
+        CustomerEditScene.initialize();
+
+        //initialization of control
+        CustomerEditSceneControl.initialize();
+        CustomerEditSceneControl.setCustomer(customer);
+        CustomerEditScene.getDialogStage().initOwner(window);
+        CustomerEditScene.getDialogStage().showAndWait();
+
+        return CustomerEditSceneControl.isOkPressed();
     }
 
 

@@ -44,6 +44,7 @@ public class ViewCustomerSceneControl {
 
 
 
+
     }
 
     //handle_editB
@@ -51,11 +52,12 @@ public class ViewCustomerSceneControl {
         Customer customer = table.getSelectionModel().getSelectedItem();
         if(customer != null){
             boolean okPressed = MainControl.showCustomerEditScene(customer);
+           if(okPressed){
             CustomerData.updateCustomer(customer);
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.initOwner(MainControl.getWindow());
             alert.setContentText("Customer edited!");
-            alert.showAndWait();
+            alert.showAndWait();}
 
         }
         else{

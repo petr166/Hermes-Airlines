@@ -1,5 +1,6 @@
 package Presentation;
 
+import Application.DataTypes.Flight;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -29,11 +30,11 @@ public class FlightsScene {
     public static void initialize() {
 
         //table columns
-        dateColumn = new TableColumn("Date");
+       /* dateColumn = new TableColumn("Date");
         routeColumn = new TableColumn("Route");
         priceColumn = new TableColumn("Price");
         bookingsColumn = new TableColumn("Bookings");
-
+        */
         //table
         table = new TableView();
         table.setMinSize(1116,591);

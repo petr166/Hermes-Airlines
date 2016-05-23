@@ -58,14 +58,16 @@ public class PlaneData {
 
 
     }
+
     public static void deletePlane(Plane plane){
         planes.remove(plane);
+        if(plane!=null)
         try{
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(DATABASE_URL,user,password);
-            PreparedStatement st= connection.prepareStatement("DELETE FROM  plane WHERE plane_id = ?");
-            st.setInt(1,plane.getPlane_id());
-            st.executeUpdate();
+            statement = connection.createStatement();
+            statement.executeUpdate("DELETE FROM  plane WHERE plane_id = "+plane.getPlane_id());
+
         }
         catch(Exception e){
             e.printStackTrace();

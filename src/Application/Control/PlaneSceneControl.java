@@ -19,11 +19,6 @@ public class PlaneSceneControl {
 
     //fields
     private static TableView<Plane> table;
-    private static TableColumn plane_idColumn;
-    private static TableColumn plane_nameColumn;
-    private static TableColumn first_classColumn;
-    private static TableColumn coachColumn;
-    private static TableColumn economyColumn;
     private static Button addButton;
     private static Button removeButton;
     private static Button cancelButton;
@@ -35,21 +30,7 @@ public class PlaneSceneControl {
     public static void initialize(){
         //table
         table = PlaneScene.getTable();
-
-
         table.setItems(PlaneData.getPlanes());
-        //plane_id column
-        plane_idColumn = PlaneScene.getPlane_idColumn();
-
-        //plane_name Column
-        plane_nameColumn = PlaneScene.getPlane_nameColumn();
-
-        //classes
-        first_classColumn = PlaneScene.getFirst_classColumn();
-
-        coachColumn = PlaneScene.getCoachColumn();
-
-        economyColumn = PlaneScene.getEconomyColumn();
 
         //addButton
         addButton =  PlaneScene.getAddButton();

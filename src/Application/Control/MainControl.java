@@ -117,6 +117,7 @@ public class MainControl {
         //initialization of control
         CustomerEditSceneControl.initialize();
         CustomerEditSceneControl.setCustomer(customer);
+
         CustomerEditScene.getDialogStage().initOwner(window);
         CustomerEditScene.getDialogStage().showAndWait();
 

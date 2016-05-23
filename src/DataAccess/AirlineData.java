@@ -2,11 +2,12 @@ package DataAccess;
 
 import Application.DataTypes.Admin;
 import Application.DataTypes.Airline;
+import Application.DataTypes.Customer;
+import Application.DataTypes.Plane;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 /**
@@ -20,11 +21,12 @@ public class AirlineData {
     private static String user = "root";
     private static String password = DataConnection.password;
     private static Statement statement;
+    private static ObservableList<Airline> airlines = FXCollections.observableArrayList();
 
     //get admins
-    public static ArrayList<Airline> getAirlines(){
+    public static ObservableList<Airline> getAirlines(){
 
-        ArrayList<Airline> airlines = new ArrayList<>();
+
         try{
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(DATABASE_URL,user,password);
@@ -37,7 +39,6 @@ public class AirlineData {
                     airline.setAirline_id(rs.getInt(1));
                     airline.setDeparture_ciy(rs.getString(2));
                     airline.setArrival_city(rs.getString(3));
-
                     airlines.add(airline);
 
                 }
@@ -47,5 +48,33 @@ public class AirlineData {
         }
 
         return airlines;
+    }
+
+    public static void insertAirline(Airline airline)
+    {
+        airlines.add(airline);
+        try{
+            Class.forName(JDBC_DRIVER);
+            connection = DriverManager.getConnection(DATABASE_URL,user,password);
+            statement = connection.createStatement();
+            statement.executeUpdate("insert into airline values(default,'"+airline.getDeparture_ciy()+"','"+airline.getArrival_city()+"');");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void deleteAirline(Airline airline){
+        airlines.remove(airline);
+        try{
+            Class.forName(JDBC_DRIVER);
+            connection = DriverManager.getConnection(DATABASE_URL,user,password);
+            PreparedStatement st= connection.prepareStatement("DELETE FROM  airline WHERE airline_id = ?");
+            st.setInt(1,airline.getAirline_id());
+            st.executeUpdate();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }

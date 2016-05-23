@@ -1,6 +1,5 @@
 package Application.Control;
 
-import Presentation.BookingScene;
 import Presentation.MenuScene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -9,6 +8,7 @@ import javafx.stage.Stage;
 /**
  * Created by Administrator on 5/19/2016.
  */
+
 public class MenuSceneControl {
 
     //fields
@@ -24,7 +24,7 @@ public class MenuSceneControl {
         bookingsB = MenuScene.getBookingsB();
         bookingsB.setOnAction(e -> handle_bookingsB());
 
-        //customesrB
+        //customersB
         customersB = MenuScene.getCustomersB();
         customersB.setOnAction(e -> handle_customersB());
 
@@ -56,7 +56,6 @@ public class MenuSceneControl {
     public static void handle_flightsB(){
         MainControl.showFlightsScene();
     }
-
 
     //handle planesB
     public static void handle_planesB(){

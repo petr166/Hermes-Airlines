@@ -3,37 +3,29 @@ package Application.Control;
 import Application.DataTypes.Customer;
 import Application.DataTypes.Plane;
 import Presentation.*;
-import javafx.collections.ObservableList;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
  * Created by Administrator on 5/19/2016.
  */
+
 public class MainControl {
 
     //fields
     public static Stage window = new Stage();
-    public static Scene scene;
 
-    //start method
-   /* public static void start(){
-
-    }*/
 
     //show-scene methods
     public static void showMenuScene(){
-        //initializatinn of scene
+        //initialization of scene
         MenuScene.initialize();
 
         //initialization of controller
         MenuSceneControl.initialize();
 
         //set scene
-        scene = MenuScene.getScene();
-        window.setScene(scene);
+        window.setScene(MenuScene.getScene());
         window.centerOnScreen();
-        window.show();
 
     }
 
@@ -47,8 +39,7 @@ public class MainControl {
 
 
         //set scene
-        scene = LoginScene.getScene();
-        window.setScene(scene);
+        window.setScene(LoginScene.getScene());
 
         window.show();
         window.centerOnScreen();
@@ -61,13 +52,10 @@ public class MainControl {
         ViewBookingScene.initialize();
 
         //initialization of actions
-       // ViewBookingSceneControl.initialize();
+        //ViewBookingSceneControl.initialize();
 
         //set scene
-        scene = ViewBookingScene.getScene();
-
-        window.setScene(scene);
-        window.show();
+        window.setScene(ViewCustomersScene.getScene());
     }
 
 
@@ -79,9 +67,7 @@ public class MainControl {
         ViewCustomerSceneControl.initialize();
 
         //set scene
-        scene = ViewCustomersScene.getScene();
-        window.setScene(scene);
-        window.show();
+        window.setScene(ViewCustomersScene.getScene());
     }
 
 
@@ -93,10 +79,9 @@ public class MainControl {
         //FlightsSceneControl.initialize();
 
         //set scene
-        scene = FlightsScene.getScene();
-        window.setScene(scene);
-        window.show();
+        window.setScene(FlightsScene.getScene());
     }
+
 
     public static void showPlaneScene(){
         //initialization of scene
@@ -106,10 +91,9 @@ public class MainControl {
         PlaneSceneControl.initialize();
 
         //set scene
-        scene = PlaneScene.getScene();
-        window.setScene(scene);
-        window.show();
+        window.setScene(PlaneScene.getScene());
     }
+
 
     public static boolean showPlaneEditStage(Plane plane){
         //initialization of scene
@@ -121,6 +105,7 @@ public class MainControl {
         PlaneEditSceneControl.setPlane(plane);
         PlaneEditScene.getDialogStage().initOwner(window);
         PlaneEditScene.getDialogStage().showAndWait();
+
         return PlaneEditSceneControl.isOkPressed();
     }
 
@@ -145,7 +130,4 @@ public class MainControl {
         return window;
     }
 
-    public static Scene getScene() {
-        return scene;
-    }
 }

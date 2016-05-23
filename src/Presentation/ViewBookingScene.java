@@ -108,7 +108,7 @@ public class ViewBookingScene {
         flight_detailsObs.relocate(932,132);
         flight_detailsObs.setSpacing(25);
 
-        //customer_detils
+        //customer_details
         customer_detailsLabel=new Label("Customer Details");
         customer_detailsLabel.relocate(708,342);
 

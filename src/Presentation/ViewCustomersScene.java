@@ -34,23 +34,28 @@ public class ViewCustomersScene {
 
             //table columns
             idColumn = new TableColumn<>("ID");
+            idColumn.setMinWidth(116);
             idColumn.setCellValueFactory(cellData -> cellData.getValue().customer_idProperty().asObject());;
+
             fnameColumn = new TableColumn("First Name");
             fnameColumn.setCellValueFactory(cellData -> cellData.getValue().first_nameProperty());
+            fnameColumn.setMinWidth(200);
 
             lnameColumn = new TableColumn<>("Last Name");
             lnameColumn.setCellValueFactory(cellData -> cellData.getValue().last_nameProperty());
-
+            lnameColumn.setMinWidth(200);
 
             ageColumn = new TableColumn("Age");
             ageColumn.setCellValueFactory(cellData -> cellData.getValue().ageProperty().asObject());
+            ageColumn.setMinWidth(200);
 
             phoneColumn = new TableColumn("Phone Number");
             phoneColumn.setCellValueFactory(cellData -> cellData.getValue().phone_nrProperty());
+            phoneColumn.setMinWidth(200);
 
             passportColumn = new TableColumn("Passport Number");
             passportColumn.setCellValueFactory(cellData -> cellData.getValue().passport_numberProperty());
-
+            passportColumn.setMinWidth(200);
 
             //table
             table = new TableView<Customer>();

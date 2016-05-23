@@ -90,7 +90,8 @@ public class ViewCustomerSceneControl {
                 for(Customer c : customers){
                     if(c.getFirst_name().toUpperCase().contains(search.getText().toUpperCase())||
                        c.getLast_name().toUpperCase().contains(search.getText().toUpperCase())||
-                                c.getPassport_number().toUpperCase().contains(search.getText().toUpperCase())){
+                                c.getPassport_number().toUpperCase().contains(search.getText().toUpperCase())||
+                                c.getPhone_nr().contains(search.getText())){
                         tableItems.add(c);
 
                     }

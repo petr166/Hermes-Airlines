@@ -39,13 +39,6 @@ public class CustomerEditSceneControl {
 
     public static void setCustomer(Customer c){
         customer = c;
-
-       /* customer.setFirst_name(fNameT.getText());
-        customer.setLast_name(lNameT.getText());
-        customer.setAge(Integer.parseInt(ageT.getText()));
-        customer.setPassport_number(passport_nrT.getText());
-        customer.setPhone_nr(phone_nrT.getText());*/
-
         fNameT.setText(customer.getFirst_name());
         lNameT.setText(customer.getLast_name());
         ageT.setText(Integer.toString(customer.getAge()));

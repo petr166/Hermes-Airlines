@@ -4,6 +4,10 @@ import Application.DataTypes.Customer;
 import DataAccess.CustomerData;
 import Presentation.CustomerScene;
 import Presentation.ViewCustomersScene;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 
@@ -19,7 +23,8 @@ public class ViewCustomerSceneControl {
   //  private static TableColumn<Customer, Integer> idColumn, ageColumn;
     //private static TableColumn<Customer, String> fnameColumn, lnameColumn, passportColumn, phoneColumn;
     private static TextField search;
-
+    private static ObservableList<Customer> customers= FXCollections.observableArrayList();
+    private static ObservableList<Customer> tableItems = FXCollections.observableArrayList();
     private static Button backB, addB, editB;
 
 
@@ -31,6 +36,7 @@ public class ViewCustomerSceneControl {
 
         // search field
         search = ViewCustomersScene.getSearch();
+        initializeSearch();
 
         //backB
         backB = ViewCustomersScene.getBackB();
@@ -68,6 +74,33 @@ public class ViewCustomerSceneControl {
             alert.showAndWait();
 
         }
+    }
+
+    public static void initializeSearch(){
+        search.textProperty().addListener(new InvalidationListener() {
+            @Override
+            public void invalidated(Observable observable) {
+                customers = CustomerData.getCustomers();
+                if (search.textProperty().get().isEmpty()) {
+                    table.setItems(customers);
+                    return;
+                }
+                tableItems = FXCollections.observableArrayList();
+
+                for(Customer c : customers){
+                    if(c.getFirst_name().toUpperCase().contains(search.getText().toUpperCase())||
+                       c.getLast_name().toUpperCase().contains(search.getText().toUpperCase())||
+                                c.getPassport_number().toUpperCase().contains(search.getText().toUpperCase())){
+                        tableItems.add(c);
+
+                    }
+                }
+                table.setItems(tableItems);
+
+
+            }
+
+        });
     }
 
     public static void handle_backB(){ MainControl.showMenuScene(); }

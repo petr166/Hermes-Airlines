@@ -26,8 +26,11 @@ public class FlightSceneControl {
     //initialize
     public static void initialize(){
         table = FlightsScene.getTable();
-        System.out.println(FlightTableData.getFlightTableItems().get(1));
-        table.setItems(FlightTableData.getFlightTableItems());
+      // table.setItems(FlightTableData.getFlightTableItems());
+        ObservableList<FlightTable> f = FlightTableData.getFlightTableItems();
+        for(FlightTable fl: f){
+            System.out.println(fl.getDeparture_city());
+        }
       /*  dateColumn = new TableColumn<Schedule, String>("Date");
         routeColumn = new TableColumn<Airline, String>("Route");
         priceColumn = new TableColumn<Flight, Double>("Price");

@@ -96,8 +96,6 @@ public class FlightTable {
         FlightTable.price.set(price);
     }
 
-    //toString
-
 
 
 

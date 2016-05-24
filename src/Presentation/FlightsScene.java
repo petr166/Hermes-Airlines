@@ -1,6 +1,5 @@
 package Presentation;
 
-import Application.DataTypes.Flight;
 import Application.DataTypes.FlightTable;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;

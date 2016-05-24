@@ -4,18 +4,14 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import jdk.nashorn.internal.objects.DataPropertyDescriptor;
-
-import java.util.Date;
 
 /**
- * Created by Administrator on 5/23/2016.
+ * Created by Administrator on 5/24/2016.
  */
 public class FlightTable {
-
     //fields
-    private static StringProperty departure_date, arrival_date, departure_city, arrival_city;
-    private static DoubleProperty price;
+    private  StringProperty departure_date, arrival_date, departure_city, arrival_city;
+    private  DoubleProperty price;
 
     //constructors
     public FlightTable() {
@@ -34,69 +30,78 @@ public class FlightTable {
 
     }
 
+    //getters setters
 
-    //getters & setters
-    public static String getDeparture_date() {
+    public String getDeparture_date() {
         return departure_date.get();
     }
 
-    public static StringProperty departure_dateProperty() {
+    public StringProperty departure_dateProperty() {
         return departure_date;
     }
 
-    public static void setDeparture_date(String departure_date) {
-        FlightTable.departure_date.set(departure_date);
+    public void setDeparture_date(String departure_date) {
+        this.departure_date.set(departure_date);
     }
 
-    public static String getArrival_date() {
+    public String getArrival_date() {
         return arrival_date.get();
     }
 
-    public static StringProperty arrival_dateProperty() {
+    public StringProperty arrival_dateProperty() {
         return arrival_date;
     }
 
-    public static void setArrival_date(String arrival_date) {
-        FlightTable.arrival_date.set(arrival_date);
+    public void setArrival_date(String arrival_date) {
+        this.arrival_date.set(arrival_date);
     }
 
-    public static String getDeparture_city() {
+    public String getDeparture_city() {
         return departure_city.get();
     }
 
-    public static StringProperty departure_cityProperty() {
+    public StringProperty departure_cityProperty() {
         return departure_city;
     }
 
-    public static void setDeparture_city(String departure_city) {
-        FlightTable.departure_city.set(departure_city);
+    public void setDeparture_city(String departure_city) {
+        this.departure_city.set(departure_city);
     }
 
-    public static String getArrival_city() {
+    public String getArrival_city() {
         return arrival_city.get();
     }
 
-    public static StringProperty arrival_cityProperty() {
+    public StringProperty arrival_cityProperty() {
         return arrival_city;
     }
 
-    public static void setArrival_city(String arrival_city) {
-        FlightTable.arrival_city.set(arrival_city);
+    public void setArrival_city(String arrival_city) {
+        this.arrival_city.set(arrival_city);
     }
 
-    public static double getPrice() {
+    public double getPrice() {
         return price.get();
     }
 
-    public static DoubleProperty priceProperty() {
+    public DoubleProperty priceProperty() {
         return price;
     }
 
-    public static void setPrice(double price) {
-        FlightTable.price.set(price);
+    public void setPrice(double price) {
+        this.price.set(price);
     }
 
+    //toString
 
-
-
+    @Override
+    public String toString() {
+        return "FlightTable{" +
+                "departure_date=" + departure_date +
+                ", arrival_date=" + arrival_date +
+                ", departure_city=" + departure_city +
+                ", arrival_city=" + arrival_city +
+                ", price=" + price +
+                '}';
+    }
 }

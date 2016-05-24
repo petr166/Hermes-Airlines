@@ -1,16 +1,15 @@
 package DataAccess;
 
 import Application.DataTypes.Customer;
-import Application.DataTypes.Plane;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.*;
-import java.util.ArrayList;
 
 /**
  * Created by Petru on 19-May-16.
  */
+
 public class CustomerData {
     //fields
     private static Connection connection;
@@ -19,10 +18,10 @@ public class CustomerData {
     private static String user = "root";
     private static String password = DataConnection.password;
     private static Statement statement;
-    private static ObservableList<Customer> customers = FXCollections.observableArrayList();
+    private static ObservableList<Customer> customers;
 
 
-    //get admins
+    //get customers list
     public static ObservableList<Customer> getCustomers(){
         customers = FXCollections.observableArrayList();
         try{
@@ -41,12 +40,11 @@ public class CustomerData {
                     customer.setAge(rs.getInt(4));
                     customer.setPassport_number(rs.getString(5));
                     customer.setPhone_nr(rs.getString(6));
-                    //customer.setPhone_nr("0");
 
                     customers.add(customer);
-
                 }
         }
+
         catch(Exception e){
             e.printStackTrace();
         }
@@ -54,50 +52,52 @@ public class CustomerData {
         return customers;
     }
 
+
+    //method to add a customer
     public static void insertCustomer(Customer customer)
     {
-        customers.add(customer);
         try{
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(DATABASE_URL,user,password);
             statement = connection.createStatement();
-            statement.executeUpdate("insert into customer values(default,'"+customer.getFirst_name()+"','"+customer.getLast_name()+"',"+customer.getAge()+",'"+customer.getPassport_number()+','+customer.getPhone_nr() +"');");
+            statement.executeUpdate("INSERT INTO customer VALUE(default, '" + customer.getFirst_name() + "', '" + customer.getLast_name() + "', " + customer.getAge() + ", '" + customer.getPassport_number() + "', '" + customer.getPhone_nr() + "');");
+            customers.add(customer);
+            customer.setCustomer_id(customers.indexOf(customer) + 1);
         }
+
         catch(Exception e){
             e.printStackTrace();
         }
-
-
     }
+
+
+    //method to remove a customer
     public static void deleteCustomer(Customer customer){
-        customers.remove(customer);
         try{
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(DATABASE_URL,user,password);
-            PreparedStatement st= connection.prepareStatement("DELETE FROM  customer WHERE customer_id = ?");
-            st.setInt(1,customer.getCustomer_id());
-            st.executeUpdate();
+            statement.executeUpdate("DELETE FROM customer WHERE customer_id = " + customer.getCustomer_id() + ";");
+            customers.remove(customer);
         }
+
         catch(Exception e){
             e.printStackTrace();
         }
     }
 
+
+    //method to update a customer
     public static void updateCustomer(Customer customer){
         try{
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(DATABASE_URL,user,password);
-            PreparedStatement st= connection.prepareStatement("UPDATE customer SET first_name = ?, last_name = ?, age = ?, passport_number = ?, phone_number = ? WHERE customer_id = ?");
-            st.setString(1,customer.getFirst_name());
-            st.setString(2,customer.getLast_name());
-            st.setInt(3,customer.getAge());
-            st.setString(4,customer.getPassport_number());
-            st.setString(5,customer.getPhone_nr());
-            st.setInt(6,customer.getCustomer_id());
-            st.executeUpdate();
+            statement.executeUpdate("UPDATE customer SET first_name = \"" + customer.getFirst_name() +"\", last_name = \"" + customer.getLast_name() + "\", age = " + customer.getAge() + ", passport_number = \"" + customer.getPassport_number() + "\", phone_nr = \"" + customer.getPhone_nr() + "\" WHERE customer_id = " + customer.getCustomer_id() + ";");
+            customers.set(customer.getCustomer_id() - 1, customer);
         }
+
         catch(Exception e){
             e.printStackTrace();
         }
     }
+
 }

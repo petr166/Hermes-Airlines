@@ -57,4 +57,10 @@ public class FlightTableData {
 
         return  flightTableItems;
     }
+
+    //
+    public static void insertFlightTable(FlightTable flightTable){
+
+
+    }
 }

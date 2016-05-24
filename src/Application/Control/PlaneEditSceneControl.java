@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 /**
  * Created by Administrator on 5/21/2016.
  */
+
 public class PlaneEditSceneControl {
 
     //fields
@@ -38,26 +39,24 @@ public class PlaneEditSceneControl {
 
         economyT = PlaneEditScene.getEconomyT();
 
-
-
     }
 
+
     //set plane
-    public static void setPlane(Plane p){
-       plane = p;
+    public static void setPlane(Plane p) {
+        plane = p;
+
         plane_nameT.setText(plane.getPlane_name());
         firstClassT.setText(Integer.toString(plane.getFirst_class()));
         coachT.setText(Integer.toString(plane.getCoach()));
         economyT.setText(Integer.toString(plane.getEconomy()));
 
-
     }
 
 
-
-
-
     public static boolean isOkPressed() { return okPressed; }
+
+
 
     public static void handle_okB(){
         if(isInputValid()){
@@ -70,21 +69,20 @@ public class PlaneEditSceneControl {
         }
     }
 
+
+
     public static void handleClose(){
         okPressed = false;
         PlaneEditScene.getDialogStage().close();
     }
 
 
-
-
-
     public static boolean isInputValid(){
         String error = "";
-        if(plane_nameT.getText()==""||plane_nameT.getText().length()<1)
+        if(plane_nameT != null || !plane_nameT.getText().isEmpty())
             error += "Invalid plane name!\n";
 
-        if(firstClassT.getText()==""||firstClassT.getText().length()<1)
+        if(firstClassT != null || !firstClassT.getText().isEmpty())
             error += "Invalid number of seats for first class!\n";
         else
             try{Integer.parseInt(firstClassT.getText());}
@@ -92,7 +90,7 @@ public class PlaneEditSceneControl {
             error += "Invalid number of seats for first class!\n";
         }
 
-        if(coachT.getText()==""||coachT.getText().length()<1)
+        if(coachT != null || !coachT.getText().isEmpty())
             error += "Invalid number of seats for coach class!\n";
         else
             try{Integer.parseInt(coachT.getText());}
@@ -100,7 +98,7 @@ public class PlaneEditSceneControl {
                 error += "Invalid number of seats for coach class!\n";
             }
 
-        if(economyT.getText()==""||economyT.getText().length()<1)
+        if(economyT != null || !economyT.getText().isEmpty())
             error += "Invalid number of seats for economy class!\n";
         else
             try{Integer.parseInt(economyT.getText());}
@@ -108,8 +106,9 @@ public class PlaneEditSceneControl {
                 error += "Invalid number of seats for economy class!\n";
             }
 
-        if(error == "")
+        if(error.equals(""))
             return true;
+
         else{
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.initOwner(MainControl.getWindow());
@@ -117,19 +116,11 @@ public class PlaneEditSceneControl {
             alert.setHeaderText("Invalid input!");
             alert.showAndWait();
             return false;
-
         }
     }
 
+
     //getters
     public static Plane getPlane() { return plane; }
-
-
-
-
-
-
-
-
 
 }

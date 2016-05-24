@@ -1,6 +1,7 @@
 package Presentation;
 
 import Application.DataTypes.Flight;
+import Application.DataTypes.FlightTable;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -19,8 +20,8 @@ public class FlightsScene {
     //fields
     private static Pane layout;
     private static Scene scene;
-    private static TableView table;
-    private static TableColumn dateColumn, routeColumn, priceColumn, bookingsColumn;
+    private static TableView<FlightTable> table;
+    private static TableColumn<FlightTable, String> departure_dateColumn, arrival_dateColumn, departure_cityColumn,arrival_cityColumn;
     private static TextField search;
     private static HBox buttonLayout;
     private static Button backB, viewCustomB, addB, editB;
@@ -36,10 +37,24 @@ public class FlightsScene {
         bookingsColumn = new TableColumn("Bookings");
         */
         //table
-        table = new TableView();
+        table = new TableView<>();
         table.setMinSize(1116,591);
         table.relocate(42,32);
-        table.getColumns().addAll(dateColumn,routeColumn,priceColumn,bookingsColumn);
+
+        //initialize columns
+        departure_dateColumn = new TableColumn<>("Departure date");
+        departure_dateColumn.setCellValueFactory(cellData -> cellData.getValue().departure_dateProperty());
+
+        arrival_dateColumn = new TableColumn<>("Arrival date");
+        arrival_dateColumn.setCellValueFactory(cellData -> cellData.getValue().arrival_dateProperty());
+
+        departure_cityColumn = new TableColumn<>("From");
+        departure_cityColumn.setCellValueFactory(cellData -> cellData.getValue().departure_cityProperty());
+
+        arrival_cityColumn = new TableColumn<>("To");
+        arrival_cityColumn.setCellValueFactory(cellData -> cellData.getValue().arrival_cityProperty());
+
+        table.getColumns().addAll(departure_dateColumn,arrival_dateColumn,departure_cityColumn,arrival_cityColumn);
 
         //search field
         search = new TextField();
@@ -87,22 +102,6 @@ public class FlightsScene {
 
     public static TableView getTable() {
         return table;
-    }
-
-    public static TableColumn getDateColumn() {
-        return dateColumn;
-    }
-
-    public static TableColumn getRouteColumn() {
-        return routeColumn;
-    }
-
-    public static TableColumn getPriceColumn() {
-        return priceColumn;
-    }
-
-    public static TableColumn getBookingsColumn() {
-        return bookingsColumn;
     }
 
     public static TextField getSearch() {

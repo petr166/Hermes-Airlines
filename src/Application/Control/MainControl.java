@@ -76,7 +76,7 @@ public class MainControl {
         FlightsScene.initialize();
 
         //initialization of controller
-        //FlightsSceneControl.initialize();
+        FlightSceneControl.initialize();
 
         //set scene
         window.setScene(FlightsScene.getScene());

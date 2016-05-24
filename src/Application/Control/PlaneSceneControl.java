@@ -77,7 +77,6 @@ public class PlaneSceneControl {
         Plane plane = new Plane();
         boolean okPresed = MainControl.showPlaneEditStage(plane);
         if(okPresed){
-
             PlaneData.insertPlanes(plane);
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.initOwner(MainControl.getWindow());
@@ -91,11 +90,12 @@ public class PlaneSceneControl {
         Plane plane = table.getSelectionModel().getSelectedItem();
         if(plane!=null){
             boolean okPressed = MainControl.showPlaneEditStage(plane);
+            if(okPressed){
             PlaneData.updatePlane(plane);
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.initOwner(MainControl.getWindow());
             alert.setContentText("Plane edited!");
-            alert.showAndWait();
+            alert.showAndWait();}
         }
         else {
             Alert alert = new Alert(Alert.AlertType.WARNING);

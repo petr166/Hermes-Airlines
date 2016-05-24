@@ -17,7 +17,10 @@ public class PlaneData {
     private static String user = "root";
     private static String password = DataConnection.password;
     private static Statement statement;
-    private static ObservableList<Plane> planes = FXCollections.observableArrayList();
+    private static ObservableList<Plane> planes;
+
+
+    //method to get planes list
     public static ObservableList<Plane> getPlanes(){
         planes = FXCollections.observableArrayList();
         try{
@@ -25,6 +28,7 @@ public class PlaneData {
             connection = DriverManager.getConnection(DATABASE_URL,user,password);
             statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT* FROM plane");
+
             if(rs != null)
                 while (rs.next()) {
                     Plane plane = new Plane();
@@ -33,59 +37,62 @@ public class PlaneData {
                     plane.setCoach(rs.getInt(4));
                     plane.setEconomy(rs.getInt(5));
                     plane.setPlane_name(rs.getString(2));
-                    planes.add(plane);
 
+                    planes.add(plane);
                 }
         }
+
         catch(Exception e){
             e.printStackTrace();
         }
+
         return planes;
     }
+
+
+    //method to add a plane
     public static void insertPlanes(Plane plane)
     {
-        planes.add(plane);
         try{
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(DATABASE_URL,user,password);
             statement = connection.createStatement();
-            statement.executeUpdate("insert into plane values(default,\'"+plane.getPlane_name()+"\',"+plane.getFirst_class()+","+plane.getCoach()+","+plane.getEconomy()+");");
-
-        }
-        catch(Exception e){
-            e.printStackTrace();
+            statement.executeUpdate("INSERT INTO plane VALUE (default, '" + plane.getPlane_name() + "', " + plane.getFirst_class() + ", " + plane.getCoach() + ", " + plane.getEconomy() + ");");
+            planes.add(plane);
+            plane.setPlane_id(planes.indexOf(plane) + 1);
         }
 
-
-    }
-
-    public static void deletePlane(Plane plane){
-        planes.remove(plane);
-        if(plane!=null)
-        try{
-            Class.forName(JDBC_DRIVER);
-            connection = DriverManager.getConnection(DATABASE_URL,user,password);
-            statement = connection.createStatement();
-            statement.executeUpdate("DELETE FROM  plane WHERE plane_id = "+plane.getPlane_id());
-
-        }
         catch(Exception e){
             e.printStackTrace();
         }
     }
 
+
+    //method to remove a plane
+    public static void deletePlane(Plane plane) {
+        try{
+            Class.forName(JDBC_DRIVER);
+            connection = DriverManager.getConnection(DATABASE_URL,user,password);
+            statement = connection.createStatement();
+            statement.executeUpdate("DELETE FROM  plane WHERE plane_id = " + plane.getPlane_id() + ";");
+            planes.remove(plane);
+        }
+
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
+    //method to update a plane details
     public static void updatePlane(Plane plane){
         try{
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(DATABASE_URL,user,password);
-            PreparedStatement st= connection.prepareStatement("UPDATE plane SET plane_name = ?, first_class = ?, coach = ?, economy = ? WHERE plane_id = ?");
-            st.setString(1,plane.getPlane_name());
-            st.setInt(2,plane.getFirst_class());
-            st.setInt(3,plane.getCoach());
-            st.setInt(4,plane.getEconomy());
-            st.setInt(5,plane.getPlane_id());
-            st.executeUpdate();
+            statement.executeUpdate("UPDATE plane SET plane_name = '" + plane.getPlane_name() + "', first_class = " + plane.getFirst_class() + ", coach = " + plane.getCoach() + ", economy = " + plane.getEconomy() + " WHERE plane_id = " + plane.getPlane_id() + ";");
+            planes.set(plane.getPlane_id() - 1, plane);
         }
+
         catch(Exception e){
             e.printStackTrace();
         }

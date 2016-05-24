@@ -61,7 +61,7 @@ public class CustomerEditScene {
 
         //layout
         buttons = new HBox();
-        buttons.getChildren().addAll(cancelB,okB);
+        buttons.getChildren().addAll(okB,cancelB);
         gridPane = new GridPane();
         borderPane = new BorderPane();
         gridPane.setAlignment(Pos.CENTER);

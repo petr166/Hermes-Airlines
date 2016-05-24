@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 /**
  * Created by Administrator on 5/18/2016.
  */
+
 public class PlaneScene {
 
     //table
@@ -22,12 +23,12 @@ public class PlaneScene {
     private static TableColumn<Plane, Integer> coachColumn;
     private static TableColumn<Plane, Integer> economyColumn;
     private static Button addButton;
-    private static Button removeButton;
-    private static Button cancelButton;
+    private static Button backButton;
     private static Button editButton;
     private static VBox buttonsVbox;
     private static Pane layout;
     private static Scene scene;
+
 
     //initialization
     public static void initialize(){
@@ -37,53 +38,58 @@ public class PlaneScene {
         table.relocate(28,34);
         table.setMinHeight(609);
         table.setMinWidth(950);
+
+
         //ID
         plane_idColumn=new TableColumn("ID");
         plane_idColumn.setCellValueFactory(cellData -> cellData.getValue().plane_idProperty().asObject());
         plane_idColumn.setMinWidth(190);
+
+
         //plane_name
         plane_nameColumn=new TableColumn("Name");
         plane_nameColumn.setCellValueFactory(cellData->cellData.getValue().plane_nameProperty());
         plane_nameColumn.setMinWidth(190);
-        //classes
+
+
+        //fare classes
         first_classColumn = new TableColumn("First Class");
         first_classColumn.setCellValueFactory(cellData -> cellData.getValue().first_classProperty().asObject());
         first_classColumn.setMinWidth(190);
+
         coachColumn = new TableColumn("Coach Class");
         coachColumn.setCellValueFactory(cellData->cellData.getValue().coachProperty().asObject());
         coachColumn.setMinWidth(190);
+
         economyColumn = new TableColumn("Economy Class");
         economyColumn.setCellValueFactory(cellData->cellData.getValue().economyProperty().asObject());
         economyColumn.setMinWidth(190);
+
         table.getColumns().addAll(plane_idColumn,plane_nameColumn,first_classColumn,coachColumn,economyColumn);
 
         //add
         addButton = new Button("Add");
 
-        //remove
-        removeButton = new Button("Remove");
-
-        //camcel
-        cancelButton = new Button("Cancel");
+        //back
+        backButton = new Button("Back");
 
         //edit
         editButton = new Button("Edit");
 
+        //buttons layout
         buttonsVbox = new VBox();
-        buttonsVbox.getChildren().addAll(addButton,editButton,removeButton,cancelButton);
+        buttonsVbox.getChildren().addAll(addButton,editButton,backButton);
         buttonsVbox.setSpacing(25);
         buttonsVbox.relocate(1020,250);
 
+
+        //scene setup
         layout=new Pane();
         layout.getChildren().addAll(table,buttonsVbox);
-
-
-        //scene
         scene = new Scene(layout,1200,700);
 
-
-
     }
+
 
     //getters
 
@@ -123,12 +129,8 @@ public class PlaneScene {
         return addButton;
     }
 
-    public static Button getRemoveButton() {
-        return removeButton;
-    }
-
-    public static Button getCancelButton() {
-        return cancelButton;
+    public static Button getBackButton() {
+        return backButton;
     }
 
     public static Button getEditButton() {

@@ -71,11 +71,14 @@ public class CustomerEditSceneControl {
 
     public static boolean isInputValid(){
         String error = "";
-        if(fNameT.getText() ==""||fNameT.getText().length()<1)
+
+        if(fNameT != null || !fNameT.getText().isEmpty())
             error += "Invalid first name!\n";
-        if(lNameT.getText() == "" || lNameT.getText().length()<1)
+
+        if(lNameT != null || !lNameT.getText().isEmpty())
             error += "Invalid last name!\n";
-        if(ageT.getText() == "" || ageT.getText().length()<1)
+
+        if(ageT != null || ageT.getText().isEmpty())
             error += "Invalid age!\n";
         else
             try{
@@ -83,14 +86,16 @@ public class CustomerEditSceneControl {
             } catch(NumberFormatException e){
                 error += "Invalid age!\n";
             }
-        if(phone_nrT.getText() == "" || phone_nrT.getText().length() < 1)
+
+        if(phone_nrT != null || !phone_nrT.getText().isEmpty())
             error +="Invalid phone nr!\n";
 
-        if(passport_nrT.getText() == "" || passport_nrT.getText().length() < 1)
+        if(passport_nrT != null || passport_nrT.getText().isEmpty())
             error += "Invalid passport number!\n";
 
-        if(error == "")
+        if(error.equals(""))
             return true;
+
         else{
             Alert alert = new Alert((Alert.AlertType.WARNING));
             alert.initOwner(MainControl.getWindow());
@@ -101,7 +106,8 @@ public class CustomerEditSceneControl {
         }
     }
 
-    public static Customer getCustomer(){ return customer; }
 
+    //getters
+    public static Customer getCustomer(){ return customer; }
 
 }

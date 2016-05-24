@@ -40,7 +40,6 @@ public class FlightTableData {
             if(rs!=null)
                 while(rs.next()){
                     FlightTable f = new FlightTable();
-
                     f.setDeparture_date(rs.getDate(1).toString());
                     f.setArrival_date(rs.getDate(2).toString());
                     f.setDeparture_city(rs.getString(3));

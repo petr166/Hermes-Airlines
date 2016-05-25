@@ -21,8 +21,8 @@ public class FlightsEditScene {
     private static Scene scene;
     private static Pane layout;
     private static Label flightL,timeL, routeL, dateL,planeL,toL1,toL2;
-    private static ComboBox<String> routeC;
-    private static ComboBox<Integer> plane_id,departure_time, arrival_time;
+    private static ComboBox<String> routeC,departure_time, arrival_time;
+    private static ComboBox<Integer> plane_id;
     private static DatePicker departure_date, arrival_date;
     private static Button okB, cancelB;
     private static VBox vBox1, vBox2;
@@ -97,11 +97,11 @@ public class FlightsEditScene {
         return plane_id;
     }
 
-    public static ComboBox<Integer> getDeparture_time() {
+    public static ComboBox<String> getDeparture_time() {
         return departure_time;
     }
 
-    public static ComboBox<Integer> getArrival_time() {
+    public static ComboBox<String> getArrival_time() {
         return arrival_time;
     }
 

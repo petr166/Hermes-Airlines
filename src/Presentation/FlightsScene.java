@@ -20,7 +20,9 @@ public class FlightsScene {
     private static Pane layout;
     private static Scene scene;
     private static TableView<FlightTable> table;
+    private static TableColumn<FlightTable, Integer> flight_idColumn;
     private static TableColumn<FlightTable, String> departure_dateColumn, arrival_dateColumn, departure_cityColumn,arrival_cityColumn;
+    private static TableColumn<FlightTable, Double> priceColumn;
     private static TextField search;
     private static HBox buttonLayout;
     private static Button backB, viewCustomB, addB, editB;
@@ -29,18 +31,15 @@ public class FlightsScene {
     //initialize method
     public static void initialize() {
 
-        //table columns
-       /* dateColumn = new TableColumn("Date");
-        routeColumn = new TableColumn("Route");
-        priceColumn = new TableColumn("Price");
-        bookingsColumn = new TableColumn("Bookings");
-        */
         //table
         table = new TableView<>();
         table.setMinSize(1116,591);
         table.relocate(42,32);
 
         //initialize columns
+        flight_idColumn = new TableColumn<>("ID");
+        flight_idColumn.setCellValueFactory(cellData -> cellData.getValue().flight_idProperty().asObject());
+
         departure_dateColumn = new TableColumn<>("Departure date");
         departure_dateColumn.setCellValueFactory(cellData -> cellData.getValue().departure_dateProperty());
 
@@ -53,7 +52,10 @@ public class FlightsScene {
         arrival_cityColumn = new TableColumn<>("To");
         arrival_cityColumn.setCellValueFactory(cellData -> cellData.getValue().arrival_cityProperty());
 
-        table.getColumns().addAll(departure_dateColumn,arrival_dateColumn,departure_cityColumn,arrival_cityColumn);
+        priceColumn = new TableColumn<>("Basic price");
+        priceColumn.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
+
+        table.getColumns().addAll(flight_idColumn,departure_dateColumn,arrival_dateColumn,departure_cityColumn,arrival_cityColumn,priceColumn);
 
         //search field
         search = new TextField();

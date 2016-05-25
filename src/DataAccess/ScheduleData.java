@@ -40,6 +40,7 @@ public class ScheduleData {
                     schedules.add(schedule);
                 }
         }
+
         catch(Exception e){
             e.printStackTrace();
         }
@@ -47,15 +48,18 @@ public class ScheduleData {
         return schedules;
     }
 
+
     public static void insertSchedule(Schedule schedule){
-        schedules.add(schedule);
-        System.out.println("nup");
         try {
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(DATABASE_URL, user, password);
             statement = connection.createStatement();
-            statement.executeUpdate("INSERT INTO schedule VALUE(default, "+schedule.getDeparture_date()+", "+schedule.getArrival_date()+", " +schedule.getDeparture_time() + ", " +schedule.getArrival_time()+");");
-        }catch (Exception e){
+            statement.executeUpdate("INSERT INTO schedule VALUE(default, '" + schedule.getDeparture_date() + "', '" + schedule.getDeparture_time() + "', '" + schedule.getArrival_date() + "', '" + schedule.getArrival_time() + "');");
+
+            schedules.add(schedule);
+        }
+
+        catch (Exception e){
             e.printStackTrace();
         }
     }

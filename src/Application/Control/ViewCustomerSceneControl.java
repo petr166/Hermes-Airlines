@@ -32,9 +32,6 @@ public class ViewCustomerSceneControl {
         table = ViewCustomersScene.getTable();
         table.setItems(CustomerData.getCustomers());
 
-        // search field
-        search = ViewCustomersScene.getSearch();
-        initializeSearch();
 
         //backB
         backB = ViewCustomersScene.getBackB();
@@ -47,6 +44,11 @@ public class ViewCustomerSceneControl {
         //editB
         editB = ViewCustomersScene.getEditB();
         editB.setOnAction(e -> handle_editB());
+
+        // search field
+        search = ViewCustomersScene.getSearch();
+        customers = table.getItems();
+        initializeSearch();
     }
 
 
@@ -95,7 +97,6 @@ public class ViewCustomerSceneControl {
         search.textProperty().addListener(new InvalidationListener() {
             @Override
             public void invalidated(Observable observable) {
-                customers = CustomerData.getCustomers();
                 if (search.textProperty().get().isEmpty()) {
                     table.setItems(customers);
                     return;

@@ -22,7 +22,7 @@ public class MenuSceneControl {
 
         //bookingsB
         bookingsB = MenuScene.getBookingsB();
-        /*bookingsB.setOnAction(e -> handle_bookingsB());*/
+        bookingsB.setOnAction(e -> handle_bookingsB());
 
         //customersB
         customersB = MenuScene.getCustomersB();

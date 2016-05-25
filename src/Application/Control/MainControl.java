@@ -57,7 +57,7 @@ public class MainControl {
         //ViewBookingSceneControl.initialize();
 
         //set scene
-        window.setScene(ViewCustomersScene.getScene());
+        window.setScene(ViewBookingScene.getScene());
     }
 
 

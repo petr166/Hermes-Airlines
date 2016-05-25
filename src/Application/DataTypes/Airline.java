@@ -14,24 +14,24 @@ public class Airline {
 
     //fields
     private IntegerProperty airline_id;
-    private StringProperty departure_ciy, arrival_city;
+    private StringProperty departure_city, arrival_city;
 
 
     //constructors
     public Airline(){
         airline_id = new SimpleIntegerProperty();
-        departure_ciy = new SimpleStringProperty();
+        departure_city = new SimpleStringProperty();
         arrival_city = new SimpleStringProperty();
     }
 
     public Airline(int airline_id, String departure_city, String arrival_city){
         this.airline_id = new SimpleIntegerProperty(airline_id);
-        this.departure_ciy = new SimpleStringProperty(departure_city);
+        this.departure_city = new SimpleStringProperty(departure_city);
         this.arrival_city = new SimpleStringProperty(arrival_city);
     }
 
 
-    //getters & seters
+    //getters, setters
     public int getAirline_id() {
         return airline_id.get();
     }
@@ -44,16 +44,16 @@ public class Airline {
         this.airline_id.set(airline_id);
     }
 
-    public String getDeparture_ciy() {
-        return departure_ciy.get();
+    public String getDeparture_city() {
+        return departure_city.get();
     }
 
-    public StringProperty departure_ciyProperty() {
-        return departure_ciy;
+    public StringProperty departure_cityProperty() {
+        return departure_city;
     }
 
-    public void setDeparture_ciy(String departure_ciy) {
-        this.departure_ciy.set(departure_ciy);
+    public void setDeparture_city(String departure_city) {
+        this.departure_city.set(departure_city);
     }
 
     public String getArrival_city() {
@@ -74,7 +74,7 @@ public class Airline {
     public String toString() {
         return "Airline{" +
                 "airline_id=" + airline_id +
-                ", departure_ciy=" + departure_ciy +
+                ", departure_city=" + departure_city +
                 ", arrival_city=" + arrival_city +
                 '}';
     }

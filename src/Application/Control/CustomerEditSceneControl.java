@@ -72,13 +72,13 @@ public class CustomerEditSceneControl {
     public static boolean isInputValid(){
         String error = "";
 
-        if(fNameT != null || !fNameT.getText().isEmpty())
+        if(fNameT == null || fNameT.getText().isEmpty())
             error += "Invalid first name!\n";
 
-        if(lNameT != null || !lNameT.getText().isEmpty())
+        if(lNameT == null || lNameT.getText().isEmpty())
             error += "Invalid last name!\n";
 
-        if(ageT != null || ageT.getText().isEmpty())
+        if(ageT == null || ageT.getText().isEmpty())
             error += "Invalid age!\n";
         else
             try{
@@ -87,10 +87,10 @@ public class CustomerEditSceneControl {
                 error += "Invalid age!\n";
             }
 
-        if(phone_nrT != null || !phone_nrT.getText().isEmpty())
+        if(phone_nrT == null || phone_nrT.getText().isEmpty())
             error +="Invalid phone nr!\n";
 
-        if(passport_nrT != null || passport_nrT.getText().isEmpty())
+        if(passport_nrT == null || passport_nrT.getText().isEmpty())
             error += "Invalid passport number!\n";
 
         if(error.equals(""))

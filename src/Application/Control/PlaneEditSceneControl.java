@@ -79,10 +79,10 @@ public class PlaneEditSceneControl {
 
     public static boolean isInputValid(){
         String error = "";
-        if(plane_nameT != null || !plane_nameT.getText().isEmpty())
+        if(plane_nameT == null || plane_nameT.getText().isEmpty())
             error += "Invalid plane name!\n";
 
-        if(firstClassT != null || !firstClassT.getText().isEmpty())
+        if(firstClassT == null || firstClassT.getText().isEmpty())
             error += "Invalid number of seats for first class!\n";
         else
             try{Integer.parseInt(firstClassT.getText());}
@@ -90,7 +90,7 @@ public class PlaneEditSceneControl {
             error += "Invalid number of seats for first class!\n";
         }
 
-        if(coachT != null || !coachT.getText().isEmpty())
+        if(coachT == null || coachT.getText().isEmpty())
             error += "Invalid number of seats for coach class!\n";
         else
             try{Integer.parseInt(coachT.getText());}
@@ -98,7 +98,7 @@ public class PlaneEditSceneControl {
                 error += "Invalid number of seats for coach class!\n";
             }
 
-        if(economyT != null || !economyT.getText().isEmpty())
+        if(economyT == null || economyT.getText().isEmpty())
             error += "Invalid number of seats for economy class!\n";
         else
             try{Integer.parseInt(economyT.getText());}

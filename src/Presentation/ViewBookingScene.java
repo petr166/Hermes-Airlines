@@ -158,7 +158,7 @@ public class ViewBookingScene {
         //
         editButton=new Button("Edit");
         //cancel
-        cancelButton=new Button("Cancel");
+        cancelButton=new Button("Remove");
 
         // layout for buttons
         buttonLayout=new HBox();

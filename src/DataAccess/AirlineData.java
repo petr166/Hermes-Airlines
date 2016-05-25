@@ -37,7 +37,7 @@ public class AirlineData {
                 while (rs.next()) {
                     Airline airline = new Airline();
                     airline.setAirline_id(rs.getInt(1));
-                    airline.setDeparture_ciy(rs.getString(2));
+                    airline.setDeparture_city(rs.getString(2));
                     airline.setArrival_city(rs.getString(3));
                     airlines.add(airline);
 
@@ -50,6 +50,7 @@ public class AirlineData {
         return airlines;
     }
 
+
     public static void insertAirline(Airline airline)
     {
         airlines.add(airline);
@@ -57,21 +58,22 @@ public class AirlineData {
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(DATABASE_URL,user,password);
             statement = connection.createStatement();
-            statement.executeUpdate("insert into airline values(default,'"+airline.getDeparture_ciy()+"','"+airline.getArrival_city()+"');");
+            statement.executeUpdate("insert into airline values(default,'"+airline.getDeparture_city()+"','"+airline.getArrival_city()+"');");
         }
         catch(Exception e){
             e.printStackTrace();
         }
     }
 
+
     public static void deleteAirline(Airline airline){
         airlines.remove(airline);
         try{
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(DATABASE_URL,user,password);
-            PreparedStatement st= connection.prepareStatement("DELETE FROM  airline WHERE airline_id = ?");
-            st.setInt(1,airline.getAirline_id());
-            st.executeUpdate();
+            statement.executeUpdate("DELETE FROM  airline WHERE airline_id = " + airline.getAirline_id() + ";");
+
+            airlines.remove(airline);
         }
         catch(Exception e){
             e.printStackTrace();

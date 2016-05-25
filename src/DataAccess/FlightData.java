@@ -1,8 +1,11 @@
 package DataAccess;
 
 import Application.DataTypes.Admin;
+import Application.DataTypes.Customer;
 import Application.DataTypes.Flight;
 import Application.DataTypes.Plane;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,10 +24,11 @@ public class FlightData {
         private static String user = "root";
         private static String password = DataConnection.password;
         private static Statement statement;
+        private static ObservableList<Flight> flights;
 
         //get admins
-        public static ArrayList<Flight> getFlight(){
-            ArrayList<Flight> flights = new ArrayList<>();
+        public static ObservableList<Flight> getFlight(){
+            flights = FXCollections.observableArrayList();
             try{
                 Class.forName(JDBC_DRIVER);
                 connection = DriverManager.getConnection(DATABASE_URL,user,password);
@@ -50,13 +54,35 @@ public class FlightData {
             return flights;
         }
 
+
+    //method to add a flight
+    public static void insertFlight(Flight flight)
+    {
+        try{
+            Class.forName(JDBC_DRIVER);
+            connection = DriverManager.getConnection(DATABASE_URL,user,password);
+            statement = connection.createStatement();
+            statement.executeUpdate("INSERT INTO flight VALUE(default, " + flight.getPlane_id() + ", " + flight.getAirline_id() + ", " + flight.getSchedule_id() + ", " + flight.getFirst_class_left() + ", " + flight.getCoach_left() + ", " + flight.getEconomy_left() + ", " + flight.getPrice() +");");
+
+            flights.add(flight);
+            flight.setFlight_id(flights.indexOf(flight) + 1);
+        }
+
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
     public static void updateFlight(Flight flight){
         try{
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(DATABASE_URL,user,password);
-           // statement = connection.createStatement();
             statement.executeUpdate("UPDATE flight SET plane_id = "+flight.getPlane_id()+", schedule_id = "+flight.getSchedule_id()+", airline_id = "+flight.getAirline_id()+" WHERE flight_id = "+flight.getFlight_id()+ ";");
+
+            flights.set(flight.getFlight_id() - 1, flight);
         }
+
         catch(Exception e){
             e.printStackTrace();
         }

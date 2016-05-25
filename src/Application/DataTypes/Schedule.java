@@ -16,7 +16,11 @@ public class Schedule {
 
 
     //constructors
-    public Schedule(){}
+    public Schedule(){
+        departure_date = new Date();
+        arrival_date = new Date();
+    }
+
     public Schedule(int schedule_id, Date departure_date, String departure_time, Date arrival_date, String arrival_time) {
         this.schedule_id = schedule_id;
         this.departure_date = departure_date;

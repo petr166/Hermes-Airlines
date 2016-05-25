@@ -2,6 +2,8 @@ package Application.DataTypes;
 
 import javafx.beans.property.*;
 
+import java.util.Date;
+
 /**
  * Created by Administrator on 5/24/2016.
  */
@@ -15,12 +17,13 @@ public class FlightTable {
     //constructors
     public FlightTable() {
         flight_id = new SimpleIntegerProperty(0);
-        departure_date = new SimpleStringProperty("");
-        arrival_date = new SimpleStringProperty("");
+        departure_date = new SimpleStringProperty(new Date().toString());
+        arrival_date = new SimpleStringProperty(new Date().toString());
         departure_city = new SimpleStringProperty("");
         arrival_city = new SimpleStringProperty("");
         price = new SimpleDoubleProperty(0);
     }
+
     public FlightTable(String departure_date, String arrival_date, String departure_city, String arrival_city, double price, int flight_id){
         this.departure_date = new SimpleStringProperty(departure_date);
         this.arrival_date = new SimpleStringProperty(arrival_date);

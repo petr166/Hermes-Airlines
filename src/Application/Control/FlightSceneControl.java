@@ -36,7 +36,7 @@ public class FlightSceneControl {
         backB.setOnAction(e -> handle_backB());
 
         addB = FlightsScene.getAddB();
-        //addB.setOnAction(e -> handle_addB());
+        addB.setOnAction(e -> handle_addB());
 
         editB = FlightsScene.getEditB();
         editB.setOnAction(e -> handle_editB());
@@ -50,6 +50,24 @@ public class FlightSceneControl {
 
 
     }
+
+
+    //handle_addB
+    public static void handle_addB() {
+        FlightTable flightTable = new FlightTable();
+        Flight flight = new Flight();
+
+        boolean okPressed = MainControl.showFlightEditScene(flightTable,flight);
+        if(okPressed) {
+            FlightData.insertFlight(flight);
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.initOwner(MainControl.getWindow());
+            alert.setContentText("Flight added!");
+            alert.showAndWait();
+        }
+    }
+
 
     public static void handle_editB(){
         FlightTable flightTable = table.getSelectionModel().getSelectedItem();

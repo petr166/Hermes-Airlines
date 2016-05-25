@@ -1,36 +1,50 @@
 package Application.DataTypes;
 
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 
 /**
  * Created by Administrator on 5/24/2016.
  */
 public class FlightTable {
     //fields
+    private IntegerProperty flight_id;
     private  StringProperty departure_date, arrival_date, departure_city, arrival_city;
     private  DoubleProperty price;
 
+
     //constructors
     public FlightTable() {
+        flight_id = new SimpleIntegerProperty(0);
         departure_date = new SimpleStringProperty("");
         arrival_date = new SimpleStringProperty("");
         departure_city = new SimpleStringProperty("");
         arrival_city = new SimpleStringProperty("");
         price = new SimpleDoubleProperty(0);
     }
-    public FlightTable(String departure_date, String arrival_date, String departure_city, String arrival_city, double price){
+    public FlightTable(String departure_date, String arrival_date, String departure_city, String arrival_city, double price, int flight_id){
         this.departure_date = new SimpleStringProperty(departure_date);
         this.arrival_date = new SimpleStringProperty(arrival_date);
         this.departure_city = new SimpleStringProperty(departure_city);
         this.arrival_city = new SimpleStringProperty(arrival_city);
         this.price = new SimpleDoubleProperty(price);
+        this.flight_id = new SimpleIntegerProperty(flight_id);
 
     }
 
     //getters setters
+
+
+    public int getFlight_id() {
+        return flight_id.get();
+    }
+
+    public IntegerProperty flight_idProperty() {
+        return flight_id;
+    }
+
+    public void setFlight_id(int flight_id) {
+        this.flight_id.set(flight_id);
+    }
 
     public String getDeparture_date() {
         return departure_date.get();

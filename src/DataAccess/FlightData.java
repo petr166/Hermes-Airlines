@@ -2,6 +2,7 @@ package DataAccess;
 
 import Application.DataTypes.Admin;
 import Application.DataTypes.Flight;
+import Application.DataTypes.Plane;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -48,5 +49,18 @@ public class FlightData {
             }
             return flights;
         }
+
+    public static void updateFlight(Flight flight){
+        try{
+            Class.forName(JDBC_DRIVER);
+            connection = DriverManager.getConnection(DATABASE_URL,user,password);
+           // statement = connection.createStatement();
+            statement.executeUpdate("UPDATE flight SET plane_id = "+flight.getPlane_id()+", schedule_id = "+flight.getSchedule_id()+", airline_id = "+flight.getAirline_id()+" WHERE flight_id = "+flight.getFlight_id()+ ";");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
 }
 

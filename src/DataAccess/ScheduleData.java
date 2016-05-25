@@ -49,15 +49,15 @@ public class ScheduleData {
 
     public static void insertSchedule(Schedule schedule){
         schedules.add(schedule);
+        System.out.println("nup");
         try {
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(DATABASE_URL, user, password);
             statement = connection.createStatement();
-            for(int i=0; i<schedules.size(); i++)
-            statement.executeQuery("INSERT INTO schedule VALUES (DEFAULT, "+schedules.get(i).getDeparture_date()+", " +
-                    schedules.get(i).getDeparture_time()+", "+schedules.get(i).getArrival_date()+
-                    ", "+schedules.get(i).getArrival_time());
-            System.out.println(schedules);
-        }catch (Exception e){}
+            statement.executeUpdate("INSERT INTO schedule VALUE(default, "+schedule.getDeparture_date()+", "+schedule.getArrival_date()+", " +schedule.getDeparture_time() + ", " +schedule.getArrival_time()+");");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
+
 }

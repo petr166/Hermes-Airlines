@@ -1,6 +1,8 @@
 package Application.Control;
 
 import Application.DataTypes.Customer;
+import Application.DataTypes.Flight;
+import Application.DataTypes.FlightTable;
 import Application.DataTypes.Plane;
 import Presentation.*;
 import javafx.stage.Stage;
@@ -124,6 +126,19 @@ public class MainControl {
         return CustomerEditSceneControl.isOkPressed();
     }
 
+    public static boolean showFlightEditScene(FlightTable flightTable, Flight flight){
+
+        //initialization of scene
+        FlightsEditScene.initialize();
+
+        //initialization of controller
+        FlightEditSceneControl.initialize();
+        FlightEditSceneControl.setFlight(flightTable,flight);
+
+        FlightsEditScene.getDialogStage().initOwner(window);
+        FlightsEditScene.getDialogStage().showAndWait();
+        return FlightEditSceneControl.isOkPressed();
+    }
 
 
     //getters

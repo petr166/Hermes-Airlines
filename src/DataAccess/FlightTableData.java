@@ -32,7 +32,7 @@ public class FlightTableData {
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(DATABASE_URL,user,password);
             statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT departure_date, arrival_date, departure_city, arrival_city " +
+            ResultSet rs = statement.executeQuery("SELECT departure_date, arrival_date, departure_city, arrival_city, flight_id " +
                     "FROM flight f JOIN  schedule s " +
                     "ON f.schedule_id = s.schedule_id " +
                     "JOIN airline a " +
@@ -44,6 +44,7 @@ public class FlightTableData {
                     f.setArrival_date(rs.getDate(2).toString());
                     f.setDeparture_city(rs.getString(3));
                     f.setArrival_city(rs.getString(4));
+                    f.setFlight_id(rs.getInt(5));
                     f.setPrice(10);
                     flightTableItems.add(f);
                 }

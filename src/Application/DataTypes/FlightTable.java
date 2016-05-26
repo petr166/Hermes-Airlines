@@ -10,8 +10,8 @@ import java.util.Date;
 public class FlightTable {
     //fields
     private IntegerProperty flight_id;
-    private  StringProperty departure_date, arrival_date, departure_city, arrival_city;
-    private  DoubleProperty price;
+    private StringProperty departure_date, arrival_date, departure_city, arrival_city;
+    private DoubleProperty price;
 
 
     //constructors

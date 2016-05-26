@@ -1,6 +1,7 @@
 package Presentation;
 
 import Application.DataTypes.Booking;
+import Application.DataTypes.BookingTable;
 import Application.DataTypes.Customer;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -20,10 +21,10 @@ public class ViewBookingScene {
     //fields
     private static Scene scene;
     private static Pane layout;
-    private static TableView table;
-    private static TableColumn dateColumn;
-    private static TableColumn nameColumn;
-    private static TableColumn routeColumn;
+    private static TableView<BookingTable> table;
+    private static TableColumn<BookingTable, String> dateColumn;
+    private static TableColumn<BookingTable, String> nameColumn;
+    private static TableColumn<BookingTable, String> routeColumn;
     private static Label flightLabel;
     private static Label departure_dateLabel;
     private static Label departure_dateObs;
@@ -64,11 +65,17 @@ public class ViewBookingScene {
 
         //table columns
         dateColumn=new TableColumn<>("Departure date");
-        nameColumn=new TableColumn<>("Customer name");
-        routeColumn=new TableColumn<>("Route");
+        dateColumn.setCellValueFactory(cellData -> cellData.getValue().departure_dateProperty());
         dateColumn.setMinWidth(180);
+
+        nameColumn=new TableColumn<>("Customer name");
+        nameColumn.setCellValueFactory(cellData -> cellData.getValue().customerProperty());
         nameColumn.setMinWidth(180);
+
+        routeColumn=new TableColumn<>("Route");
+        routeColumn.setCellValueFactory(cellData -> cellData.getValue().routeProperty());
         routeColumn.setMinWidth(180);
+
 
         //table
         table=new TableView<>();
@@ -82,11 +89,11 @@ public class ViewBookingScene {
         flightLabel.relocate(708,61);
 
         //departure_label
-        departure_dateLabel = new Label("Departure date");
+        departure_dateLabel = new Label("Departure");
         departure_dateObs = new Label("");
 
         //arrival_dateLabel
-        arrival_dateLabel = new Label("Arrival date");
+        arrival_dateLabel = new Label("Arrival");
         arrival_dateObs = new Label("");
 
         //categoryLabel
@@ -187,19 +194,19 @@ public class ViewBookingScene {
         return layout;
     }
 
-    public static TableView<Booking> getTable() {
+    public static TableView<BookingTable> getTable() {
         return table;
     }
 
-    public static TableColumn<Booking, String> getDateColumn() {
+    public static TableColumn<BookingTable, String> getDateColumn() {
         return dateColumn;
     }
 
-    public static TableColumn<Booking, String> getNameColumn() {
+    public static TableColumn<BookingTable, String> getNameColumn() {
         return nameColumn;
     }
 
-    public static TableColumn<Booking, String> getRouteColumn() {
+    public static TableColumn<BookingTable, String> getRouteColumn() {
         return routeColumn;
     }
 

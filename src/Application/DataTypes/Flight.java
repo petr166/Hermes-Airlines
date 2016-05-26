@@ -19,7 +19,7 @@ public class Flight {
     //constructors
     public Flight() {
         flight_id = new SimpleIntegerProperty();
-        plane_id = new SimpleIntegerProperty();
+        plane_id = new SimpleIntegerProperty(1);
         schedule_id = new SimpleIntegerProperty();
         airline_id = new SimpleIntegerProperty();
         first_class_left = new SimpleIntegerProperty(0);

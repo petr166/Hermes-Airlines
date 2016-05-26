@@ -19,6 +19,8 @@ public class Main extends Application{
     //start method
     public void start(Stage primaryStage)throws Exception {
         //start app
+        FlightsEditScene.initialize();
+        FlightEditSceneControl.initialize();
         MainControl.showLoginScene();
         /*BookingScene.initialize();
         primaryStage.setScene(BookingScene.getScene());

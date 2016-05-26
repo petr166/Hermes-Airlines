@@ -42,6 +42,7 @@ public class FlightEditSceneControl {
         plane_id = FlightsEditScene.getPlane_id();
         for(Plane p : PlaneData.getPlanes()){
             plane_id.getItems().add(p.getPlane_id());
+
         }
 
         departure_time= FlightsEditScene.getDeparture_time();
@@ -90,6 +91,13 @@ public class FlightEditSceneControl {
 
     public static void handle_okB(){
         flight.setPlane_id(plane_id.getValue());
+      /*  for(Plane p: PlaneData.getPlanes()){
+            if(p.getPlane_id()==plane_id.getValue()){
+                flight.setFirst_class_left(p.getFirst_class());
+                flight.setCoach_left(p.getCoach());
+                flight.setEconomy_left(p.getEconomy());
+            }
+        }*/
         String route = routeC.getValue();
 
 

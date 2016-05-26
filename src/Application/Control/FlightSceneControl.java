@@ -4,6 +4,7 @@ import Application.DataTypes.*;
 import DataAccess.CustomerData;
 import DataAccess.FlightData;
 import DataAccess.FlightTableData;
+import DataAccess.PlaneData;
 import Presentation.FlightsScene;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
@@ -60,8 +61,15 @@ public class FlightSceneControl {
         boolean okPressed = MainControl.showFlightEditScene(flightTable,flight);
         if(okPressed) {
             flight = FlightEditSceneControl.getFlight();
+            for(Plane p: PlaneData.getPlanes()){
+                if(p.getPlane_id()==flight.getPlane_id()){
+                    flight.setFirst_class_left(p.getFirst_class());
+                    flight.setCoach_left(p.getCoach());
+                    flight.setEconomy_left(p.getEconomy());
+                }
+            }
             FlightData.insertFlight(flight);
-            FlightTableData.getList().add(FlightEditSceneControl.getFlightTable());
+            table.setItems(FlightTableData.getFlightTableItems());
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.initOwner(MainControl.getWindow());
@@ -76,12 +84,10 @@ public class FlightSceneControl {
         Flight flight = new Flight();
 
         if(flightTable != null) {
-            boolean okPressed = MainControl.showFlightEditScene(flightTable,flight);
-            if(okPressed){
+            boolean okPressed = MainControl.showFlightEditScene(flightTable, flight);
+            if (okPressed) {
                 flight = FlightEditSceneControl.getFlight();
                 FlightData.updateFlight(flight);
-                //FlightTableData.getList().set(flightTable.getFlight_id() - 1, flightTable);
-               // MainControl.showFlightsScene();
                 table.setItems(FlightTableData.getFlightTableItems());
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.initOwner(MainControl.getWindow());
@@ -89,14 +95,14 @@ public class FlightSceneControl {
                 alert.showAndWait();
             }
         }
+        else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.initOwner(MainControl.getWindow());
+                alert.setHeaderText("Select flight!");
+                alert.setContentText("No flight selected!");
+                alert.showAndWait();
+            }
 
-        else{
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.initOwner(MainControl.getWindow());
-            alert.setHeaderText("Select flight!");
-            alert.setContentText("No flight selected!");
-            alert.showAndWait();
-        }
     }
 
 

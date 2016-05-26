@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 
 public class MainControl {
 
+
     //fields
     public static Stage window = new Stage();
 
@@ -129,13 +130,13 @@ public class MainControl {
     public static boolean showFlightEditScene(FlightTable flightTable, Flight flight){
 
         //initialization of scene
-        FlightsEditScene.initialize();
+      //  FlightsEditScene.initialize();
 
         //initialization of controller
-        FlightEditSceneControl.initialize();
+        //FlightEditSceneControl.initialize();
         FlightEditSceneControl.setFlight(flightTable,flight);
 
-        FlightsEditScene.getDialogStage().initOwner(window);
+      // FlightsEditScene.getDialogStage().initOwner(window);
         FlightsEditScene.getDialogStage().showAndWait();
         return FlightEditSceneControl.isOkPressed();
     }

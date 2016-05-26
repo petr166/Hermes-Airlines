@@ -55,7 +55,7 @@ public class MainControl {
         ViewBookingScene.initialize();
 
         //initialization of actions
-        //ViewBookingSceneControl.initialize();
+        ViewBookingSceneControl.initialize();
 
         //set scene
         window.setScene(ViewBookingScene.getScene());

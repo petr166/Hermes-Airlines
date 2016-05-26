@@ -91,7 +91,7 @@ public class CustomerData {
         try{
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(DATABASE_URL,user,password);
-            statement.executeUpdate("UPDATE customer SET first_name = \"" + customer.getFirst_name() +"\", last_name = \"" + customer.getLast_name() + "\", age = " + customer.getAge() + ", passport_number = \"" + customer.getPassport_number() + "\", phone_nr = \"" + customer.getPhone_nr() + "\" WHERE customer_id = " + customer.getCustomer_id() + ";");
+            statement.executeUpdate("UPDATE customer SET first_name = '" + customer.getFirst_name() +"', last_name = '" + customer.getLast_name() + "', age = " + customer.getAge() + ", passport_number = '" + customer.getPassport_number() + "', phone_nr = '" + customer.getPhone_nr() + "' WHERE customer_id = " + customer.getCustomer_id() + ";");
             customers.set(customer.getCustomer_id() - 1, customer);
         }
 

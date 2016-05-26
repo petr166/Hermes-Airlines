@@ -1,9 +1,6 @@
 package Application.Control;
 
-import Application.DataTypes.Customer;
-import Application.DataTypes.Flight;
-import Application.DataTypes.FlightTable;
-import Application.DataTypes.Plane;
+import Application.DataTypes.*;
 import Presentation.*;
 import javafx.stage.Stage;
 
@@ -127,8 +124,8 @@ public class MainControl {
         return CustomerEditSceneControl.isOkPressed();
     }
 
-    public static boolean showFlightEditScene(FlightTable flightTable, Flight flight){
 
+    public static boolean showFlightEditScene(FlightTable flightTable, Flight flight){
         //initialization of scene
         FlightsEditScene.initialize();
 
@@ -139,6 +136,21 @@ public class MainControl {
         FlightsEditScene.getDialogStage().initOwner(window);
         FlightsEditScene.getDialogStage().showAndWait();
         return FlightEditSceneControl.isOkPressed();
+    }
+
+
+    public static boolean showBookingEditScene(BookingTable bookingTable, Booking booking) {
+        //initialization of scene
+        BookingEditScene.initialize();
+
+        //initialization of controller
+        BookingEditSceneControl.initialize();
+        //BookingEditSceneControl.setBooking(bookingTable, booking);
+
+        BookingEditScene.getDialogStage().initOwner(window);
+        BookingEditScene.getDialogStage().showAndWait();
+        return BookingEditSceneControl.isOkPressed();
+
     }
 
 

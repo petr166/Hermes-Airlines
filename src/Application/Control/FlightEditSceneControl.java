@@ -134,7 +134,4 @@ public class FlightEditSceneControl {
         return flight;
     }
 
-    public static FlightTable getFlightTable() {
-        return flightTable;
-    }
 }

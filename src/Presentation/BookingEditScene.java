@@ -4,6 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 /**
  * Created by Petru on 5/26/2016.
@@ -12,6 +13,7 @@ import javafx.scene.layout.VBox;
 public class BookingEditScene {
 
     //fields
+    private static Stage dialogStage;
     private static Scene scene;
     private static Pane layout;
     private static Label customerLabel, addCustomerLabel;
@@ -104,6 +106,10 @@ public class BookingEditScene {
         //Scene
         scene = new Scene(layout,500,600);
 
+        //Stage
+        dialogStage = new Stage();
+        dialogStage.setScene(scene);
+
     }
 
 
@@ -182,6 +188,10 @@ public class BookingEditScene {
 
     public static Label getPriceLabelObs() {
         return priceLabelObs;
+    }
+
+    public static Stage getDialogStage() {
+        return dialogStage;
     }
 
 }

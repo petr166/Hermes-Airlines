@@ -36,7 +36,8 @@ public class FlightTableData {
                     "FROM flight f JOIN  schedule s " +
                     "ON f.schedule_id = s.schedule_id " +
                     "JOIN airline a " +
-                    "ON f.airline_id = a.airline_id");
+                    "ON f.airline_id = a.airline_id " +
+                    "ORDER BY departure_date;");
             if(rs!=null)
                 while(rs.next()){
                     FlightTable f = new FlightTable();

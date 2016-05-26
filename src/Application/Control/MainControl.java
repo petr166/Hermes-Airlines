@@ -76,25 +76,25 @@ public class MainControl {
 
     public static void showFlightsScene(){
         //initialization of scene
-        FlightsScene.initialize();
+        ViewFlightsScene.initialize();
 
         //initialization of controller
-        FlightSceneControl.initialize();
+        ViewFlightSceneControl.initialize();
 
         //set scene
-        window.setScene(FlightsScene.getScene());
+        window.setScene(ViewFlightsScene.getScene());
     }
 
 
     public static void showPlaneScene(){
         //initialization of scene
-        PlaneScene.initialize();
+        ViewPlaneScene.initialize();
 
         //initialization of controller
-        PlaneSceneControl.initialize();
+        ViewPlaneSceneControl.initialize();
 
         //set scene
-        window.setScene(PlaneScene.getScene());
+        window.setScene(ViewPlaneScene.getScene());
     }
 
 

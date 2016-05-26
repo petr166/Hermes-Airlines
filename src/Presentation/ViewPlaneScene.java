@@ -13,7 +13,7 @@ import javafx.scene.layout.VBox;
  * Created by Administrator on 5/18/2016.
  */
 
-public class PlaneScene {
+public class ViewPlaneScene {
 
     //table
     private static TableView<Plane> table;

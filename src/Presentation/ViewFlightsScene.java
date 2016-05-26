@@ -14,7 +14,7 @@ import javafx.scene.layout.Pane;
  * Created by Petru on 18-May-16.
  */
 
-public class FlightsScene {
+public class ViewFlightsScene {
 
     //fields
     private static Pane layout;
@@ -66,9 +66,6 @@ public class FlightsScene {
         //back butt
         backB = new Button("Back");
 
-        //view customers butt
-        viewCustomB = new Button("View customers");
-
         //add butt
         addB = new Button("Add");
 
@@ -79,7 +76,7 @@ public class FlightsScene {
         buttonLayout = new HBox(20);
         buttonLayout.setAlignment(Pos.CENTER);
         buttonLayout.relocate(685,635);
-        buttonLayout.getChildren().addAll(backB,viewCustomB,addB,editB);
+        buttonLayout.getChildren().addAll(backB,addB,editB);
 
         //layout setup
         layout = new Pane();
@@ -129,4 +126,7 @@ public class FlightsScene {
         return editB;
     }
 
+    public static TableColumn<FlightTable, String> getDeparture_dateColumn() {
+        return departure_dateColumn;
+    }
 }

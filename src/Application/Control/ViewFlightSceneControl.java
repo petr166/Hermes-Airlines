@@ -1,51 +1,46 @@
 package Application.Control;
 
 import Application.DataTypes.*;
-import DataAccess.CustomerData;
 import DataAccess.FlightData;
 import DataAccess.FlightTableData;
 import DataAccess.PlaneData;
-import Presentation.FlightsScene;
+import Presentation.ViewFlightsScene;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.util.Date;
 
 /**
  * Created by Administrator on 5/23/2016.
  */
 
-public class FlightSceneControl {
+public class ViewFlightSceneControl {
 
     //fields
     private static TableView<FlightTable> table;
     private static ObservableList<FlightTable> flights, tableItems;
     private static TextField search;
-    private static Button backB, viewCustomB, addB, editB;
+    private static Button backB, addB, editB;
 
     //initialize
     public static void initialize(){
 
-        table = FlightsScene.getTable();
+        table = ViewFlightsScene.getTable();
         table.setItems(FlightTableData.getFlightTableItems());
 
-        backB = FlightsScene.getBackB();
+        backB = ViewFlightsScene.getBackB();
         backB.setOnAction(e -> handle_backB());
 
-        addB = FlightsScene.getAddB();
+        addB = ViewFlightsScene.getAddB();
         addB.setOnAction(e -> handle_addB());
 
-        editB = FlightsScene.getEditB();
+        editB = ViewFlightsScene.getEditB();
         editB.setOnAction(e -> handle_editB());
 
-        viewCustomB = FlightsScene.getViewCustomB();
-        //viewCustomB.setOnAction(e -> handle_viewCustomB());
 
-        search = FlightsScene.getSearch();
+        search = ViewFlightsScene.getSearch();
         flights = table.getItems();
         initializeSearch();
 

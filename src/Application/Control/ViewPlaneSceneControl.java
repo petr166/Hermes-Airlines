@@ -2,7 +2,7 @@ package Application.Control;
 
 import Application.DataTypes.Plane;
 import DataAccess.PlaneData;
-import Presentation.PlaneScene;
+import Presentation.ViewPlaneScene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
@@ -11,7 +11,7 @@ import javafx.scene.control.TableView;
  * Created by Administrator on 5/19/2016.
  */
 
-public class PlaneSceneControl {
+public class ViewPlaneSceneControl {
 
     //fields
     private static TableView<Plane> table;
@@ -23,20 +23,20 @@ public class PlaneSceneControl {
     //initialization of fields
     public static void initialize(){
         //table
-        table = PlaneScene.getTable();
+        table = ViewPlaneScene.getTable();
         table.setItems(PlaneData.getPlanes());
 
         //addButton
-        addButton =  PlaneScene.getAddButton();
+        addButton =  ViewPlaneScene.getAddButton();
         addButton.setOnAction(e -> handle_addButton());
 
 
         //backButton
-        backButton = PlaneScene.getBackButton();
+        backButton = ViewPlaneScene.getBackButton();
         backButton.setOnAction(e -> handle_backButton());
 
         //editButton
-        editButton = PlaneScene.getEditButton();
+        editButton = ViewPlaneScene.getEditButton();
         editButton.setOnAction(e -> handle_editButton());
 
     }

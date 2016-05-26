@@ -65,6 +65,7 @@ public class ViewFlightSceneControl {
             }
             FlightData.insertFlight(flight);
             table.setItems(FlightTableData.getFlightTableItems());
+            flights = table.getItems();
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.initOwner(MainControl.getWindow());
@@ -82,8 +83,11 @@ public class ViewFlightSceneControl {
             boolean okPressed = MainControl.showFlightEditScene(flightTable, flight);
             if (okPressed) {
                 flight = FlightEditSceneControl.getFlight();
+
                 FlightData.updateFlight(flight);
                 table.setItems(FlightTableData.getFlightTableItems());
+                flights = table.getItems();
+
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.initOwner(MainControl.getWindow());
                 alert.setContentText("Flight edited!");

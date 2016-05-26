@@ -6,28 +6,29 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 /**
- * Created by Administrator on 5/19/2016.
+ * Created by Petru on 5/26/2016.
  */
-public class BookingScene {
+
+public class BookingEditScene {
 
     //fields
     private static Scene scene;
     private static Pane layout;
+    private static Label customerLabel, addCustomerLabel;
     private static Label bookingLabel;
     private static Label routeLabel;
     private static Label departure_dateLabel;
-    private static Label arrival_dateLabel;
     private static Label categoryLabel;
     private static Label priceLabel;
     private static VBox labelsLayout;
     private static VBox detailsLayout;
 
-    private static ComboBox<String> departure_cityBox;
-    private static ComboBox<String> arrival_cityBox;
+    private static ComboBox<String> customerBox;
+    private static ComboBox<String> routeBox;
     private static DatePicker departure_datePicker;
-    private static DatePicker arrival_datePicker;
     private static ComboBox<String> categoryBox;
-    private static Button select_customerButton;
+    private static Button addCustomer;
+    private static Button okButton;
     private static Button cancelButton;
     private static Label priceLabelObs;
 
@@ -37,78 +38,90 @@ public class BookingScene {
         //bookingLabel
         bookingLabel = new Label("Booking details");
         bookingLabel.relocate(41,51);
+
+        //customer label
+        customerLabel = new Label("Select customer");
+
+        //add customer label
+        addCustomerLabel = new Label("OR");
+
         //routeLabel
         routeLabel = new Label("Route");
 
         //departureLabel
         departure_dateLabel = new Label("Departure date");
 
-        //arrivalLabel
-        arrival_dateLabel = new Label("Arrival date");
-
         //categoryLabel
-        categoryLabel = new Label("Catgeory");
+        categoryLabel = new Label("Category");
 
         //priceLabel
         priceLabel = new Label("Price");
 
         //labelsLayout
         labelsLayout = new VBox();
-        labelsLayout.getChildren().addAll(routeLabel,departure_dateLabel,arrival_dateLabel,categoryLabel,priceLabel);
-        labelsLayout.setSpacing(34);
-        labelsLayout.relocate(41,139);
+        labelsLayout.getChildren().addAll(customerLabel,addCustomerLabel, new Label(" "), routeLabel,departure_dateLabel,categoryLabel,priceLabel);
+        labelsLayout.setSpacing(35);
+        labelsLayout.relocate(41,138);
 
-        //departure Choice Box
-        departure_cityBox = new ComboBox<>();
 
-        //arrival city Box
-        arrival_cityBox = new ComboBox<>();
-        arrival_cityBox.relocate(336,139);
+        //customer box
+        customerBox = new ComboBox<>();
+
+        //add customer button
+        addCustomer = new Button("New customer");
+
+        //route
+        routeBox = new ComboBox<>();
 
         //departure date
         departure_datePicker = new DatePicker();
 
-        //arrival date
-        arrival_datePicker = new DatePicker();
 
         //category box
         categoryBox = new ComboBox<>();
         categoryBox.getItems().addAll("First Class", "Coach", "Economy");
 
         //price label obs
-        priceLabelObs = new Label("");
+        priceLabelObs = new Label("20.00");
 
         //details layout
         detailsLayout = new VBox();
-        detailsLayout.getChildren().addAll(departure_cityBox,departure_datePicker,arrival_datePicker,categoryBox,priceLabelObs);
-        detailsLayout.setSpacing(25);
-        detailsLayout.relocate(180,139);
+        detailsLayout.getChildren().addAll(customerBox,addCustomer, new Label(" "), routeBox,departure_datePicker,categoryBox,priceLabelObs);
+        detailsLayout.setSpacing(26);
+        detailsLayout.relocate(210,139);
 
         //buttons
         cancelButton = new Button("Cancel");
-        cancelButton.relocate(310,550);
+        cancelButton.relocate(370,550);
 
-        select_customerButton = new Button("Select Customer");
-        select_customerButton.relocate(370,550);
+        okButton = new Button("OK");
+        okButton.relocate(310,550);
 
         //Pane
         layout = new Pane();
-        layout.getChildren().addAll(bookingLabel,labelsLayout,detailsLayout,arrival_cityBox,cancelButton,select_customerButton);
+        layout.getChildren().addAll(bookingLabel,labelsLayout,detailsLayout,okButton,cancelButton);
 
         //Scene
         scene = new Scene(layout,500,600);
 
-
-
-
     }
 
+
+    //getters
     public static Scene getScene() {
         return scene;
     }
 
     public static Pane getLayout() {
         return layout;
+    }
+
+    public static Label getCustomerLabel() {
+        return customerLabel;
+    }
+
+    public static Label getAddCustomerLabel() {
+        return addCustomerLabel;
     }
 
     public static Label getBookingLabel() {
@@ -121,10 +134,6 @@ public class BookingScene {
 
     public static Label getDeparture_dateLabel() {
         return departure_dateLabel;
-    }
-
-    public static Label getArrival_dateLabel() {
-        return arrival_dateLabel;
     }
 
     public static Label getCategoryLabel() {
@@ -143,28 +152,28 @@ public class BookingScene {
         return detailsLayout;
     }
 
-    public static ComboBox<String> getDeparture_cityBox() {
-        return departure_cityBox;
+    public static ComboBox<String> getCustomerBox() {
+        return customerBox;
     }
 
-    public static ComboBox<String> getArrival_cityBox() {
-        return arrival_cityBox;
+    public static ComboBox<String> getRouteBox() {
+        return routeBox;
     }
 
     public static DatePicker getDeparture_datePicker() {
         return departure_datePicker;
     }
 
-    public static DatePicker getArrival_datePicker() {
-        return arrival_datePicker;
-    }
-
     public static ComboBox<String> getCategoryBox() {
         return categoryBox;
     }
 
-    public static Button getSelect_customerButton() {
-        return select_customerButton;
+    public static Button getAddCustomer() {
+        return addCustomer;
+    }
+
+    public static Button getOkButton() {
+        return okButton;
     }
 
     public static Button getCancelButton() {
@@ -174,4 +183,5 @@ public class BookingScene {
     public static Label getPriceLabelObs() {
         return priceLabelObs;
     }
+
 }

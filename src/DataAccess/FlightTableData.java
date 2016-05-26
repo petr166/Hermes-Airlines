@@ -21,7 +21,7 @@ public class FlightTableData {
     private static String user = "root";
     private static String password = DataConnection.password;
     private static Statement statement;
-    public static ObservableList<FlightTable> flightTableItems;
+    private static ObservableList<FlightTable> flightTableItems;
 
     //
     public static ObservableList<FlightTable> getFlightTableItems(){
@@ -49,19 +49,18 @@ public class FlightTableData {
                     flightTableItems.add(f);
                 }
         }
+
         catch(Exception e){
             e.printStackTrace();
         }
 
 
-
-
         return  flightTableItems;
     }
 
-    //
-    public static void insertFlightTable(FlightTable flightTable){
 
-
+    public static ObservableList<FlightTable> getList() {
+        return flightTableItems;
     }
+
 }

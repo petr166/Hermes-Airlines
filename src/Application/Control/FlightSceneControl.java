@@ -54,12 +54,14 @@ public class FlightSceneControl {
 
     //handle_addB
     public static void handle_addB() {
-        FlightTable flightTable = new FlightTable();
+        FlightTable flightTable = new FlightTable("2016-07-15", "2016-07-15");
         Flight flight = new Flight();
 
         boolean okPressed = MainControl.showFlightEditScene(flightTable,flight);
         if(okPressed) {
+            flight = FlightEditSceneControl.getFlight();
             FlightData.insertFlight(flight);
+            FlightTableData.getList().add(FlightEditSceneControl.getFlightTable());
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.initOwner(MainControl.getWindow());
@@ -76,7 +78,9 @@ public class FlightSceneControl {
         if(flightTable != null) {
             boolean okPressed = MainControl.showFlightEditScene(flightTable,flight);
             if(okPressed){
+                flight = FlightEditSceneControl.getFlight();
                 FlightData.updateFlight(flight);
+                FlightTableData.getList().set(flightTable.getFlight_id() - 1, flightTable);
 
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.initOwner(MainControl.getWindow());
@@ -125,5 +129,7 @@ public class FlightSceneControl {
         });
     }
 
-
+    public static TableView<FlightTable> getTable() {
+        return table;
+    }
 }

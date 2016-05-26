@@ -2,7 +2,6 @@ package Presentation;
 
 import Application.Control.*;
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
@@ -20,9 +19,11 @@ public class Main extends Application{
     //start method
     public void start(Stage primaryStage)throws Exception {
         //start app
-       MainControl.showLoginScene();
-     // FlightsEditScene.initialize();
-       //FlightsEditScene.getDialogStage().show();
+        MainControl.showLoginScene();
+        /*BookingScene.initialize();
+        primaryStage.setScene(BookingScene.getScene());
+        primaryStage.show();*/
+
     }
 
 }

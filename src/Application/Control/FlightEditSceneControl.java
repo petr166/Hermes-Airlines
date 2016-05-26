@@ -5,6 +5,7 @@ import DataAccess.*;
 import Presentation.FlightsEditScene;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -24,10 +25,10 @@ public class FlightEditSceneControl {
     private static ComboBox<String> routeC,departure_time, arrival_time;
     private static ComboBox<Integer> plane_id;
     private static DatePicker departure_date, arrival_date;
-    private static javafx.scene.control.Button okB, cancelB;
+    private static Button okB, cancelB;
     private static boolean okPressed = false;
     private static Flight flight;
-    private static FlightTable flightTable = new FlightTable();
+    private static FlightTable flightTable;
 
 
 
@@ -68,9 +69,10 @@ public class FlightEditSceneControl {
             flightTable = f;
             flight = flig;
 
-            for(Flight fl: FlightData.getFlight()){
-                if(fl.getFlight_id()==flightTable.getFlight_id())
+            for(Flight fl: FlightData.getFlight()) {
+                if (fl.getFlight_id() == flightTable.getFlight_id())
                     flight = fl;
+            }
 
             routeC.setValue(flightTable.getDeparture_city() + " -> " + flightTable.getArrival_city());
             plane_id.setValue(flight.getPlane_id());
@@ -78,7 +80,7 @@ public class FlightEditSceneControl {
             arrival_date.setValue(LocalDate.parse(flightTable.getArrival_date()));
             departure_time.setValue("10:00");
             arrival_time.setValue("12:00");
-        }
+
     }
 
 
@@ -93,7 +95,6 @@ public class FlightEditSceneControl {
         for(Airline a : AirlineData.getAirlines()){
             if((a.getDeparture_city() + " -> " + a.getArrival_city()).equalsIgnoreCase(route)){
                 flight.setAirline_id(a.getAirline_id());
-                System.out.println("yes");
             }
         }
 
@@ -122,5 +123,9 @@ public class FlightEditSceneControl {
     //getters
     public static Flight getFlight() {
         return flight;
+    }
+
+    public static FlightTable getFlightTable() {
+        return flightTable;
     }
 }

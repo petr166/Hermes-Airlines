@@ -80,8 +80,9 @@ public class FlightSceneControl {
             if(okPressed){
                 flight = FlightEditSceneControl.getFlight();
                 FlightData.updateFlight(flight);
-                FlightTableData.getList().set(flightTable.getFlight_id() - 1, flightTable);
-
+                //FlightTableData.getList().set(flightTable.getFlight_id() - 1, flightTable);
+               // MainControl.showFlightsScene();
+                table.setItems(FlightTableData.getFlightTableItems());
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.initOwner(MainControl.getWindow());
                 alert.setContentText("Flight edited!");

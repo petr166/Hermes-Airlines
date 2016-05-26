@@ -92,6 +92,7 @@ public class FlightEditSceneControl {
         flight.setPlane_id(plane_id.getValue());
         String route = routeC.getValue();
 
+
         for(Airline a : AirlineData.getAirlines()){
             if((a.getDeparture_city() + " -> " + a.getArrival_city()).equalsIgnoreCase(route)){
                 flight.setAirline_id(a.getAirline_id());

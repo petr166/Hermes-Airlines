@@ -322,8 +322,11 @@ public class ViewBookingScene {
         return backButton;
     }
 
+    public static Button getEditButton() {
+        return editButton;
+    }
+
     public static HBox getButtonLayout() {
         return buttonLayout;
     }
-
 }

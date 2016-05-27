@@ -145,7 +145,7 @@ public class MainControl {
 
         //initialization of controller
         BookingEditSceneControl.initialize();
-        //BookingEditSceneControl.setBooking(bookingTable, booking);
+        BookingEditSceneControl.setBooking(bookingTable, booking);
 
         BookingEditScene.getDialogStage().initOwner(window);
         BookingEditScene.getDialogStage().showAndWait();

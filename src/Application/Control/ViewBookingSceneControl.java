@@ -1,13 +1,7 @@
 package Application.Control;
 
-import Application.DataTypes.Booking;
-import Application.DataTypes.BookingTable;
-import Application.DataTypes.Customer;
-import Application.DataTypes.FlightTable;
-import DataAccess.BookingData;
-import DataAccess.BookingTableData;
-import DataAccess.CustomerData;
-import DataAccess.FlightTableData;
+import Application.DataTypes.*;
+import DataAccess.*;
 import Presentation.ViewBookingScene;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
@@ -63,16 +57,19 @@ public class ViewBookingSceneControl {
         phone_numberObs = ViewBookingScene.getPhone_numberObs();
 
         add_bookingButton = ViewBookingScene.getAdd_bookingButton();
+        add_bookingButton.setOnAction(e -> handle_addButton());
 
 
         cancelButton = ViewBookingScene.getCancelButton();
+        cancelButton.setOnAction(e -> handle_cancelButton());
 
 
         backButton = ViewBookingScene.getBackButton();
         backButton.setOnAction(e -> handle_backButton());
 
 
-        editButton = ViewBookingScene.getBackButton();
+        editButton = ViewBookingScene.getEditButton();
+        editButton.setOnAction(e -> handle_editButton());
 
 
         search = ViewBookingScene.getSearchField();
@@ -86,6 +83,92 @@ public class ViewBookingSceneControl {
         MainControl.showMenuScene();
     }
 
+
+    //add button action
+    public static void handle_addButton(){
+        BookingTable bookingTable = new BookingTable();
+        Booking booking = new Booking();
+
+            boolean okPressed = MainControl.showBookingEditScene(bookingTable, booking);
+            if (okPressed) {
+                booking = BookingEditSceneControl.getBooking();
+
+                BookingData.insertBooking(booking);
+                table.setItems(BookingTableData.getBookingTableItems());
+                bookings = table.getItems();
+
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.initOwner(MainControl.getWindow());
+                alert.setContentText("Booking added!");
+                alert.showAndWait();
+            }
+
+    }
+
+
+    //edit button action
+    public static void handle_editButton(){
+        BookingTable bookingTable = table.getSelectionModel().getSelectedItem();
+        Booking booking = new Booking();
+
+        if(bookingTable != null) {
+
+            boolean okPressed = MainControl.showBookingEditScene(bookingTable, booking);
+            if (okPressed) {
+                booking = BookingEditSceneControl.getBooking();
+
+                BookingData.updateBooking(booking);
+                table.setItems(BookingTableData.getBookingTableItems());
+                bookings = table.getItems();
+
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.initOwner(MainControl.getWindow());
+                alert.setContentText("Booking edited!");
+                alert.showAndWait();
+            }
+        }
+
+        else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.initOwner(MainControl.getWindow());
+            alert.setHeaderText("Select booking!");
+            alert.setContentText("No booking selected!");
+            alert.showAndWait();
+        }
+
+    }
+
+
+    //remove button action
+    public static void handle_cancelButton(){
+        BookingTable bookingTable = table.getSelectionModel().getSelectedItem();
+        Booking booking = new Booking();
+
+        if(bookingTable != null) {
+
+            for(Booking b : BookingData.getBookings())
+                    if(bookingTable.getBooking_id() == b.getBooking_id())
+                        booking = b;
+
+            BookingData.deleteBooking(booking);
+            table.setItems(BookingTableData.getBookingTableItems());
+            bookings = table.getItems();
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.initOwner(MainControl.getWindow());
+            alert.setContentText("Booking removed!");
+            alert.showAndWait();
+        }
+
+        else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.initOwner(MainControl.getWindow());
+            alert.setHeaderText("Select booking!");
+            alert.setContentText("No booking selected!");
+            alert.showAndWait();
+        }
+
+    }
 
     //method to display the booking details
     public static void displayBookingInfo(BookingTable buk) {

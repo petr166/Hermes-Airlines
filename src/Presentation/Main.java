@@ -1,6 +1,9 @@
 package Presentation;
 
 import Application.Control.*;
+import Application.DataTypes.Booking;
+import Application.DataTypes.BookingTable;
+import Application.DataTypes.Customer;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -20,9 +23,8 @@ public class Main extends Application{
     public void start(Stage primaryStage)throws Exception {
         //start app
         MainControl.showLoginScene();
-        /*BookingScene.initialize();
-        primaryStage.setScene(BookingScene.getScene());
-        primaryStage.show();*/
+
+        /*MainControl.showBookingEditScene(new BookingTable(), new Booking());*/
 
     }
 

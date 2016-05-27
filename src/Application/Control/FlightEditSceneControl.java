@@ -6,6 +6,7 @@ import Presentation.FlightsEditScene;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -21,7 +22,7 @@ import java.time.LocalDate;
 
 public class FlightEditSceneControl {
 
-
+    private static TextField price;
     private static ComboBox<String> routeC,departure_time, arrival_time;
     private static ComboBox<Integer> plane_id;
     private static DatePicker departure_date, arrival_date;
@@ -34,6 +35,8 @@ public class FlightEditSceneControl {
 
     public static void initialize(){
 
+
+        price = FlightsEditScene.getPrice();
         routeC = FlightsEditScene.getRouteC();
         for(Airline airline: AirlineData.getAirlines()){
             routeC.getItems().add(airline.getDeparture_city() + " -> " + airline.getArrival_city());
@@ -81,6 +84,7 @@ public class FlightEditSceneControl {
             arrival_date.setValue(LocalDate.parse(flightTable.getArrival_date()));
             departure_time.setValue("10:00");
             arrival_time.setValue("12:00");
+            price.setText(Double.toString(flightTable.getPrice()));
 
     }
 
@@ -90,6 +94,7 @@ public class FlightEditSceneControl {
 
 
     public static void handle_okB(){
+        if(isInputValid()){
         flight.setPlane_id(plane_id.getValue());
       /*  for(Plane p: PlaneData.getPlanes()){
             if(p.getPlane_id()==plane_id.getValue()){
@@ -118,8 +123,11 @@ public class FlightEditSceneControl {
            if( s.getDeparture_date().equals(schedule.getDeparture_date()) && s.getArrival_date().equals(schedule.getArrival_date()))
                flight.setSchedule_id(s.getSchedule_id());
 
+            flight.setPrice(Double.parseDouble(price.getText()));
         okPressed = true;
         FlightsEditScene.getDialogStage().close();
+        }
+
     }
 
 
@@ -128,6 +136,31 @@ public class FlightEditSceneControl {
         FlightsEditScene.getDialogStage().close();
     }
 
+    public static boolean isInputValid(){
+        String error = "";
+       if(routeC.getValue().equalsIgnoreCase(" -> "))
+        error += "Invalid route!\n";
+
+
+        if(price.getText().length()<1)
+            error+="Invalid base price!\n";
+        else try{
+            Double.parseDouble(price.getText());
+        }   catch(NumberFormatException e){
+            error += "Invalid base price!\n";
+        }
+        if(error=="")
+            return true;
+        else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.initOwner(FlightsEditScene.getDialogStage());
+            alert.setContentText(error);
+            alert.setHeaderText("Invalid input!");
+            alert.showAndWait();
+            return false;
+        }
+
+    }
 
     //getters
     public static Flight getFlight() {

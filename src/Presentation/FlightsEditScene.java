@@ -1,14 +1,18 @@
 package Presentation;
 
+import Application.Control.MainControl;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.awt.*;
+import java.awt.geom.Arc2D;
 
 
 /**
@@ -20,10 +24,11 @@ public class FlightsEditScene {
     private static Stage dialogStage;
     private static Scene scene;
     private static Pane layout;
-    private static Label flightL,timeL, routeL, dateL,planeL,toL1,toL2;
+    private static Label flightL,timeL, routeL, dateL,planeL,toL1,toL2, priceL;
     private static ComboBox<String> routeC,departure_time, arrival_time;
     private static ComboBox<Integer> plane_id;
     private static DatePicker departure_date, arrival_date;
+    private static TextField price;
     private static Button okB, cancelB;
     private static VBox vBox1, vBox2;
 
@@ -32,7 +37,7 @@ public class FlightsEditScene {
 
         flightL = new Label("Flight details");
         flightL.relocate(250,100);
-
+        priceL = new Label("Base price");
         routeL = new Label("Route");
         dateL = new Label("Date");
         timeL = new Label("Time");
@@ -42,7 +47,7 @@ public class FlightsEditScene {
         toL2 = new Label("to");
         toL2.relocate(289,302);
         vBox1 = new VBox();
-        vBox1.getChildren().addAll(routeL, dateL,timeL,planeL);
+        vBox1.getChildren().addAll(routeL, dateL,timeL,planeL, priceL);
         vBox1.relocate(41,202);
         vBox1.setSpacing(34);
 
@@ -51,6 +56,7 @@ public class FlightsEditScene {
         departure_time = new ComboBox<>();
         arrival_time = new ComboBox<>();
         plane_id = new ComboBox<>();
+        price = new TextField();
 
         departure_date = new DatePicker();
         departure_date.setMaxWidth(120);
@@ -59,7 +65,7 @@ public class FlightsEditScene {
         arrival_date.relocate(350,255);
 
         vBox2 = new VBox();
-        vBox2.getChildren().addAll(routeC,departure_date,departure_time,plane_id);
+        vBox2.getChildren().addAll(routeC,departure_date,departure_time,plane_id, price);
         vBox2.setSpacing(25);
         vBox2.relocate(145,200);
 
@@ -81,9 +87,14 @@ public class FlightsEditScene {
 
         dialogStage = new Stage();
         dialogStage.setScene(scene);
+     //   dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage.initOwner(MainControl.getWindow());
 
     }
 
+    public static TextField getPrice() {
+        return price;
+    }
 
     public static Stage getDialogStage() {
         return dialogStage;

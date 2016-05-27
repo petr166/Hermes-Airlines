@@ -84,7 +84,7 @@ public class BookingEditScene {
         categoryBox.getItems().addAll("First Class", "Coach", "Economy");
 
         //price label obs
-        priceLabelObs = new Label("20.00");
+        priceLabelObs = new Label("");
 
         //details layout
         detailsLayout = new VBox();

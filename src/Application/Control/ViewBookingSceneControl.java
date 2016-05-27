@@ -192,7 +192,13 @@ public class ViewBookingSceneControl {
             departure_dateObs.setText(flight.getDeparture_date() + ", from " + flight.getDeparture_city());
             arrival_dateObs.setText(flight.getArrival_date() + ", from " + flight.getArrival_city());
             categoryObs.setText(booking.getFare_class());
-            priceObs.setText(String.valueOf(flight.getPrice()));
+            if(booking.getFare_class().equalsIgnoreCase("first class"))
+            priceObs.setText(String.valueOf(flight.getPrice()+flight.getPrice()*1/2));
+            else if(booking.getFare_class().equalsIgnoreCase("coach"))
+                priceObs.setText(String.valueOf((flight.getPrice()+flight.getPrice()*1/4)));
+            else
+                priceObs.setText(String.valueOf(flight.getPrice()));
+
 
             first_nameObs.setText(customer.getFirst_name());
             last_nameObs.setText(customer.getLast_name());

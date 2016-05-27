@@ -7,6 +7,10 @@ import Presentation.FlightsEditScene;
 import javafx.scene.control.*;
 import javafx.util.Callback;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -38,15 +42,16 @@ public class BookingEditSceneControl {
             customerBox.getItems().add(c.getFirst_name() + " " + c.getLast_name());
 
         routeBox = BookingEditScene.getRouteBox();
+
         for(Airline a : AirlineData.getAirlines())
             routeBox.getItems().add(a.getDeparture_city() + " -> " + a.getArrival_city());
-        routeBox.setOnAction(e -> setDatePicker());
 
 
         departure_datePicker = BookingEditScene.getDeparture_datePicker();
 
 
         categoryBox = BookingEditScene.getCategoryBox();
+
 
         addCustomer = BookingEditScene.getAddCustomer();
         addCustomer.setOnAction(e -> {
@@ -64,11 +69,35 @@ public class BookingEditSceneControl {
         okButton.setOnAction(e -> handle_okButton());
     }
 
+    public static void handleRouteAction() {
+
+        {
+            String flight_route = routeBox.getValue();
+            String flight_date = departure_datePicker.getValue().toString();
+            for(FlightTable f : FlightTableData.getFlightTableItems()) {
+                if(f.getDeparture_date().equalsIgnoreCase(flight_date) &&
+                        (f.getDeparture_city() + " -> " + f.getArrival_city()).equalsIgnoreCase(flight_route)) {
+
+                    if(categoryBox.getValue().equalsIgnoreCase("first class"))
+                        priceLabelObs.setText(String.valueOf(f.getPrice()+f.getPrice()*1/2));
+                    else if(categoryBox.getValue().equalsIgnoreCase("coach"))
+                        priceLabelObs.setText(String.valueOf(f.getPrice()+f.getPrice()*1/4));
+                    else priceLabelObs.setText(String.valueOf(f.getPrice()+f.getPrice()));
+
+
+
+                }
+            }
+        }
+
+
+    }
 
     public static void setBooking(BookingTable bTab, Booking b) {
 
         bookingTable = bTab;
         booking = b;
+
         boolean existing = false;
 
         for(Booking bk : BookingData.getBookings())

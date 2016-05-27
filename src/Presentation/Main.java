@@ -7,6 +7,9 @@ import Application.DataTypes.Customer;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  * MAIN CLASS - HERMES AIRLINES ---
  */
@@ -21,11 +24,17 @@ public class Main extends Application{
 
     //start method
     public void start(Stage primaryStage)throws Exception {
+
+        ViewFlightsScene.initialize();
+        ViewFlightSceneControl.initialize();
+        FlightsEditScene.initialize();
+        FlightEditSceneControl.initialize();
         //start app
         MainControl.showLoginScene();
 
         /*MainControl.showBookingEditScene(new BookingTable(), new Booking());*/
 
     }
+
 
 }

@@ -4,6 +4,8 @@ import Application.DataTypes.*;
 import DataAccess.*;
 import Presentation.BookingEditScene;
 import Presentation.FlightsEditScene;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.util.Callback;
 
@@ -34,18 +36,27 @@ public class BookingEditSceneControl {
     private static BookingTable bookingTable;
 
 
+
+
     //initialize method
     public static void initialize() {
 
         customerBox = BookingEditScene.getCustomerBox();
+        ObservableList<String> ca = FXCollections.observableArrayList();
+
         for(Customer c : CustomerData.getCustomers())
+            if(!customerBox.getItems().contains(c.getFirst_name() + " " + c.getLast_name()))
             customerBox.getItems().add(c.getFirst_name() + " " + c.getLast_name());
 
         routeBox = BookingEditScene.getRouteBox();
         routeBox.setOnAction(e-> {
             setDatePicker();
         });
+
+
+
         for(Airline a : AirlineData.getAirlines())
+            if(!routeBox.getItems().contains(a.getDeparture_city() + " -> " + a.getArrival_city()))
             routeBox.getItems().add(a.getDeparture_city() + " -> " + a.getArrival_city());
 
 
@@ -136,6 +147,8 @@ public class BookingEditSceneControl {
 
 
     public static void handle_okButton() {
+        okPressed = true;
+
         String customer = customerBox.getValue();
         for(Customer c : CustomerData.getCustomers()) {
             if((c.getFirst_name() + " " + c.getLast_name()).equalsIgnoreCase(customer)) {
@@ -150,13 +163,25 @@ public class BookingEditSceneControl {
             if(f.getDeparture_date().equalsIgnoreCase(flight_date) &&
                     (f.getDeparture_city() + " -> " + f.getArrival_city()).equalsIgnoreCase(flight_route)) {
                 booking.setFlight_id(f.getFlight_id());
+
                 break;
             }
         }
 
         booking.setFare_class(categoryBox.getValue());
 
-        okPressed = true;
+        for(Flight f: FlightData.getFlight()){
+            if(f.getFlight_id()==booking.getFlight_id()){
+                if(booking.getFare_class().equalsIgnoreCase("first class"))
+                    f.setFirst_class_left(f.getFirst_class_left() - 1);
+                else if(booking.getFare_class().equalsIgnoreCase("coach"))
+                    f.setCoach_left(f.getCoach_left()-1);
+                else f.setEconomy_left(f.getEconomy_left()-1);
+                FlightData.updateFlight(f);
+            }
+        }
+
+
         BookingEditScene.getDialogStage().close();
     }
 

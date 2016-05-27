@@ -113,6 +113,17 @@ public class ViewBookingSceneControl {
 
         if(bookingTable != null) {
 
+            //assuming that the customer is going to change the ticket category
+            for(Flight f: FlightData.getFlight()){
+                if(booking.getFlight_id()==f.getFlight_id())
+                    if(booking.getFare_class().equalsIgnoreCase("first class"))
+                        f.setFirst_class_left(f.getFirst_class_left()+1);
+                    else if(booking.getFare_class().equalsIgnoreCase("coach"))
+                        f.setCoach_left(f.getCoach_left()+1);
+                    else f.setEconomy_left(f.getEconomy_left()+1);
+                FlightData.updateFlight(f);
+            }
+
             boolean okPressed = MainControl.showBookingEditScene(bookingTable, booking);
             if (okPressed) {
                 booking = BookingEditSceneControl.getBooking();

@@ -42,16 +42,18 @@ public class BookingEditSceneControl {
             customerBox.getItems().add(c.getFirst_name() + " " + c.getLast_name());
 
         routeBox = BookingEditScene.getRouteBox();
-
+        routeBox.setOnAction(e-> {
+            setDatePicker();
+        });
         for(Airline a : AirlineData.getAirlines())
             routeBox.getItems().add(a.getDeparture_city() + " -> " + a.getArrival_city());
 
 
         departure_datePicker = BookingEditScene.getDeparture_datePicker();
-
+        departure_datePicker.setOnAction(e-> handleRouteAction());
 
         categoryBox = BookingEditScene.getCategoryBox();
-
+        categoryBox.setOnAction(e->handleRouteAction());
 
         addCustomer = BookingEditScene.getAddCustomer();
         addCustomer.setOnAction(e -> {
@@ -71,25 +73,23 @@ public class BookingEditSceneControl {
 
     public static void handleRouteAction() {
 
-        {
+        try{
             String flight_route = routeBox.getValue();
             String flight_date = departure_datePicker.getValue().toString();
-            for(FlightTable f : FlightTableData.getFlightTableItems()) {
-                if(f.getDeparture_date().equalsIgnoreCase(flight_date) &&
+            for (FlightTable f : FlightTableData.getFlightTableItems()) {
+                if (f.getDeparture_date().equalsIgnoreCase(flight_date) &&
                         (f.getDeparture_city() + " -> " + f.getArrival_city()).equalsIgnoreCase(flight_route)) {
-
-                    if(categoryBox.getValue().equalsIgnoreCase("first class"))
-                        priceLabelObs.setText(String.valueOf(f.getPrice()+f.getPrice()*1/2));
-                    else if(categoryBox.getValue().equalsIgnoreCase("coach"))
-                        priceLabelObs.setText(String.valueOf(f.getPrice()+f.getPrice()*1/4));
-                    else priceLabelObs.setText(String.valueOf(f.getPrice()+f.getPrice()));
-
+                    if (categoryBox.getValue().equalsIgnoreCase("first class"))
+                        priceLabelObs.setText(String.valueOf(f.getPrice() + f.getPrice() * 1 / 2));
+                    else if (categoryBox.getValue().equalsIgnoreCase("coach"))
+                        priceLabelObs.setText(String.valueOf(f.getPrice() + f.getPrice() * 1 / 4));
+                    else priceLabelObs.setText(String.valueOf(f.getPrice()));
 
 
                 }
             }
-        }
 
+        } catch(Exception e){}
 
     }
 

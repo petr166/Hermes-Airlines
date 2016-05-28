@@ -1,7 +1,9 @@
 package Presentation;
 
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -28,7 +30,14 @@ public class BookingEditScene {
     private static ComboBox<String> customerBox;
     private static ComboBox<String> routeBox;
     private static DatePicker departure_datePicker;
-    private static ComboBox<String> categoryBox;
+
+    //private static ComboBox<String> categoryBox;
+    private static RadioButton firstC;
+    private static RadioButton coachC;
+    private static RadioButton economyC;
+    private static ToggleGroup g;
+    private static HBox toggleBox;
+
     private static Button addCustomer;
     private static Button okButton;
     private static Button cancelButton;
@@ -80,16 +89,30 @@ public class BookingEditScene {
 
 
         //category box
-        categoryBox = new ComboBox<>();
-        categoryBox.getItems().addAll("First Class", "Coach", "Economy");
+      //  categoryBox = new ComboBox<>();
+        //categoryBox.getItems().addAll("First Class", "Coach", "Economy");
+
+        firstC = new RadioButton("First class");
+        coachC = new RadioButton("Coach");
+        economyC = new RadioButton("Economy");
+
+        g =new ToggleGroup();
+        firstC.setToggleGroup(g);
+        coachC.setToggleGroup(g);
+        economyC.setToggleGroup(g);
+        toggleBox = new HBox();
+        toggleBox.getChildren().addAll(firstC,coachC,economyC);
+        toggleBox.setSpacing(10);
+
+
 
         //price label obs
         priceLabelObs = new Label("");
 
         //details layout
         detailsLayout = new VBox();
-        detailsLayout.getChildren().addAll(customerBox,addCustomer, new Label(" "), routeBox,departure_datePicker,categoryBox,priceLabelObs);
-        detailsLayout.setSpacing(26);
+        detailsLayout.getChildren().addAll(customerBox,addCustomer, new Label(" "), routeBox,departure_datePicker,toggleBox,priceLabelObs);
+        detailsLayout.setSpacing(29);
         detailsLayout.relocate(210,139);
 
         //buttons
@@ -170,9 +193,7 @@ public class BookingEditScene {
         return departure_datePicker;
     }
 
-    public static ComboBox<String> getCategoryBox() {
-        return categoryBox;
-    }
+
 
     public static Button getAddCustomer() {
         return addCustomer;
@@ -194,4 +215,20 @@ public class BookingEditScene {
         return dialogStage;
     }
 
+
+    public static ToggleGroup getG() {
+        return g;
+    }
+
+    public static RadioButton getFirstC() {
+        return firstC;
+    }
+
+    public static RadioButton getCoachC() {
+        return coachC;
+    }
+
+    public static RadioButton getEconomyC() {
+        return economyC;
+    }
 }

@@ -18,7 +18,7 @@ public class ViewPlaneSceneControl {
     private static Button addButton;
     private static Button backButton;
     private static Button editButton;
-
+    private static Button exportPlaneB;
 
     //initialization of fields
     public static void initialize(){
@@ -38,6 +38,10 @@ public class ViewPlaneSceneControl {
         //editButton
         editButton = ViewPlaneScene.getEditButton();
         editButton.setOnAction(e -> handle_editButton());
+
+        //exportButton
+        exportPlaneB = ViewPlaneScene.getExportPlaneB();
+        exportPlaneB.setOnAction(event -> handle_exportButton());
 
     }
 
@@ -82,6 +86,11 @@ public class ViewPlaneSceneControl {
         }
     }
 
+    //handle export
+    public  static  void handle_exportButton() {
+        PlaneData.getPlanes();
+        PlaneData.exportPlanes();
+    }
 
     //handle back
     public static void handle_backButton(){

@@ -4,9 +4,12 @@ import Application.DataTypes.Admin;
 import Application.DataTypes.Customer;
 import Application.DataTypes.Flight;
 import Application.DataTypes.Plane;
+import com.mysql.jdbc.StringUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 
+import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -87,5 +90,25 @@ public class FlightData {
         }
     }
 
+    public static void exportFlights()
+    {
+        String filePath = "C:/Exported_Flights.txt";
+        try{
+            FileOutputStream out = new FileOutputStream(filePath);
+            for(Flight f : flights)
+            {
+                String flightData = f.toString();
+                out.write(flightData.getBytes());
+            }
+            out.close();
+
+
+        }catch (Exception e){};
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setContentText("Flights Exported!");
+        alert.setHeaderText("Success!");
+        alert.showAndWait();
+
+    }
 }
 

@@ -141,16 +141,8 @@ public class Flight {
     //toString method
     @Override
     public String toString() {
-        return "Flight{" +
-                "flight_id=" + flight_id +
-                ", plane_id=" + plane_id +
-                ", airline_id=" + airline_id +
-                ", schedule_id=" + schedule_id +
-                ", first_class_left=" + first_class_left +
-                ", coach_left=" + coach_left +
-                ", economy_left=" + economy_left +
-                ", price=" + price +
-                '}';
+        return String.format("%-2s", getPlane_id())+","+ String.format("%-3s", getFlight_id())+","+ String.format("%-3s",getAirline_id())+","+String.format("%-3s",getSchedule_id())+","+String.format("%-3s",getCoach_left())+","+String.format("%-3s",getEconomy_left())+","+String.format("%-3s",getFirst_class_left())+","+String.format("%7s",getPrice()+"\n");
     }
+
 
 }

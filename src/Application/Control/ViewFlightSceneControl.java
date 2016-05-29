@@ -22,7 +22,7 @@ public class ViewFlightSceneControl {
     private static TableView<FlightTable> table;
     private static ObservableList<FlightTable> flights, tableItems;
     private static TextField search;
-    private static Button backB, addB, editB;
+    private static Button backB, addB, editB, exportFlightsB;
 
     //initialize
     public static void initialize(){
@@ -38,6 +38,9 @@ public class ViewFlightSceneControl {
 
         editB = ViewFlightsScene.getEditB();
         editB.setOnAction(e -> handle_editB());
+
+        exportFlightsB = ViewFlightsScene.getExportFlightsB();
+        exportFlightsB.setOnAction(event -> handle_exportFlightsB());
 
 
         search = ViewFlightsScene.getSearch();
@@ -104,10 +107,14 @@ public class ViewFlightSceneControl {
 
     }
 
-
-
     //back button action
     public static void handle_backB(){ MainControl.showMenuScene(); }
+
+    //export button action
+    public static void handle_exportFlightsB() {
+        FlightData.getFlight();
+        FlightData.exportFlights();
+    }
 
 
     //search bar setup
@@ -134,7 +141,6 @@ public class ViewFlightSceneControl {
             }
         });
     }
-
     public static TableView<FlightTable> getTable() {
         return table;
     }

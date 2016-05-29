@@ -25,7 +25,7 @@ public class ViewFlightsScene {
     private static TableColumn<FlightTable, Double> priceColumn;
     private static TextField search;
     private static HBox buttonLayout;
-    private static Button backB, viewCustomB, addB, editB;
+    private static Button backB, viewCustomB, addB, editB, exportFlightsB;
 
 
     //initialize method
@@ -72,11 +72,14 @@ public class ViewFlightsScene {
         //edit butt
         editB = new Button("Edit");
 
+        //exportFlightsB
+        exportFlightsB = new Button("Export Flights");
+
         //button layout
         buttonLayout = new HBox(20);
         buttonLayout.setAlignment(Pos.CENTER);
         buttonLayout.relocate(685,635);
-        buttonLayout.getChildren().addAll(backB,addB,editB);
+        buttonLayout.getChildren().addAll(backB,addB,editB,exportFlightsB);
 
         //layout setup
         layout = new Pane();
@@ -129,4 +132,6 @@ public class ViewFlightsScene {
     public static TableColumn<FlightTable, String> getDeparture_dateColumn() {
         return departure_dateColumn;
     }
+
+    public static  Button getExportFlightsB() { return  exportFlightsB; }
 }

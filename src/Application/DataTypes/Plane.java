@@ -100,12 +100,6 @@ public class Plane {
 
     @Override
     public String toString() {
-        return "Plane{" +
-                "plane_id=" + plane_id +
-                ", first_class=" + first_class +
-                ", coach=" + coach +
-                ", economy=" + economy +
-                ", plane_name=" + plane_name +
-                '}';
+        return String.format("%-2s", getPlane_id())+","+String.format("%-15s", getPlane_name())+","+String.format("%-3s", getCoach())+","+String.format("%-3s", getEconomy())+","+String.format("%-3s", getFirst_class())+"\n";
     }
 }

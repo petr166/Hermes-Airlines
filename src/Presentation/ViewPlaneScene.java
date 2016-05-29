@@ -25,6 +25,7 @@ public class ViewPlaneScene {
     private static Button addButton;
     private static Button backButton;
     private static Button editButton;
+    private static Button exportPlaneB;
     private static VBox buttonsVbox;
     private static Pane layout;
     private static Scene scene;
@@ -76,9 +77,12 @@ public class ViewPlaneScene {
         //edit
         editButton = new Button("Edit");
 
+        //export
+        exportPlaneB = new Button("Export Planes");
+
         //buttons layout
         buttonsVbox = new VBox();
-        buttonsVbox.getChildren().addAll(addButton,editButton,backButton);
+        buttonsVbox.getChildren().addAll(addButton,editButton,backButton,exportPlaneB);
         buttonsVbox.setSpacing(25);
         buttonsVbox.relocate(1020,250);
 
@@ -136,6 +140,8 @@ public class ViewPlaneScene {
     public static Button getEditButton() {
         return editButton;
     }
+
+    public static Button getExportPlaneB() { return  exportPlaneB; }
 
     public static VBox getButtonsVbox() {
         return buttonsVbox;

@@ -1,9 +1,12 @@
 package DataAccess;
 
+import Application.DataTypes.Flight;
 import Application.DataTypes.Plane;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 
+import java.io.FileOutputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -96,5 +99,26 @@ public class PlaneData {
         catch(Exception e){
             e.printStackTrace();
         }
+    }
+
+    public static void exportPlanes()
+    {
+        String filePath = "C:/Exported_Planes.txt";
+        try{
+            FileOutputStream out = new FileOutputStream(filePath);
+            for(Plane p : planes)
+            {
+                String planesData = p.toString();
+                out.write(planesData.getBytes());
+            }
+            out.close();
+
+
+        }catch (Exception e){};
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setContentText("Planes Exported!");
+        alert.setHeaderText("Success!");
+        alert.showAndWait();
+
     }
 }

@@ -66,6 +66,7 @@ public class FlightsEditScene {
 
         //combo boxes
         routeC = new ComboBox<>();
+        routeC.setMinWidth(248);
         departure_time = new ComboBox<>();
         arrival_time = new ComboBox<>();
         plane_id = new ComboBox<>();
@@ -79,7 +80,7 @@ public class FlightsEditScene {
 
         //departure date picker
         departure_date = new DatePicker();
-        departure_date.setMaxWidth(120);
+        departure_date.setMinWidth(248);
 
         //buttons
         okB = new Button("Ok");

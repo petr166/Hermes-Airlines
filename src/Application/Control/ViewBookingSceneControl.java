@@ -234,11 +234,11 @@ public class ViewBookingSceneControl {
             categoryObs.setText(booking.getFare_class());
 
             if(booking.getFare_class().equalsIgnoreCase("first class"))
-            priceObs.setText(String.valueOf(flight.getPrice()+flight.getPrice()*1/2));
+            priceObs.setText(String.valueOf(flight.getPrice()+flight.getPrice()*1/2) + " kr.");
             else if(booking.getFare_class().equalsIgnoreCase("coach"))
-                priceObs.setText(String.valueOf((flight.getPrice()+flight.getPrice()*1/4)));
+                priceObs.setText(String.valueOf((flight.getPrice()+flight.getPrice()*1/4) + " kr."));
             else
-                priceObs.setText(String.valueOf(flight.getPrice()));
+                priceObs.setText(String.valueOf(flight.getPrice() + " kr."));
 
 
             first_nameObs.setText(customer.getFirst_name());

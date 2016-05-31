@@ -133,12 +133,12 @@ public class BookingEditSceneControl {
                         }
 
                     if (firstC.isSelected())
-                        priceLabelObs.setText(String.valueOf(f.getPrice() + f.getPrice() * 1 / 2));
+                        priceLabelObs.setText(String.valueOf(f.getPrice() + f.getPrice() * 1 / 2) + " kr.");
                     else
                     if (coachC.isSelected())
-                        priceLabelObs.setText(String.valueOf(f.getPrice() + f.getPrice() * 1 / 4));
+                        priceLabelObs.setText(String.valueOf(f.getPrice() + f.getPrice() * 1 / 4) + " kr.");
 
-                    else priceLabelObs.setText(String.valueOf(f.getPrice()));
+                    else priceLabelObs.setText(String.valueOf(f.getPrice()) + " kr.");
 
                     break;
                 }
@@ -159,12 +159,12 @@ public class BookingEditSceneControl {
                         (f.getDeparture_city() + " -> " + f.getArrival_city()).equalsIgnoreCase(flight_route)) {
 
                     if (firstC.isSelected())
-                        priceLabelObs.setText(String.valueOf(f.getPrice() + f.getPrice() * 1 / 2));
+                        priceLabelObs.setText(String.valueOf(f.getPrice() + f.getPrice() * 1 / 2) + " kr.");
                     else
                     if (coachC.isSelected())
-                        priceLabelObs.setText(String.valueOf(f.getPrice() + f.getPrice() * 1 / 4));
+                        priceLabelObs.setText(String.valueOf(f.getPrice() + f.getPrice() * 1 / 4) + " kr.");
 
-                    else priceLabelObs.setText(String.valueOf(f.getPrice()));
+                    else priceLabelObs.setText(String.valueOf(f.getPrice()) + " kr.");
 
                     break;
                 }

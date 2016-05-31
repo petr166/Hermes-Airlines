@@ -1,6 +1,5 @@
 package DataAccess;
 
-import Application.DataTypes.Flight;
 import Application.DataTypes.Plane;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -8,28 +7,20 @@ import javafx.scene.control.Alert;
 
 import java.io.FileOutputStream;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
 
 public class PlaneData {
+
     //fields
-    private static Connection connection;
-    private static String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/hermes_airline?autoReconnect=true&useSSL=false";
-    private static String user = "root";
-    private static String password = DataConnection.password;
     private static Statement statement;
     private static ObservableList<Plane> planes;
 
 
-    //method to get planes list
+    //get planes
     public static ObservableList<Plane> getPlanes(){
         planes = FXCollections.observableArrayList();
+
         try{
-            Class.forName(JDBC_DRIVER);
-            connection = DriverManager.getConnection(DATABASE_URL,user,password);
-            statement = connection.createStatement();
+            statement = DataConnection.getConnection().createStatement();
             ResultSet rs = statement.executeQuery("SELECT* FROM plane");
 
             if(rs != null)
@@ -53,16 +44,12 @@ public class PlaneData {
     }
 
 
+
     //method to add a plane
     public static void insertPlanes(Plane plane)
     {
         try{
-            Class.forName(JDBC_DRIVER);
-            connection = DriverManager.getConnection(DATABASE_URL,user,password);
-            statement = connection.createStatement();
             statement.executeUpdate("INSERT INTO plane VALUE (default, '" + plane.getPlane_name() + "', " + plane.getFirst_class() + ", " + plane.getCoach() + ", " + plane.getEconomy() + ");");
-            planes.add(plane);
-            plane.setPlane_id(planes.indexOf(plane) + 1);
         }
 
         catch(Exception e){
@@ -70,30 +57,12 @@ public class PlaneData {
         }
     }
 
-
-    //method to remove a plane
-    public static void deletePlane(Plane plane) {
-        try{
-            Class.forName(JDBC_DRIVER);
-            connection = DriverManager.getConnection(DATABASE_URL,user,password);
-            statement = connection.createStatement();
-            statement.executeUpdate("DELETE FROM  plane WHERE plane_id = " + plane.getPlane_id() + ";");
-            planes.remove(plane);
-        }
-
-        catch(Exception e){
-            e.printStackTrace();
-        }
-    }
 
 
     //method to update a plane details
     public static void updatePlane(Plane plane){
         try{
-            Class.forName(JDBC_DRIVER);
-            connection = DriverManager.getConnection(DATABASE_URL,user,password);
             statement.executeUpdate("UPDATE plane SET plane_name = '" + plane.getPlane_name() + "', first_class = " + plane.getFirst_class() + ", coach = " + plane.getCoach() + ", economy = " + plane.getEconomy() + " WHERE plane_id = " + plane.getPlane_id() + ";");
-            planes.set(plane.getPlane_id() - 1, plane);
         }
 
         catch(Exception e){
@@ -101,6 +70,9 @@ public class PlaneData {
         }
     }
 
+
+
+    //method to export plane list to .txt
     public static void exportPlanes()
     {
         String filePath = "C:/Exported_Planes.txt";
@@ -114,11 +86,13 @@ public class PlaneData {
             out.close();
 
 
-        }catch (Exception e){};
+        }catch (Exception e){}
+
+
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setContentText("Planes Exported!");
         alert.setHeaderText("Success!");
         alert.showAndWait();
-
     }
+
 }

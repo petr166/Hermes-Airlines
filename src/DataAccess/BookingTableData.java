@@ -1,12 +1,9 @@
 package DataAccess;
 
 import Application.DataTypes.BookingTable;
-import Application.DataTypes.FlightTable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -17,24 +14,16 @@ import java.sql.Statement;
 public class BookingTableData {
 
     //fields
-    private static Connection connection;
-    private static String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/hermes_airline?autoReconnect=true&useSSL=false";
-    private static String user = "root";
-    private static String password = DataConnection.password;
     private static Statement statement;
     private static ObservableList<BookingTable> bookingTableItems;
 
 
-    //
+    //get booking table items
     public static ObservableList<BookingTable> getBookingTableItems() {
         bookingTableItems = FXCollections.observableArrayList();
 
-
         try{
-            Class.forName(JDBC_DRIVER);
-            connection = DriverManager.getConnection(DATABASE_URL,user,password);
-            statement = connection.createStatement();
+            statement = DataConnection.getConnection().createStatement();
             ResultSet rs = statement.executeQuery("SELECT departure_date, departure_city, arrival_city, first_name, last_name, booking_id " +
                     "FROM booking b JOIN flight f " +
                     "ON b.flight_id = f.flight_id " +
@@ -53,6 +42,7 @@ public class BookingTableData {
                     b.setRoute(rs.getString(2) + " -> " + rs.getString(3));
                     b.setCustomer(rs.getString(4) + " " + rs.getString(5));
                     b.setBooking_id(rs.getInt(6));
+
                     bookingTableItems.add(b);
                 }
         }
@@ -61,9 +51,7 @@ public class BookingTableData {
             e.printStackTrace();
         }
 
-
         return  bookingTableItems;
     }
-
 
 }

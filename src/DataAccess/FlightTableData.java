@@ -4,34 +4,26 @@ import Application.DataTypes.FlightTable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
 /**
  * Created by Administrator on 5/24/2016.
  */
+
 public class FlightTableData {
 
     //fields
-    private static Connection connection;
-    private static String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/hermes_airline?autoReconnect=true&useSSL=false";
-    private static String user = "root";
-    private static String password = DataConnection.password;
     private static Statement statement;
     private static ObservableList<FlightTable> flightTableItems;
 
-    //
+
+    //get flight table items
     public static ObservableList<FlightTable> getFlightTableItems(){
         flightTableItems = FXCollections.observableArrayList();
 
-
         try{
-            Class.forName(JDBC_DRIVER);
-            connection = DriverManager.getConnection(DATABASE_URL,user,password);
-            statement = connection.createStatement();
+            statement = DataConnection.getConnection().createStatement();
             ResultSet rs = statement.executeQuery("SELECT departure_date, departure_city, arrival_city, flight_id, price, first_class_left, coach_left, economy_left " +
                     "FROM flight f JOIN  schedule s " +
                     "ON f.schedule_id = s.schedule_id " +

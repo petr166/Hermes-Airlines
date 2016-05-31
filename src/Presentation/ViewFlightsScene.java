@@ -39,27 +39,35 @@ public class ViewFlightsScene {
         //initialize columns
         flight_idColumn = new TableColumn<>("ID");
         flight_idColumn.setCellValueFactory(cellData -> cellData.getValue().flight_idProperty().asObject());
+        flight_idColumn.setMinWidth(70);
 
         departure_dateColumn = new TableColumn<>("Departure date");
         departure_dateColumn.setCellValueFactory(cellData -> cellData.getValue().departure_dateProperty());
+        departure_dateColumn.setMinWidth(140);
 
         departure_cityColumn = new TableColumn<>("Departure city");
         departure_cityColumn.setCellValueFactory(cellData -> cellData.getValue().departure_cityProperty());
+        departure_cityColumn.setMinWidth(140);
 
         arrival_cityColumn = new TableColumn<>("Arrival city");
         arrival_cityColumn.setCellValueFactory(cellData -> cellData.getValue().arrival_cityProperty());
+        arrival_cityColumn.setMinWidth(140);
 
         priceColumn = new TableColumn<>("Basic price");
         priceColumn.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
+        priceColumn.setMinWidth(140);
 
         economyColumn = new TableColumn<>("Eco seat");
         economyColumn.setCellValueFactory(cellData -> cellData.getValue().economyLeftProperty().asObject());
+        economyColumn.setMinWidth(140);
 
         coachColumn = new TableColumn<>("Coach seat");
         coachColumn.setCellValueFactory(cellData -> cellData.getValue().coachLeftProperty().asObject());
+        coachColumn.setMinWidth(140);
 
         first_classColumn = new TableColumn<>("First seat");
         first_classColumn.setCellValueFactory(cellData -> cellData.getValue().first_classLeftProperty().asObject());
+        first_classColumn.setMinWidth(140);
 
         table.getColumns().addAll(flight_idColumn,departure_dateColumn,departure_cityColumn,arrival_cityColumn,priceColumn,economyColumn,coachColumn,first_classColumn);
 
@@ -73,13 +81,13 @@ public class ViewFlightsScene {
         backB = new Button("Back");
 
         //add butt
-        addB = new Button("Add");
+        addB = new Button("Add...");
 
         //edit butt
-        editB = new Button("Edit");
+        editB = new Button("Edit...");
 
         //exportFlightsB
-        exportFlightsB = new Button("Export Flights");
+        exportFlightsB = new Button("Export");
 
         //button layout
         buttonLayout = new HBox(20);
@@ -93,6 +101,7 @@ public class ViewFlightsScene {
 
         //scene
         scene = new Scene(layout, 1200, 700);
+        scene.getStylesheets().add("/Presentation/style.css");
 
         System.out.println("flights scene initialized");
     }

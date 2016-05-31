@@ -8,7 +8,7 @@ public class UserPass {
 
     //fields
     private static String userName = "root";
-    private static String password = "asterix1234";
+    private static String password = "123456";
 
 
     //getters

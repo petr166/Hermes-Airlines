@@ -69,16 +69,16 @@ public class ViewPlaneScene {
         table.getColumns().addAll(plane_idColumn,plane_nameColumn,first_classColumn,coachColumn,economyColumn);
 
         //add
-        addButton = new Button("Add");
+        addButton = new Button("Add..");
 
         //back
         backButton = new Button("Back");
 
         //edit
-        editButton = new Button("Edit");
+        editButton = new Button("Edit..");
 
         //export
-        exportPlaneB = new Button("Export Planes");
+        exportPlaneB = new Button("Export");
 
         //buttons layout
         buttonsVbox = new VBox();

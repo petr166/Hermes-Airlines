@@ -160,8 +160,8 @@ public class ViewBookingScene {
 
         //buttons
         backButton=new Button("Back");
-        add_bookingButton=new Button("Add");
-        editButton=new Button("Edit");
+        add_bookingButton=new Button("Add..");
+        editButton=new Button("Edit..");
         cancelButton=new Button("Remove");
 
         // layout for buttons

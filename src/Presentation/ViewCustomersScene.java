@@ -73,10 +73,10 @@ public class ViewCustomersScene {
             backB = new Button("Back");
 
             //add butt
-            addB = new Button("Add");
+            addB = new Button("Add..");
 
             //edit butt
-            editB = new Button("Edit");
+            editB = new Button("Edit..");
 
             //button layout
             buttonLayout = new HBox(20);

@@ -330,7 +330,10 @@ public class BookingEditSceneControl {
             departure_datePicker.setValue(LocalDate.parse(flightDates.get(0)));
             departure_datePicker.setDayCellFactory(dayCellFactory);
         }
-        catch (Exception e) {}
+        catch (Exception e) {
+            departure_datePicker.setValue(null);
+            priceLabelObs.setText("");
+        }
     }
 
 

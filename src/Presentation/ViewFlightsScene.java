@@ -96,7 +96,7 @@ public class ViewFlightsScene {
         buttonLayout = new HBox(20);
         buttonLayout.setAlignment(Pos.CENTER);
         buttonLayout.relocate(740,642);
-        buttonLayout.getChildren().addAll(backB,addB,editB,exportFlightsB);
+        buttonLayout.getChildren().addAll(addB,editB,exportFlightsB,backB);
 
         //layout setup
         layout = new Pane();

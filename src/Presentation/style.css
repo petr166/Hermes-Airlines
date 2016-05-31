@@ -24,8 +24,8 @@
 }
 
 #quote {
-    -fx-font-size: 22pt;
-    -fx-font-family: "MKX Title";
+    -fx-font-size: 24pt;
+    -fx-font-family: "Rage Italic";
     -fx-text-fill: #1d1d1d;
 }
 .combo-box{
@@ -119,7 +119,7 @@
 
 .button:disabled, .button:default:disabled {
     -fx-opacity: 0.4;
-    -fx-background-color: #ccccc;
+    -fx-background-color: #cccccc;
     -fx-text-fill: black;
 }
 

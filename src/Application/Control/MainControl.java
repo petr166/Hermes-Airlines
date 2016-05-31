@@ -27,6 +27,7 @@ public class MainControl {
 
         //set scene
         window.setScene(MenuScene.getScene());
+        window.setTitle("Hermes Airlines™");
         window.centerOnScreen();
 
     }
@@ -61,6 +62,7 @@ public class MainControl {
 
         //set scene
         window.setScene(ViewBookingScene.getScene());
+        window.setTitle("Hermes Airlines™  -  Bookings");
     }
 
 
@@ -74,6 +76,7 @@ public class MainControl {
 
         //set scene
         window.setScene(ViewCustomersScene.getScene());
+        window.setTitle("Hermes Airlines™  -  Customers");
     }
 
 
@@ -87,6 +90,7 @@ public class MainControl {
 
         //set scene
         window.setScene(ViewFlightsScene.getScene());
+        window.setTitle("Hermes Airlines™  -  Flights");
     }
 
 
@@ -100,6 +104,7 @@ public class MainControl {
 
         //set scene
         window.setScene(ViewPlaneScene.getScene());
+        window.setTitle("Hermes Airlines™  -  Planes");
     }
 
 
@@ -113,6 +118,7 @@ public class MainControl {
         PlaneEditSceneControl.setPlane(plane);
 
         PlaneEditScene.getDialogStage().initOwner(window);
+        PlaneEditScene.getDialogStage().setTitle("Plane menu");
         PlaneEditScene.getDialogStage().showAndWait();
 
         return PlaneEditSceneControl.isOkPressed();
@@ -129,6 +135,7 @@ public class MainControl {
         CustomerEditSceneControl.setCustomer(customer);
 
         CustomerEditScene.getDialogStage().initOwner(window);
+        CustomerEditScene.getDialogStage().setTitle("Customer menu");
         CustomerEditScene.getDialogStage().showAndWait();
 
         return CustomerEditSceneControl.isOkPressed();
@@ -145,6 +152,7 @@ public class MainControl {
         FlightEditSceneControl.setFlight(flightTable,flight);
 
         FlightsEditScene.getDialogStage().initOwner(window);
+        FlightsEditScene.getDialogStage().setTitle("Flight menu");
         FlightsEditScene.getDialogStage().showAndWait();
 
         return FlightEditSceneControl.isOkPressed();
@@ -161,6 +169,7 @@ public class MainControl {
         BookingEditSceneControl.setBooking(bookingTable, booking);
 
         BookingEditScene.getDialogStage().initOwner(window);
+        BookingEditScene.getDialogStage().setTitle("Booking menu");
         BookingEditScene.getDialogStage().showAndWait();
 
         return BookingEditSceneControl.isOkPressed();

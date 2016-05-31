@@ -79,7 +79,7 @@ public class ViewCustomersScene {
             buttonLayout = new HBox(20);
             buttonLayout.setAlignment(Pos.CENTER);
             buttonLayout.relocate(862,642);
-            buttonLayout.getChildren().addAll(backB,addB,editB);
+            buttonLayout.getChildren().addAll(addB,editB,backB);
 
             //layout setup
             layout = new Pane();

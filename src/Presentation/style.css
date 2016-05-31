@@ -21,8 +21,8 @@
 }
 
 #quote {
-    -fx-font-size: 24pt;
-    -fx-font-family: "Rage Italic";
+    -fx-font-size: 22pt;
+    -fx-font-family: "MKX Title";
     -fx-text-fill: #1d1d1d;
 }
 
@@ -31,7 +31,7 @@
     -fx-control-inner-background:whitesmoke;
     -fx-background-color: whitesmoke;
     -fx-table-cell-border-color: transparent;
-    -fx-table-header-border-color: #008287;
+    -fx-table-header-border-color: transparent;
     -fx-padding: 5;
 }
 
@@ -43,8 +43,11 @@
     -fx-size: 35;
     -fx-border-width: 0 0 1 0;
     -fx-background-color: papayawhip;
-    -fx-border-color: #008287;
-    -fx-border-insets: 0 10 1 0;
+    -fx-border-color:
+            transparent
+            transparent
+            derive(-fx-base, 80%)
+            transparent;    -fx-border-insets: 0 10 1 0;
 }
 
 .table-view .column-header .label {

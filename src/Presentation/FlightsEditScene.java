@@ -96,6 +96,7 @@ public class FlightsEditScene {
 
         //stage setup
         scene = new Scene(layout,500,600);
+        scene.getStylesheets().addAll("/Presentation/style.css");
 
         dialogStage = new Stage();
         dialogStage.getIcons().add(new javafx.scene.image.Image("/Presentation/icon.png"));

@@ -128,6 +128,7 @@ public class BookingEditScene {
 
         //Scene
         scene = new Scene(layout,500,600);
+        scene.getStylesheets().addAll("/Presentation/style.css");
 
         //Stage
         dialogStage = new Stage();

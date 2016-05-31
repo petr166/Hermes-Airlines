@@ -7,6 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
 
 /**
  * Created by Petru on 18-May-16.
@@ -27,33 +29,42 @@ public class MenuScene {
     public static void initialize() {
 
         //quoteLabel
-        quoteLabel = new Label("quote inserted");
-        quoteLabel.relocate(105,430);
+        quoteLabel = new Label("\"The reason birds can fly and we can't is simply because\n " +
+                "\t\t\tthey have perfect faith, for to have faith is to have wings..\"");
+        quoteLabel.setId("quote");
+        quoteLabel.relocate(50,520);
 
         //welcomeLabel
-        welcomeLabel = new Label("Welcome\n to\n Hermes Airlines");
+        welcomeLabel = new Label("      Welcome\n\t   to\n Hermes Airlines");
+        welcomeLabel.setId("welcome");
         welcomeLabel.setAlignment(Pos.CENTER);
-        welcomeLabel.relocate(750,210);
+        welcomeLabel.relocate(810,90);
 
         //img
-        img = new ImageView();
-        img.relocate(30,25);
+        img = new ImageView("/Presentation/img.png");
+        img.setFitHeight(380);
+        img.setFitWidth(680);
+        img.relocate(30,85);
 
         //bookingsB
         bookingsB = new Button("Bookings");
         bookingsB.setAlignment(Pos.CENTER);
+        bookingsB.setPrefWidth(145);
         bookingsB.setDefaultButton(true);
 
         //customersB
         customersB = new Button("Customers");
+        customersB.setPrefWidth(145);
         customersB.setAlignment(Pos.CENTER);
 
         //flightsB
         flightsB = new Button("Flights");
+        flightsB.setPrefWidth(145);
         flightsB.setAlignment(Pos.CENTER);
 
         //planesB
         planesB = new Button("Planes");
+        planesB.setPrefWidth(145);
         planesB.setAlignment(Pos.CENTER);
 
         //EXITB
@@ -63,7 +74,7 @@ public class MenuScene {
         //VBox
         vbox = new VBox(10);
         vbox.setAlignment(Pos.TOP_CENTER);
-        vbox.relocate(800,310);
+        vbox.relocate(930,350);
         vbox.getChildren().addAll(bookingsB,customersB,flightsB,planesB,exitB);
 
         //layout
@@ -72,6 +83,7 @@ public class MenuScene {
 
         //scene
         scene = new Scene(layout, 1200, 700);
+        scene.getStylesheets().add("Presentation/style.css");
 
         System.out.println("menu scene initialized");
     }

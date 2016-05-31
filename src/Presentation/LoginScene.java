@@ -30,13 +30,13 @@ public class LoginScene {
 
         //loginLabel
         loginLabel = new Label("Log in");
-        loginLabel.setPadding((new Insets(0, 0, 20, 0)));
-        loginLabel.setStyle("-fx-font-size: 22pt");
+        loginLabel.setPadding((new Insets(0, 0, 30, 0)));
+        loginLabel.setStyle("-fx-font-size: 24pt");
 
 
         //hermesLabel
         hermesLabel=new Label("Hermes Airlines");
-        hermesLabel.setStyle("-fx-font-size : 28pt");
+        hermesLabel.setId("welcome");
 
         //usernameField
         usernameField=new TextField();
@@ -52,10 +52,10 @@ public class LoginScene {
 
         //buttonField
         loginButton=new Button("Login");
-        loginButton.setMaxWidth(100);
+        loginButton.setMaxWidth(120);
 
         //layout
-        loginLayout = new VBox(8);
+        loginLayout = new VBox(10);
         loginLayout.setAlignment(Pos.CENTER);
         loginLayout.getChildren().addAll(hermesLabel,loginLabel,usernameField,passwordField,loginButton);
 

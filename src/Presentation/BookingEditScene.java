@@ -92,7 +92,8 @@ public class BookingEditScene {
 
         //route
         routeBox = new ComboBox<>();
-        routeBox.setMinWidth(245);
+        routeBox.setMaxWidth(245);
+        routeBox.setStyle("-fx-font-size: 11pt");
 
         //departure date
         departure_datePicker = new DatePicker();

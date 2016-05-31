@@ -286,6 +286,8 @@ public class BookingEditSceneControl {
     public static void setDatePicker() {
         ArrayList<String> flightDates = new ArrayList<>();
 
+        if(!routeBox.getSelectionModel().isEmpty())
+        try {
         for (FlightTable f : FlightTableData.getFlightTableItems()) {
             if(routeBox.getValue().equalsIgnoreCase(f.getDeparture_city() + " -> " + f.getArrival_city()) &&
                     LocalDate.parse(f.getDeparture_date()).isAfter(LocalDate.now()) &&
@@ -293,32 +295,42 @@ public class BookingEditSceneControl {
                 flightDates.add(f.getDeparture_date());
         }
 
-        final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
-            @Override
-            public DateCell call(final DatePicker datePicker) {
-                return new DateCell() {
+        if (flightDates.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.initOwner(MainControl.getWindow());
+            alert.setHeaderText("No flights available");
+            alert.setContentText("There are no flights available on this route");
+            alert.showAndWait();
+        }
 
-                    @Override
-                    public void updateItem(LocalDate item, boolean empty) {
-                        super.updateItem(item, empty);
-                        setDisable(true);
-                        setStyle("-fx-background-color: #ffc0cb;");
+            final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
+                @Override
+                public DateCell call(final DatePicker datePicker) {
+                    return new DateCell() {
 
-                        for(int i = 0; i < flightDates.size(); i++)
-                            if (item.isEqual(LocalDate.parse(flightDates.get(i)))) {
-                                setDisable(false);
-                                setStyle("-fx-background-color: limegreen");
-                            }
+                        @Override
+                        public void updateItem(LocalDate item, boolean empty) {
+                            super.updateItem(item, empty);
+                            setDisable(true);
+                            setStyle("-fx-background-color: #ffc0cb;");
 
-                        if(item.isEqual(departure_datePicker.getValue()))
-                            setStyle("-fx-border-color: white");
-                    }
-                };
-            }
-        };
+                            for (int i = 0; i < flightDates.size(); i++)
+                                if (item.isEqual(LocalDate.parse(flightDates.get(i)))) {
+                                    setDisable(false);
+                                    setStyle("-fx-background-color: limegreen");
+                                }
 
-        departure_datePicker.setValue(LocalDate.parse(flightDates.get(0)));
-        departure_datePicker.setDayCellFactory(dayCellFactory);
+                            if (item.isEqual(departure_datePicker.getValue()))
+                                setStyle("-fx-border-color: white");
+                        }
+                    };
+                }
+            };
+
+            departure_datePicker.setValue(LocalDate.parse(flightDates.get(0)));
+            departure_datePicker.setDayCellFactory(dayCellFactory);
+        }
+        catch (Exception e) {}
     }
 
 

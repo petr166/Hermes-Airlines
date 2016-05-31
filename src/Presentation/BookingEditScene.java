@@ -84,20 +84,19 @@ public class BookingEditScene {
 
         //customer box
         customerBox = new ComboBox<>();
-        customerBox.setMinWidth(245);
+        customerBox.setMinWidth(270);
 
         //add customer button
         addCustomer = new Button("New customer");
-        addCustomer.setMinWidth(245);
+        addCustomer.setMinWidth(270);
 
         //route
         routeBox = new ComboBox<>();
-        routeBox.setMaxWidth(245);
-        routeBox.setStyle("-fx-font-size: 11pt");
+        routeBox.setMaxWidth(270);
 
         //departure date
         departure_datePicker = new DatePicker();
-        departure_datePicker.setMinWidth(245);
+        departure_datePicker.setMinWidth(270);
 
         //fare_class radio buttons
         firstC = new RadioButton("First class");

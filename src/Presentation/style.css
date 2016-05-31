@@ -28,10 +28,13 @@
     -fx-font-family: "Rage Italic";
     -fx-text-fill: #1d1d1d;
 }
+
 .combo-box{
 
-    -fx-font-size: 13pt;
+    -fx-font-size: 11pt;
+    -fx-min-height: 35;
     -fx-border-color: #008287;
+
 
     -fx-font-family: "Segoe UI"
 

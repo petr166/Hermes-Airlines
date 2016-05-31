@@ -1,11 +1,13 @@
 package Presentation;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 /**
  * Created by Administrator on 5/18/2016.
@@ -16,7 +18,8 @@ public class LoginScene {
 
     //fields
     private static Scene scene;
-    private static Pane layout;
+  //  private static Pane layout;
+    private static VBox loginLayout;
     private static Label loginLabel;
     private static Label hermesLabel;
     private static TextField usernameField;
@@ -27,35 +30,47 @@ public class LoginScene {
     //initialize method
     public static  void initialize(){
         //loginLabel
-        loginLabel = new Label("Login");
-        loginLabel.relocate(182,176);
+        loginLabel = new Label("Log in");
+        //loginLabel.relocate(182,176);
+        loginLabel.setPadding((new Insets(0, 0, 20, 0)));
+        loginLabel.setStyle("-fx-font-size: 22pt");
+
 
         //hermesLabel
         hermesLabel=new Label("Hermes Airlines");
-        hermesLabel.relocate(182,140);
+        hermesLabel.setStyle("-fx-font-size : 28pt");
+       // hermesLabel.setAlignment(Pos.CENTER);
+       // hermesLabel.relocate(182,140);
 
         //usernameField
         usernameField=new TextField();
-        usernameField.setPromptText("username");
-        usernameField.relocate(125,238);
+        usernameField.setPromptText("User ID");
+      //  usernameField.relocate(125,238);
+        usernameField.setMaxWidth(220);
         usernameField.setAlignment(Pos.CENTER);
 
         //passwordField
         passwordField=new PasswordField();
         passwordField.setAlignment(Pos.CENTER);
-        passwordField.relocate(125,278);
-        passwordField.setPromptText("password");
+        //passwordField.relocate(125,278);
+        passwordField.setMaxWidth(220);
+        passwordField.setPromptText("Password");
 
         //buttonField
         loginButton=new Button("Login");
-        loginButton.relocate(174,332);
+       // loginButton.relocate(174,332);
+        loginButton.setMaxWidth(100);
 
         //layout
-        layout=new Pane();
-        layout.getChildren().addAll(loginLabel,hermesLabel,usernameField,passwordField,loginButton);
+      //  layout=new Pane();
+        //layout.getChildren().addAll(loginLabel,hermesLabel,usernameField,passwordField,loginButton);
+        loginLayout = new VBox(8);
+        loginLayout.setAlignment(Pos.CENTER);
+        loginLayout.getChildren().addAll(hermesLabel,loginLabel,usernameField,passwordField,loginButton);
 
         //scene
-        scene = new Scene(layout,400,500);
+        scene = new Scene(loginLayout,400,500);
+        scene.getStylesheets().add("Presentation/style.css");
 
 
         System.out.println("login screen initialized");
@@ -67,9 +82,7 @@ public class LoginScene {
         return scene;
     }
 
-    public static Pane getLayout() {
-        return layout;
-    }
+
 
     public static Label getLoginLabel() {
         return loginLabel;

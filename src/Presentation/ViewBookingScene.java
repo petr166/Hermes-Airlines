@@ -173,7 +173,7 @@ public class ViewBookingScene {
         //searchField
         searchField=new TextField();
         searchField.setPromptText("search");
-        searchField.relocate(32,650);
+        searchField.relocate(32,642);
         searchField.setMinWidth(540);
 
         //buttons
@@ -186,7 +186,7 @@ public class ViewBookingScene {
         // layout for buttons
         buttonLayout=new HBox();
         buttonLayout.getChildren().addAll(add_bookingButton,editButton,cancelButton,backButton);
-        buttonLayout.relocate(720,650);
+        buttonLayout.relocate(720,642);
         buttonLayout.setSpacing(20);
 
         //LAYOUT

@@ -81,6 +81,7 @@ public class PlaneEditSceneControl {
     //method to verify user input
     public static boolean isInputValid(){
         String error = "";
+
         if(plane_nameT == null || plane_nameT.getText().isEmpty())
             error += "Invalid plane name!\n";
 

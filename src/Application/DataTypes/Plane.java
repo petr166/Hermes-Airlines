@@ -18,11 +18,11 @@ public class Plane {
 
     //constructors
     public Plane() {
-        this.plane_id = new SimpleIntegerProperty();
-        this.first_class = new SimpleIntegerProperty();
-        this.coach = new SimpleIntegerProperty();
-        this.economy = new SimpleIntegerProperty();
-        this.plane_name = new SimpleStringProperty();
+        this.plane_id = new SimpleIntegerProperty(1);
+        this.first_class = new SimpleIntegerProperty(0);
+        this.coach = new SimpleIntegerProperty(0);
+        this.economy = new SimpleIntegerProperty(0);
+        this.plane_name = new SimpleStringProperty("");
 
     }
 

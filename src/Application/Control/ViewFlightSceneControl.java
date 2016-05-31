@@ -11,6 +11,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 
+import java.time.LocalDate;
+
 
 /**
  * Created by Administrator on 5/23/2016.
@@ -52,7 +54,7 @@ public class ViewFlightSceneControl {
 
     //add button action
     public static void handle_addB() {
-        FlightTable flightTable = new FlightTable("2016-07-15");
+        FlightTable flightTable = new FlightTable(LocalDate.now().toString());
         Flight flight = new Flight();
 
         boolean okPressed = MainControl.showFlightEditScene(flightTable,flight);

@@ -17,10 +17,10 @@ public class BookingTable {
 
     //constructors
     public BookingTable() {
-        booking_id = new SimpleIntegerProperty();
-        departure_date = new SimpleStringProperty();
-        route = new SimpleStringProperty();
-        customer = new SimpleStringProperty();
+        booking_id = new SimpleIntegerProperty(0);
+        departure_date = new SimpleStringProperty("");
+        route = new SimpleStringProperty("");
+        customer = new SimpleStringProperty("");
     }
 
     public BookingTable(int booking_id, String departure_date, String route, String customer) {

@@ -18,10 +18,10 @@ public class Flight {
 
     //constructors
     public Flight() {
-        flight_id = new SimpleIntegerProperty();
+        flight_id = new SimpleIntegerProperty(0);
         plane_id = new SimpleIntegerProperty(1);
-        schedule_id = new SimpleIntegerProperty();
-        airline_id = new SimpleIntegerProperty();
+        schedule_id = new SimpleIntegerProperty(0);
+        airline_id = new SimpleIntegerProperty(0);
         first_class_left = new SimpleIntegerProperty(0);
         coach_left = new SimpleIntegerProperty(0);
         economy_left = new SimpleIntegerProperty(0);
@@ -141,8 +141,16 @@ public class Flight {
     //toString method
     @Override
     public String toString() {
-        return String.format("%-2s", getPlane_id())+","+ String.format("%-3s", getFlight_id())+","+ String.format("%-3s",getAirline_id())+","+String.format("%-3s",getSchedule_id())+","+String.format("%-3s",getCoach_left())+","+String.format("%-3s",getEconomy_left())+","+String.format("%-3s",getFirst_class_left())+","+String.format("%7s",getPrice()+"\n");
+        return "Flight{" +
+                "flight_id=" + flight_id +
+                ", plane_id=" + plane_id +
+                ", airline_id=" + airline_id +
+                ", schedule_id=" + schedule_id +
+                ", first_class_left=" + first_class_left +
+                ", coach_left=" + coach_left +
+                ", economy_left=" + economy_left +
+                ", price=" + price +
+                '}';
     }
-
 
 }

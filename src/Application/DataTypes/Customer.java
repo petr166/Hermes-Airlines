@@ -18,11 +18,11 @@ public class Customer {
 
     //constructors
     public Customer() {
-        customer_id = new SimpleIntegerProperty(1);
-        age = new SimpleIntegerProperty(1);
+        customer_id = new SimpleIntegerProperty(0);
+        age = new SimpleIntegerProperty(0);
         first_name = new SimpleStringProperty("");
         last_name = new SimpleStringProperty("");
-        phone_nr = new SimpleStringProperty("123");
+        phone_nr = new SimpleStringProperty("");
         passport_number = new SimpleStringProperty("");
 
     }

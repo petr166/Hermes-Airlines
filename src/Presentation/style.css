@@ -8,6 +8,7 @@
     -fx-text-fill: #1d1d1d;
     -fx-opacity: 1;
 }
+
 .label-simple{
     -fx-font-family:"Seagoe UI";
 }
@@ -39,12 +40,14 @@
     -fx-font-family: "Segoe UI"
 
 }
+
 .radio-button{
     -fx-font-size: 11pt;
     -fx-font-family: "Segoe UI";
     -fx-border-width: 5%
 
 }
+
 .table-view {
     -fx-base:  whitesmoke;
     -fx-control-inner-background:whitesmoke;
@@ -102,11 +105,15 @@
     -fx-text-fill: black;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
+
 #exit-button{
-    -fx-max-width: 80;
+    -fx-min-width: 130;
+    -fx-min-height: 55;
 }
+
 .menu-button{
-    -fx-max-width: 145;
+    -fx-min-width: 195;
+    -fx-min-height: 55;
 }
 
 .button:hover {

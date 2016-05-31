@@ -9,6 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 /**
@@ -37,6 +38,7 @@ public class ViewBookingSceneControl {
     private static Button editButton;
 
     private static ObservableList<BookingTable> bookings, tableItems;
+    private static double refund;
 
 
     //initialize method
@@ -160,49 +162,98 @@ public class ViewBookingSceneControl {
 
 
     //remove button action
-    public static void handle_cancelButton(){
+    public static void handle_cancelButton() {
         BookingTable bookingTable = table.getSelectionModel().getSelectedItem();
         Booking booking = new Booking();
 
-        if(bookingTable != null) {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.initOwner(MainControl.getWindow());
-            alert.setHeaderText("Remove booking");
-            alert.setContentText("Are you sure you want to remove " + bookingTable.getCustomer() + "'s booking?");
+        if (bookingTable != null) {
+            refund = 0.0;
+            for (Booking b : BookingData.getBookings())
+                if (bookingTable.getBooking_id() == b.getBooking_id()) {
+                    booking = b;
+                    break;
+                }
 
-            Optional<ButtonType> result = alert.showAndWait();
-
-            if (result.get() == ButtonType.OK) { //confirmed
-                for(Booking b : BookingData.getBookings())
-                    if(bookingTable.getBooking_id() == b.getBooking_id())
-                        booking = b;
-
-                BookingData.deleteBooking(booking); //delete booking from database
-
-                table.setItems(BookingTableData.getBookingTableItems()); //set table items
-                bookings = table.getItems();
-
-                Alert alert1 = new Alert(Alert.AlertType.CONFIRMATION);
-                alert1.initOwner(MainControl.getWindow());
-                alert1.setContentText("Booking removed!");
-                alert1.showAndWait();
-
-                System.out.println("a booking removed");
+            //no booking can be canceled with less than 2 days before flight
+            if (LocalDate.parse(bookingTable.getDeparture_date()).isBefore(LocalDate.now().plusDays(2))) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.initOwner(MainControl.getWindow());
+                alert.setHeaderText("Cancel not possible");
+                alert.setContentText("It is impossible to cancel a booking with less than 2 days before flight");
+                alert.showAndWait();
             }
-            else {
-                alert.close();
+
+            else { //set the refund amount
+                for (Flight f : FlightData.getFlight())
+                    if (f.getFlight_id() == booking.getFlight_id()) {
+                        if (booking.getFare_class().equalsIgnoreCase("First class"))
+                                refund = f.getPrice() + f.getPrice() * 1/2;
+                        else if (booking.getFare_class().equalsIgnoreCase("Coach"))
+                            refund = f.getPrice() + f.getPrice() * 1/4;
+                        else if (LocalDate.parse(bookingTable.getDeparture_date()).isBefore(LocalDate.now().plusWeeks(2)))
+                            refund = 0;
+                        else
+                            refund = f.getPrice();
+
+                        break;
+                    }
+
+                cancelBooking(bookingTable,booking);
             }
         }
 
         else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.initOwner(MainControl.getWindow());
-            alert.setHeaderText("Select booking!");
-            alert.setContentText("No booking selected!");
-            alert.showAndWait();
-        }
-
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.initOwner(MainControl.getWindow());
+                alert.setHeaderText("Select booking!");
+                alert.setContentText("No booking selected!");
+                alert.showAndWait();
+            }
     }
+
+
+    //method to cancel a booking
+    public static void cancelBooking(BookingTable bookingTable, Booking booking) {
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.initOwner(MainControl.getWindow());
+        alert.setHeaderText("Remove booking");
+        alert.setContentText("Are you sure you want to cancel " + bookingTable.getCustomer() + "'s booking?" +
+                "\nThe refund will be " + refund + " kr.");
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.get() == ButtonType.OK) { //confirmed
+
+            BookingData.deleteBooking(booking); //delete booking from database
+
+            table.setItems(BookingTableData.getBookingTableItems()); //set table items
+            bookings = table.getItems();
+
+            Alert alert1 = new Alert(Alert.AlertType.CONFIRMATION);
+            alert1.initOwner(MainControl.getWindow());
+            alert1.setContentText("Booking canceled!\n"
+                    + bookingTable.getCustomer() + " was refunded " + refund + " kr.");
+            alert1.showAndWait();
+
+            //set left seats
+            for (Flight f : FlightData.getFlight())
+                if (f.getFlight_id() == booking.getFlight_id()) {
+                    if (booking.getFare_class().equalsIgnoreCase("First class"))
+                        f.setFirst_class_left(f.getFirst_class_left() + 1);
+                    else if (booking.getFare_class().equalsIgnoreCase("Coach"))
+                        f.setCoach_left(f.getCoach_left() + 1);
+                    else
+                        f.setEconomy_left(f.getEconomy_left() + 1);
+                }
+
+            System.out.println("a booking removed");
+        }
+        else {
+            alert.close();
+        }
+    }
+
 
     //method to display the booking details
     public static void displayBookingInfo(BookingTable buk) {

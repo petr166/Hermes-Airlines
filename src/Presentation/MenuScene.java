@@ -75,7 +75,7 @@ public class MenuScene {
         //VBox
         vbox = new VBox(10);
         vbox.setAlignment(Pos.TOP_CENTER);
-        vbox.relocate(930,350);
+        vbox.relocate(940,320);
         vbox.getChildren().addAll(bookingsB,customersB,flightsB,planesB,exitB);
 
         //layout

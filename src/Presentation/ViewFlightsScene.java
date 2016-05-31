@@ -28,7 +28,7 @@ public class ViewFlightsScene {
     private static Button backB, addB, editB, exportFlightsB;
 
 
-    //initialize method
+    //initialization of objects
     public static void initialize() {
 
         //table

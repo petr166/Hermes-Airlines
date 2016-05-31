@@ -34,8 +34,8 @@ public class Plane {
         this.plane_name = new SimpleStringProperty(plane_name);
     }
 
-    //getters, setters
 
+    //getters, setters
     public int getPlane_id() {
         return plane_id.get();
     }
@@ -96,10 +96,17 @@ public class Plane {
         this.plane_name.set(plane_name);
     }
 
-    //toString method
 
+    //toString method
     @Override
     public String toString() {
-        return String.format("%-2s", getPlane_id())+","+String.format("%-15s", getPlane_name())+","+String.format("%-3s", getCoach())+","+String.format("%-3s", getEconomy())+","+String.format("%-3s", getFirst_class())+"\n";
+        return "Plane{" +
+                "plane_id=" + plane_id +
+                ", first_class=" + first_class +
+                ", coach=" + coach +
+                ", economy=" + economy +
+                ", plane_name=" + plane_name +
+                '}';
     }
+
 }

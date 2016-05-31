@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -14,6 +15,7 @@ import javafx.stage.Stage;
 /**
  * Created by Administrator on 5/22/2016.
  */
+
 public class CustomerEditScene {
 
     //fields
@@ -27,10 +29,11 @@ public class CustomerEditScene {
     private static BorderPane borderPane;
     private static HBox buttons;
 
-    //initialize method
+
+    //initialization of objects
     public static void initialize() {
 
-        //initializing labels
+        // labels
         title = new Label();
         fName = new Label();
         lName = new Label();
@@ -38,7 +41,7 @@ public class CustomerEditScene {
         phone_nr = new Label();
         passport_nr = new Label();
 
-        //initializing text boxes
+        // text boxes
         fNameT = new TextField();
         lNameT = new TextField();
         ageT = new TextField();
@@ -79,12 +82,15 @@ public class CustomerEditScene {
         borderPane.setTop(title);
         borderPane.setAlignment(title, Pos.CENTER);
 
-        //scene
-        dialogStage = new Stage();
+        //stage setup
         scene = new Scene(borderPane, 500, 600);
         scene.getStylesheets().addAll("/Presentation/style.css");
+
+        dialogStage = new Stage();
+        dialogStage.getIcons().add(new Image("/Presentation/icon.png"));
         dialogStage.setScene(scene);
-        System.out.println("Customer into initialized");
+
+        System.out.println("customer edit dialog initialized");
     }
 
     //GETTERS

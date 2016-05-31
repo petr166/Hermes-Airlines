@@ -44,14 +44,13 @@ public class ViewFlightSceneControl {
 
 
         search = ViewFlightsScene.getSearch();
-        flights = table.getItems();
+        flights = table.getItems(); //set search arrayList items
         initializeSearch();
-
 
     }
 
 
-    //handle_addB
+    //add button action
     public static void handle_addB() {
         FlightTable flightTable = new FlightTable("2016-07-15");
         Flight flight = new Flight();
@@ -60,6 +59,8 @@ public class ViewFlightSceneControl {
 
         if(okPressed) {
             flight = FlightEditSceneControl.getFlight();
+
+            //getting the seat info from plane database
             for(Plane p: PlaneData.getPlanes()){
                 if(p.getPlane_id()==flight.getPlane_id()){
                     flight.setFirst_class_left(p.getFirst_class());
@@ -68,38 +69,46 @@ public class ViewFlightSceneControl {
                 }
             }
 
-            FlightData.insertFlight(flight);
+            FlightData.insertFlight(flight); //add flight to database
 
-            table.setItems(FlightTableData.getFlightTableItems());
+            table.setItems(FlightTableData.getFlightTableItems()); //set the table items
             flights = table.getItems();
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.initOwner(MainControl.getWindow());
             alert.setContentText("Flight added!");
             alert.showAndWait();
+
+            System.out.println("new flight added");
         }
     }
 
 
+
+    //edit button action
     public static void handle_editB(){
         FlightTable flightTable = table.getSelectionModel().getSelectedItem();
         Flight flight = new Flight();
 
         if(flightTable != null) {
             boolean okPressed = MainControl.showFlightEditScene(flightTable, flight);
+
             if (okPressed) {
                 flight = FlightEditSceneControl.getFlight();
+                FlightData.updateFlight(flight); //update flight in database
 
-                FlightData.updateFlight(flight);
-                table.setItems(FlightTableData.getFlightTableItems());
+                table.setItems(FlightTableData.getFlightTableItems()); //set the table items
                 flights = table.getItems();
 
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.initOwner(MainControl.getWindow());
                 alert.setContentText("Flight edited!");
                 alert.showAndWait();
+
+                System.out.println("a flight edited");
             }
         }
+
         else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.initOwner(MainControl.getWindow());

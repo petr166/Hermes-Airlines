@@ -11,7 +11,6 @@ public class Booking {
     //fields
     private IntegerProperty booking_id, customer_id, flight_id;
     private StringProperty fare_class;
-    private BooleanProperty reserved;
 
 
     //constructors
@@ -20,7 +19,6 @@ public class Booking {
         customer_id = new SimpleIntegerProperty();
         flight_id = new SimpleIntegerProperty();
         fare_class = new SimpleStringProperty();
-        reserved = new SimpleBooleanProperty();
     }
 
     public Booking(int booking_id, int customer_id, int flight_id, String fare_class, boolean reserverd) {
@@ -28,7 +26,6 @@ public class Booking {
         this.customer_id = new SimpleIntegerProperty(customer_id);
         this.flight_id = new SimpleIntegerProperty(flight_id);
         this.fare_class = new SimpleStringProperty(fare_class);
-        this.reserved = new SimpleBooleanProperty(reserverd);
     }
 
 
@@ -81,18 +78,6 @@ public class Booking {
         this.fare_class.set(fare_class);
     }
 
-    public boolean getReserved() {
-        return reserved.get();
-    }
-
-    public BooleanProperty reservedProperty() {
-        return reserved;
-    }
-
-    public void setReserved(boolean reserved) {
-        this.reserved.set(reserved);
-    }
-
 
     //toString method
     @Override
@@ -102,7 +87,7 @@ public class Booking {
                 ", customer_id=" + customer_id +
                 ", flight_id=" + flight_id +
                 ", fare_class=" + fare_class +
-                ", reserved=" + reserved +
+                ", reserved=" +
                 '}';
     }
 

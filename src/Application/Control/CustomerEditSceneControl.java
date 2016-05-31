@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 /**
  * Created by Administrator on 5/22/2016.
  */
+
 public class CustomerEditSceneControl {
 
     //fields
@@ -37,6 +38,8 @@ public class CustomerEditSceneControl {
 
     }
 
+
+    //setting customer for edit
     public static void setCustomer(Customer c){
         customer = c;
         fNameT.setText(customer.getFirst_name());
@@ -47,8 +50,9 @@ public class CustomerEditSceneControl {
 
     }
 
-    public static boolean isOkPressed(){ return okPressed; }
 
+
+    //ok button action
     public static void handle_okB(){
         if(isInputValid()){
             customer.setFirst_name(fNameT.getText());
@@ -56,12 +60,14 @@ public class CustomerEditSceneControl {
             customer.setPassport_number(passport_nrT.getText());
             customer.setPhone_nr(phone_nrT.getText());
             customer.setAge(Integer.parseInt(ageT.getText()));
+
             okPressed = true;
             CustomerEditScene.getDialogStage().close();
         }
-
     }
 
+
+    //cancel button action
     public static void handle_cancelB(){
         okPressed = false;
         CustomerEditScene.getDialogStage().close();
@@ -69,6 +75,7 @@ public class CustomerEditSceneControl {
     }
 
 
+    //method to verify the user input
     public static boolean isInputValid(){
         String error = "";
 
@@ -109,5 +116,7 @@ public class CustomerEditSceneControl {
 
     //getters
     public static Customer getCustomer(){ return customer; }
+
+    public static boolean isOkPressed(){ return okPressed; }
 
 }

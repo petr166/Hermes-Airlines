@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -14,6 +15,7 @@ import javafx.stage.Stage;
 /**
  * Created by Administrator on 5/21/2016.
  */
+
 public class PlaneEditScene {
 
     //fields
@@ -28,7 +30,8 @@ public class PlaneEditScene {
     private static BorderPane borderPane;
     private static HBox buttons;
 
-    //initialize method
+
+    //initialization of objects
     public static void initialize(){
 
         //initializing labels
@@ -56,14 +59,18 @@ public class PlaneEditScene {
         gridPane = new GridPane();
         borderPane = new BorderPane();
         gridPane.setAlignment(Pos.CENTER);
+
         vboxLabel = new VBox();
         vboxText = new VBox();
         buttons = new HBox();
+
         buttons.setSpacing(10);
         buttons.getChildren().addAll(okB,cancelB);
+
         gridPane.setHgap(10);
         vboxText.setSpacing(25);
         vboxLabel.setSpacing(34);
+
         vboxLabel.getChildren().addAll(plane_nameLabel,firstClassLabel,coachLabel,economyLabel);
         vboxText.getChildren().addAll(plane_nameT,firstClassT,coachT,economyT, buttons);
         gridPane.add(vboxLabel, 0, 0);
@@ -72,20 +79,19 @@ public class PlaneEditScene {
         borderPane.setTop(titleLabell);
         borderPane.setAlignment(titleLabell, Pos.CENTER);
 
-        //scene
+
+        //stage setup
         scene = new Scene(borderPane, 500, 600);
-        System.out.println("Edit plane initialized");
+
         dialogStage = new Stage();
+        dialogStage.getIcons().add(new Image("/Presentation/icon.png"));
         dialogStage.setScene(scene);
 
-
-
-
+        System.out.println("plane edit dialog initialized");
     }
 
+
     //getters
-
-
     public static Stage getDialogStage() {
         return dialogStage;
     }

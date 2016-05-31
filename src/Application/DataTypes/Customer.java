@@ -16,7 +16,6 @@ public class Customer {
     private StringProperty first_name, last_name, phone_nr, passport_number;
 
 
-
     //constructors
     public Customer() {
         customer_id = new SimpleIntegerProperty(1);

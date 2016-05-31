@@ -1,15 +1,9 @@
 package Presentation;
 
 import Application.Control.*;
-import Application.DataTypes.Booking;
-import Application.DataTypes.BookingTable;
-import Application.DataTypes.Customer;
 import DataAccess.DataConnection;
 import javafx.application.Application;
 import javafx.stage.Stage;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * MAIN CLASS - HERMES AIRLINES ---
@@ -26,17 +20,12 @@ public class Main extends Application{
     //start method
     public void start(Stage primaryStage)throws Exception {
 
-        /*ViewFlightsScene.initialize();
-        ViewFlightSceneControl.initialize();
-        FlightsEditScene.initialize();
-        FlightEditSceneControl.initialize();*/
-        //start app
+        //connect to database
         DataConnection.connect();
+
+        //show the login screen
         MainControl.showLoginScene();
 
-        /*MainControl.showBookingEditScene(new BookingTable(), new Booking());*/
-
     }
-
 
 }

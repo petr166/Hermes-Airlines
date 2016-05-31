@@ -60,7 +60,8 @@ public class ViewBookingScene {
     private static Button editButton;
     private static HBox buttonLayout;
 
-    //initialization method
+
+    //initialization of objects
     public static void initialize(){
 
         //table columns
@@ -157,14 +158,10 @@ public class ViewBookingScene {
         searchField.relocate(32,648);
         searchField.setMinWidth(540);
 
-        //back
-
+        //buttons
         backButton=new Button("Back");
-        //add booking
         add_bookingButton=new Button("Add");
-        //
         editButton=new Button("Edit");
-        //cancel
         cancelButton=new Button("Remove");
 
         // layout for buttons

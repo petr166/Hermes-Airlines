@@ -3,6 +3,7 @@ package Presentation;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -31,7 +32,6 @@ public class BookingEditScene {
     private static ComboBox<String> routeBox;
     private static DatePicker departure_datePicker;
 
-    //private static ComboBox<String> categoryBox;
     private static RadioButton firstC;
     private static RadioButton coachC;
     private static RadioButton economyC;
@@ -43,7 +43,8 @@ public class BookingEditScene {
     private static Button cancelButton;
     private static Label priceLabelObs;
 
-    //initialization of object
+
+    //initialization of objects
     public static void initialize(){
 
         //bookingLabel
@@ -88,23 +89,21 @@ public class BookingEditScene {
         departure_datePicker = new DatePicker();
 
 
-        //category box
-      //  categoryBox = new ComboBox<>();
-        //categoryBox.getItems().addAll("First Class", "Coach", "Economy");
-
+        //fare_class radio buttons
         firstC = new RadioButton("First class");
         coachC = new RadioButton("Coach");
         economyC = new RadioButton("Economy");
 
-        g =new ToggleGroup();
+        //toggle group
+        g = new ToggleGroup();
         firstC.setToggleGroup(g);
         coachC.setToggleGroup(g);
         economyC.setToggleGroup(g);
+
+        //toggle group layout
         toggleBox = new HBox();
         toggleBox.getChildren().addAll(firstC,coachC,economyC);
         toggleBox.setSpacing(10);
-
-
 
         //price label obs
         priceLabelObs = new Label("");
@@ -115,14 +114,15 @@ public class BookingEditScene {
         detailsLayout.setSpacing(29);
         detailsLayout.relocate(210,139);
 
-        //buttons
+        //cancel button
         cancelButton = new Button("Cancel");
         cancelButton.relocate(370,550);
 
+        //ok button
         okButton = new Button("OK");
         okButton.relocate(310,550);
 
-        //Pane
+        //layout
         layout = new Pane();
         layout.getChildren().addAll(bookingLabel,labelsLayout,detailsLayout,okButton,cancelButton);
 
@@ -131,12 +131,18 @@ public class BookingEditScene {
 
         //Stage
         dialogStage = new Stage();
+        dialogStage.getIcons().add(new Image("/Presentation/icon.png"));
         dialogStage.setScene(scene);
 
+        System.out.println("booking edit dialog initialized");
     }
 
 
     //getters
+    public static Stage getDialogStage() {
+        return dialogStage;
+    }
+
     public static Scene getScene() {
         return scene;
     }
@@ -193,7 +199,25 @@ public class BookingEditScene {
         return departure_datePicker;
     }
 
+    public static RadioButton getFirstC() {
+        return firstC;
+    }
 
+    public static RadioButton getCoachC() {
+        return coachC;
+    }
+
+    public static RadioButton getEconomyC() {
+        return economyC;
+    }
+
+    public static ToggleGroup getG() {
+        return g;
+    }
+
+    public static HBox getToggleBox() {
+        return toggleBox;
+    }
 
     public static Button getAddCustomer() {
         return addCustomer;
@@ -211,24 +235,4 @@ public class BookingEditScene {
         return priceLabelObs;
     }
 
-    public static Stage getDialogStage() {
-        return dialogStage;
-    }
-
-
-    public static ToggleGroup getG() {
-        return g;
-    }
-
-    public static RadioButton getFirstC() {
-        return firstC;
-    }
-
-    public static RadioButton getCoachC() {
-        return coachC;
-    }
-
-    public static RadioButton getEconomyC() {
-        return economyC;
-    }
 }

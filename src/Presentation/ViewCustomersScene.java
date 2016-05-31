@@ -29,7 +29,7 @@ public class ViewCustomersScene {
         private static Button backB, addB, editB;
 
 
-        //initialize method
+        //initialization of objects
         public static void initialize() {
 
             //table columns
@@ -58,7 +58,7 @@ public class ViewCustomersScene {
             passportColumn.setMinWidth(200);
 
             //table
-            table = new TableView<Customer>();
+            table = new TableView<>();
             table.setMinSize(1116,591);
             table.relocate(42,32);
             table.getColumns().addAll(idColumn, fnameColumn, lnameColumn, ageColumn, phoneColumn, passportColumn);
@@ -91,13 +91,13 @@ public class ViewCustomersScene {
             //scene
             scene = new Scene(layout, 1200, 700);
             scene.getStylesheets().add("/Presentation/style.css");
-            System.out.println("customers who are flying scene initialized");
+
+            System.out.println("customers scene initialized");
         }
 
 
 
         //getters
-
     public static TableColumn<Customer, String> getFnameColumn() {
         return fnameColumn;
     }

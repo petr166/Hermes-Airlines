@@ -148,6 +148,7 @@ public class FlightTable {
         this.price.set(price);
     }
 
+
     //toString method
     @Override
     public String toString() {

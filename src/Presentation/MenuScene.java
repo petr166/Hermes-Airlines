@@ -23,7 +23,7 @@ public class MenuScene {
     private static Button bookingsB, customersB, flightsB, planesB, exitB;
 
 
-    //initialize method
+    //initialization of objects
     public static void initialize() {
 
         //quoteLabel

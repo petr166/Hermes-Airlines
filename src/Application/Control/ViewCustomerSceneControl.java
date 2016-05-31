@@ -2,16 +2,12 @@ package Application.Control;
 
 import Application.DataTypes.Customer;
 import DataAccess.CustomerData;
-import Presentation.CustomerScene;
 import Presentation.ViewCustomersScene;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
-import javafx.scene.layout.HBox;
-
-import javax.swing.text.View;
 
 /**
  * Created by Administrator on 5/22/2016.
@@ -29,6 +25,7 @@ public class ViewCustomerSceneControl {
 
     //initialize fields
     public static void initialize(){
+        //table
         table = ViewCustomersScene.getTable();
         table.setItems(CustomerData.getCustomers());
 
@@ -47,38 +44,47 @@ public class ViewCustomerSceneControl {
 
         // search field
         search = ViewCustomersScene.getSearch();
-        customers = table.getItems();
+        customers = table.getItems(); //set search arrayList items
         initializeSearch();
     }
 
 
-    //handle_addB
+    //add button action
     public static void handle_addB() {
         Customer customer = new Customer();
         boolean okPressed = MainControl.showCustomerEditScene(customer);
+
         if(okPressed) {
-            CustomerData.insertCustomer(customer);
+            customer = CustomerEditSceneControl.getCustomer();
+            CustomerData.insertCustomer(customer); //add customer to database
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.initOwner(MainControl.getWindow());
             alert.setContentText("Customer added!");
             alert.showAndWait();
+
+            System.out.println("new customer added");
         }
     }
 
 
-    //handle_editB
+    //edit button action
     public static void handle_editB(){
         Customer customer = table.getSelectionModel().getSelectedItem();
+
         if(customer != null) {
             boolean okPressed = MainControl.showCustomerEditScene(customer);
-            if(okPressed) {
-            CustomerData.updateCustomer(customer);
 
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.initOwner(MainControl.getWindow());
-            alert.setContentText("Customer edited!");
-            alert.showAndWait();
+            if(okPressed) {
+                customer = CustomerEditSceneControl.getCustomer();
+                CustomerData.updateCustomer(customer); //edit customer in database
+
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.initOwner(MainControl.getWindow());
+                alert.setContentText("Customer edited!");
+                alert.showAndWait();
+
+                System.out.println("a customer edited");
             }
         }
 

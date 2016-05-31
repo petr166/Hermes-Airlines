@@ -2,6 +2,7 @@ package Application.Control;
 
 import Application.DataTypes.Plane;
 import DataAccess.PlaneData;
+import Presentation.PlaneEditScene;
 import Presentation.ViewPlaneScene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -20,7 +21,7 @@ public class ViewPlaneSceneControl {
     private static Button editButton;
     private static Button exportPlaneB;
 
-    //initialization of fields
+    //initialize
     public static void initialize(){
         //table
         table = ViewPlaneScene.getTable();
@@ -29,7 +30,6 @@ public class ViewPlaneSceneControl {
         //addButton
         addButton =  ViewPlaneScene.getAddButton();
         addButton.setOnAction(e -> handle_addButton());
-
 
         //backButton
         backButton = ViewPlaneScene.getBackButton();
@@ -49,15 +49,18 @@ public class ViewPlaneSceneControl {
     //handle_addB
     public static void handle_addButton(){
         Plane plane = new Plane();
-        boolean okPresed = MainControl.showPlaneEditStage(plane);
+        boolean okPressed = MainControl.showPlaneEditScene(plane);
 
-        if(okPresed) {
-            PlaneData.insertPlanes(plane);
+        if(okPressed) {
+            plane = PlaneEditSceneControl.getPlane();
+            PlaneData.insertPlanes(plane); //add plane to database
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.initOwner(MainControl.getWindow());
             alert.setContentText("Plane added!");
             alert.showAndWait();
+
+            System.out.println("new plane added");
         }
     }
 
@@ -67,14 +70,19 @@ public class ViewPlaneSceneControl {
         Plane plane = table.getSelectionModel().getSelectedItem();
 
         if(plane!=null){
+            boolean okPressed = MainControl.showPlaneEditScene(plane);
 
-            boolean okPressed = MainControl.showPlaneEditStage(plane);
             if(okPressed){
-            PlaneData.updatePlane(plane);
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.initOwner(MainControl.getWindow());
-            alert.setContentText("Plane edited!");
-            alert.showAndWait();}
+                plane = PlaneEditSceneControl.getPlane();
+                PlaneData.updatePlane(plane); //edit plane in database
+
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.initOwner(MainControl.getWindow());
+                alert.setContentText("Plane edited!");
+                alert.showAndWait();
+
+                System.out.println("a plane edited");
+            }
         }
 
         else {
@@ -86,11 +94,14 @@ public class ViewPlaneSceneControl {
         }
     }
 
+
+
     //handle export
     public  static  void handle_exportButton() {
         PlaneData.getPlanes();
         PlaneData.exportPlanes();
     }
+
 
     //handle back
     public static void handle_backButton(){

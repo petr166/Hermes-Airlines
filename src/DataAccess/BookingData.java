@@ -33,7 +33,6 @@ public class BookingData {
                     booking.setCustomer_id(rs.getInt(2));
                     booking.setFlight_id(rs.getInt(3));
                     booking.setFare_class(rs.getString(4));
-                    booking.setReserved(rs.getBoolean(5));
 
                     bookings.add(booking);
                 }
@@ -52,7 +51,7 @@ public class BookingData {
     public static void insertBooking(Booking booking)
     {
         try{
-            statement.executeUpdate("INSERT INTO booking VALUE(default, " + booking.getCustomer_id() + ", " + booking.getFlight_id() + ", '" + booking.getFare_class() + "', " + 1 + ");");
+            statement.executeUpdate("INSERT INTO booking VALUE(default, " + booking.getCustomer_id() + ", " + booking.getFlight_id() + ", '" + booking.getFare_class() + "');");
         }
 
         catch(Exception e){

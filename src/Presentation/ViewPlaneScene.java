@@ -15,7 +15,7 @@ import javafx.scene.layout.VBox;
 
 public class ViewPlaneScene {
 
-    //table
+    //fields
     private static TableView<Plane> table;
     private static TableColumn<Plane, Integer> plane_idColumn;
     private static TableColumn<Plane, String> plane_nameColumn;
@@ -31,7 +31,7 @@ public class ViewPlaneScene {
     private static Scene scene;
 
 
-    //initialization
+    //initialization of objects
     public static void initialize(){
 
         //table
@@ -87,16 +87,19 @@ public class ViewPlaneScene {
         buttonsVbox.relocate(1020,250);
 
 
-        //scene setup
+        //layout
         layout=new Pane();
         layout.getChildren().addAll(table,buttonsVbox);
+
+        //scene
         scene = new Scene(layout,1200,700);
+
+        System.out.println("planes scene initialized");
 
     }
 
 
     //getters
-
     public static Pane getLayout() {
         return layout;
     }

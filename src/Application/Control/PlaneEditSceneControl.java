@@ -21,7 +21,7 @@ public class PlaneEditSceneControl {
     private static boolean okPressed = false;
 
 
-    //initialize method
+    //initialize
     public static void initialize(){
         //buttons
         okB = PlaneEditScene.getOkB();
@@ -42,7 +42,7 @@ public class PlaneEditSceneControl {
     }
 
 
-    //set plane
+    //setting plane for edit
     public static void setPlane(Plane p) {
         plane = p;
 
@@ -54,16 +54,15 @@ public class PlaneEditSceneControl {
     }
 
 
-    public static boolean isOkPressed() { return okPressed; }
 
-
-
+    //ok button action
     public static void handle_okB(){
         if(isInputValid()){
             plane.setPlane_name(plane_nameT.getText());
             plane.setFirst_class(Integer.parseInt(firstClassT.getText()));
             plane.setCoach(Integer.parseInt(coachT.getText()));
             plane.setEconomy(Integer.parseInt(economyT.getText()));
+
             okPressed = true;
             PlaneEditScene.getDialogStage().close();
         }
@@ -71,12 +70,15 @@ public class PlaneEditSceneControl {
 
 
 
+    //cancel button action
     public static void handleClose(){
         okPressed = false;
         PlaneEditScene.getDialogStage().close();
     }
 
 
+
+    //method to verify user input
     public static boolean isInputValid(){
         String error = "";
         if(plane_nameT == null || plane_nameT.getText().isEmpty())
@@ -122,5 +124,7 @@ public class PlaneEditSceneControl {
 
     //getters
     public static Plane getPlane() { return plane; }
+
+    public static boolean isOkPressed() { return okPressed; }
 
 }

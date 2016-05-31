@@ -2,6 +2,7 @@ package Application.Control;
 
 import Application.DataTypes.*;
 import Presentation.*;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -11,12 +12,12 @@ import javafx.stage.Stage;
 
 public class MainControl {
 
-
     //fields
     public static Stage window = new Stage();
 
 
-    //show-scene methods
+
+    //menu scene
     public static void showMenuScene(){
         //initialization of scene
         MenuScene.initialize();
@@ -31,6 +32,7 @@ public class MainControl {
     }
 
 
+    //login scene
     public static void showLoginScene() {
         //initialization of scene
         LoginScene.initialize();
@@ -41,13 +43,15 @@ public class MainControl {
 
         //set scene
         window.setScene(LoginScene.getScene());
+        window.setTitle("Hermes Airlines™");
+        window.getIcons().add(new Image("/Presentation/icon.png"));
 
         window.show();
         window.centerOnScreen();
     }
 
 
-    //viewBookingScene
+    //view bookings scene
     public static void showViewBookingScene(){
         //initialization of scene
         ViewBookingScene.initialize();
@@ -60,6 +64,7 @@ public class MainControl {
     }
 
 
+    //view customers scene
     public static void showViewCustomerScene(){
         //initialization of scene
         ViewCustomersScene.initialize();
@@ -72,7 +77,8 @@ public class MainControl {
     }
 
 
-    public static void showFlightsScene(){
+    //view flights scene
+    public static void showViewFlightsScene(){
         //initialization of scene
         ViewFlightsScene.initialize();
 
@@ -84,7 +90,8 @@ public class MainControl {
     }
 
 
-    public static void showPlaneScene(){
+    //view planes scene
+    public static void showViewPlanesScene(){
         //initialization of scene
         ViewPlaneScene.initialize();
 
@@ -96,14 +103,15 @@ public class MainControl {
     }
 
 
-    public static boolean showPlaneEditStage(Plane plane){
+    //plane edit dialog
+    public static boolean showPlaneEditScene(Plane plane){
         //initialization of scene
         PlaneEditScene.initialize();
 
         //initialization of control
         PlaneEditSceneControl.initialize();
-
         PlaneEditSceneControl.setPlane(plane);
+
         PlaneEditScene.getDialogStage().initOwner(window);
         PlaneEditScene.getDialogStage().showAndWait();
 
@@ -111,6 +119,7 @@ public class MainControl {
     }
 
 
+    //customer edit dialog
     public static boolean showCustomerEditScene(Customer customer){
         //initialization of scene
         CustomerEditScene.initialize();
@@ -126,6 +135,7 @@ public class MainControl {
     }
 
 
+    //flight edit dialog
     public static boolean showFlightEditScene(FlightTable flightTable, Flight flight){
         //initialization of scene
         FlightsEditScene.initialize();
@@ -135,12 +145,13 @@ public class MainControl {
         FlightEditSceneControl.setFlight(flightTable,flight);
 
         FlightsEditScene.getDialogStage().initOwner(window);
-        //FlightsEditScene.getDialogStage().initModality(Modality.WINDOW_MODAL);
         FlightsEditScene.getDialogStage().showAndWait();
+
         return FlightEditSceneControl.isOkPressed();
     }
 
 
+    //booking edit dialog
     public static boolean showBookingEditScene(BookingTable bookingTable, Booking booking) {
         //initialization of scene
         BookingEditScene.initialize();
@@ -151,9 +162,11 @@ public class MainControl {
 
         BookingEditScene.getDialogStage().initOwner(window);
         BookingEditScene.getDialogStage().showAndWait();
+
         return BookingEditSceneControl.isOkPressed();
 
     }
+
 
 
     //getters

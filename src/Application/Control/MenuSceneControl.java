@@ -12,14 +12,10 @@ import javafx.stage.Stage;
 public class MenuSceneControl {
 
     //fields
-    private static Stage window;
     private static Button bookingsB, customersB, flightsB, planesB, exitB;
 
     //initialization of fields
     public static void initialize(){
-        //stage
-        window = MainControl.getWindow();
-
         //bookingsB
         bookingsB = MenuScene.getBookingsB();
         bookingsB.setOnAction(e -> handle_bookingsB());
@@ -42,6 +38,7 @@ public class MenuSceneControl {
 
     }
 
+
     //handle bookingsB
     public static void handle_bookingsB(){
         MainControl.showViewBookingScene();
@@ -54,15 +51,17 @@ public class MenuSceneControl {
 
     //handle flightsB
     public static void handle_flightsB(){
-        MainControl.showFlightsScene();
+        MainControl.showViewFlightsScene();
     }
 
     //handle planesB
-    public static void handle_planesB(){    MainControl.showPlaneScene();   }
+    public static void handle_planesB(){
+        MainControl.showViewPlanesScene();
+    }
 
     //handle exitB
     public static void handle_exitsB(){
-        window.close();
+        MainControl.getWindow().close();
     }
 
 }

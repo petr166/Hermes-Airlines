@@ -15,10 +15,8 @@ import javafx.scene.layout.VBox;
 
 public class LoginScene {
 
-
     //fields
     private static Scene scene;
-  //  private static Pane layout;
     private static VBox loginLayout;
     private static Label loginLabel;
     private static Label hermesLabel;
@@ -27,11 +25,11 @@ public class LoginScene {
     private static Button loginButton;
 
 
-    //initialize method
+    //initialization of objects
     public static  void initialize(){
+
         //loginLabel
         loginLabel = new Label("Log in");
-        //loginLabel.relocate(182,176);
         loginLabel.setPadding((new Insets(0, 0, 20, 0)));
         loginLabel.setStyle("-fx-font-size: 22pt");
 
@@ -39,31 +37,24 @@ public class LoginScene {
         //hermesLabel
         hermesLabel=new Label("Hermes Airlines");
         hermesLabel.setStyle("-fx-font-size : 28pt");
-       // hermesLabel.setAlignment(Pos.CENTER);
-       // hermesLabel.relocate(182,140);
 
         //usernameField
         usernameField=new TextField();
         usernameField.setPromptText("User ID");
-      //  usernameField.relocate(125,238);
         usernameField.setMaxWidth(220);
         usernameField.setAlignment(Pos.CENTER);
 
         //passwordField
         passwordField=new PasswordField();
         passwordField.setAlignment(Pos.CENTER);
-        //passwordField.relocate(125,278);
         passwordField.setMaxWidth(220);
         passwordField.setPromptText("Password");
 
         //buttonField
         loginButton=new Button("Login");
-       // loginButton.relocate(174,332);
         loginButton.setMaxWidth(100);
 
         //layout
-      //  layout=new Pane();
-        //layout.getChildren().addAll(loginLabel,hermesLabel,usernameField,passwordField,loginButton);
         loginLayout = new VBox(8);
         loginLayout.setAlignment(Pos.CENTER);
         loginLayout.getChildren().addAll(hermesLabel,loginLabel,usernameField,passwordField,loginButton);
@@ -82,7 +73,9 @@ public class LoginScene {
         return scene;
     }
 
-
+    public static VBox getLoginLayout() {
+        return loginLayout;
+    }
 
     public static Label getLoginLabel() {
         return loginLabel;

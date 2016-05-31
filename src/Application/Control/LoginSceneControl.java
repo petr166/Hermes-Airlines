@@ -64,6 +64,7 @@ public class LoginSceneControl {
                 if (admin.getAdmin_id() == Integer.parseInt(username) && admin.getPassword().equalsIgnoreCase(password)) {
 
                     MainControl.showMenuScene(); //valid username and pass
+                    System.out.println("login successful");
                     ok = 1;
                     break;
                 }

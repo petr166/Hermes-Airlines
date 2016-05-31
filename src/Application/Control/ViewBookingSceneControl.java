@@ -137,6 +137,7 @@ public class ViewBookingSceneControl {
                 BookingData.updateBooking(booking); //edit booking in database
 
                 table.setItems(BookingTableData.getBookingTableItems()); //set the table items
+                table.getSelectionModel().select(bookingTable);
                 bookings = table.getItems();
 
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

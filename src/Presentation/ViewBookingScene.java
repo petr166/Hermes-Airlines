@@ -71,7 +71,8 @@ public class ViewBookingScene {
         nameColumn=new TableColumn<>("Customer name");
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().customerProperty());
 
-        routeColumn=new TableColumn<>("Route");
+        routeColumn=new TableColumn<>("\t\t\tRoute");
+        routeColumn.setMinWidth(160);
         routeColumn.setCellValueFactory(cellData -> cellData.getValue().routeProperty());
 
 
@@ -80,7 +81,7 @@ public class ViewBookingScene {
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         table.getColumns().addAll(dateColumn, routeColumn, nameColumn);
         table.relocate(32,34);
-        table.setMinWidth(540);
+        table.setMinWidth(610);
         table.setMinHeight(580);
 
         //flightLabel
@@ -121,7 +122,7 @@ public class ViewBookingScene {
 
         flight_detailsObs = new VBox();
         flight_detailsObs.getChildren().addAll(departure_dateObs,arrival_dateObs,categoryObs,priceObs);
-        flight_detailsObs.relocate(930,100);
+        flight_detailsObs.relocate(900,100);
         flight_detailsObs.setSpacing(25);
 
         //customer_details
@@ -167,14 +168,14 @@ public class ViewBookingScene {
 
         customer_detailsVerticalObs=new VBox();
         customer_detailsVerticalObs.getChildren().addAll(first_nameObs,last_nameObs,ageObs,passportObs,phone_numberObs);
-        customer_detailsVerticalObs.relocate(930,370);
+        customer_detailsVerticalObs.relocate(900,370);
         customer_detailsVerticalObs.setSpacing(25);
 
         //searchField
         searchField=new TextField();
         searchField.setPromptText("search");
         searchField.relocate(32,642);
-        searchField.setMinWidth(540);
+        searchField.setMinWidth(605);
 
         //buttons
         backButton=new Button("Back");

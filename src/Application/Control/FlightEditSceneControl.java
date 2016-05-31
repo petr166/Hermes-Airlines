@@ -166,7 +166,7 @@ public class FlightEditSceneControl {
         error += "Invalid route!\n";
 
 
-        if(price.getText().length()<1)
+        if(Double.parseDouble(price.getText()) < 10)
             error+="Invalid base price!\n";
         else try{
             Double.parseDouble(price.getText());

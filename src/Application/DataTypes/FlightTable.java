@@ -17,7 +17,7 @@ public class FlightTable {
 
     //constructors
     public FlightTable() {
-        flight_id = new SimpleIntegerProperty(1);
+        flight_id = new SimpleIntegerProperty(0);
         economyLeft = new SimpleIntegerProperty(0);
         coachLeft = new SimpleIntegerProperty(0);
         first_classLeft = new SimpleIntegerProperty(0);

@@ -17,7 +17,7 @@ public class BookingTable {
 
     //constructors
     public BookingTable() {
-        booking_id = new SimpleIntegerProperty(0);
+        booking_id = new SimpleIntegerProperty();
         departure_date = new SimpleStringProperty("");
         route = new SimpleStringProperty("");
         customer = new SimpleStringProperty("");

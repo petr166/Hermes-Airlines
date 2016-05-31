@@ -19,6 +19,8 @@ public class Schedule {
     public Schedule(){
         departure_date = new Date();
         arrival_date = new Date();
+        departure_time = "7:00";
+        arrival_time = "8:00";
     }
 
     public Schedule(int schedule_id, Date departure_date, String departure_time, Date arrival_date, String arrival_time) {

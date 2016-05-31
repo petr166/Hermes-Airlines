@@ -18,7 +18,7 @@ public class Plane {
 
     //constructors
     public Plane() {
-        this.plane_id = new SimpleIntegerProperty(1);
+        this.plane_id = new SimpleIntegerProperty(0);
         this.first_class = new SimpleIntegerProperty(0);
         this.coach = new SimpleIntegerProperty(0);
         this.economy = new SimpleIntegerProperty(0);

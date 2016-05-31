@@ -18,7 +18,7 @@ public class Customer {
 
     //constructors
     public Customer() {
-        customer_id = new SimpleIntegerProperty(0);
+        customer_id = new SimpleIntegerProperty();
         age = new SimpleIntegerProperty(0);
         first_name = new SimpleStringProperty("");
         last_name = new SimpleStringProperty("");

@@ -50,6 +50,8 @@ public class PlaneData {
     {
         try{
             statement.executeUpdate("INSERT INTO plane VALUE (default, '" + plane.getPlane_name() + "', " + plane.getFirst_class() + ", " + plane.getCoach() + ", " + plane.getEconomy() + ");");
+            planes.add(plane);
+            plane.setPlane_id(planes.indexOf(plane) + 1);
         }
 
         catch(Exception e){
@@ -63,6 +65,7 @@ public class PlaneData {
     public static void updatePlane(Plane plane){
         try{
             statement.executeUpdate("UPDATE plane SET plane_name = '" + plane.getPlane_name() + "', first_class = " + plane.getFirst_class() + ", coach = " + plane.getCoach() + ", economy = " + plane.getEconomy() + " WHERE plane_id = " + plane.getPlane_id() + ";");
+            planes.set(plane.getPlane_id() - 1, plane);
         }
 
         catch(Exception e){

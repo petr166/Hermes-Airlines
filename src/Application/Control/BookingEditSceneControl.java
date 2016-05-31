@@ -73,6 +73,7 @@ public class BookingEditSceneControl {
         addCustomer.setOnAction(e -> {
             ViewCustomerSceneControl.handle_addB();
             Customer customer = CustomerEditSceneControl.getCustomer();
+            customerBox.getItems().add(customer.getFirst_name() + " " + customer.getLast_name());
             customerBox.setValue(customer.getFirst_name() + " " + customer.getLast_name());
         });
 
@@ -226,7 +227,6 @@ public class BookingEditSceneControl {
     //ok button action
     public static void handle_okButton() {
         if(isInputValid()) {
-            okPressed = true;
 
             String customer = customerBox.getValue();
             for (Customer c : CustomerData.getCustomers()) {
@@ -268,6 +268,7 @@ public class BookingEditSceneControl {
                 }
             }
 
+            okPressed = true;
             BookingEditScene.getDialogStage().close();
         }
     }

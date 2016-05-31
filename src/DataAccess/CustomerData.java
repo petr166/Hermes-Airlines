@@ -53,32 +53,21 @@ public class CustomerData {
     {
         try{
             statement.executeUpdate("INSERT INTO customer VALUE(default, '" + customer.getFirst_name() + "', '" + customer.getLast_name() + "', " + customer.getAge() + ", '" + customer.getPassport_number() + "', '" + customer.getPhone_nr() + "');");
+            customers.add(customer);
+            customer.setCustomer_id(customers.indexOf(customer) + 1);
         }
 
         catch(Exception e){
             e.printStackTrace();
         }
     }
-
-
-
-    //method to remove a customer
-    public static void deleteCustomer(Customer customer){
-        try{
-            statement.executeUpdate("DELETE FROM customer WHERE customer_id = " + customer.getCustomer_id() + ";");
-        }
-
-        catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-
 
 
     //method to update a customer
     public static void updateCustomer(Customer customer){
         try{
             statement.executeUpdate("UPDATE customer SET first_name = '" + customer.getFirst_name() +"', last_name = '" + customer.getLast_name() + "', age = " + customer.getAge() + ", passport_number = '" + customer.getPassport_number() + "', phone_nr = '" + customer.getPhone_nr() + "' WHERE customer_id = " + customer.getCustomer_id() + ";");
+            customers.set(customer.getCustomer_id() - 1, customer);
         }
 
         catch(Exception e){

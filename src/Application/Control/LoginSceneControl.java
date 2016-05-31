@@ -72,6 +72,9 @@ public class LoginSceneControl {
 
             //wrong username or pass
             if(ok == 0) {
+                usernameField.clear();
+                passwordField.clear();
+
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setHeaderText("Login failed");
                 alert.setContentText("Invalid username or password");

@@ -165,10 +165,10 @@ public class FlightEditSceneControl {
        if(routeC.getValue().equalsIgnoreCase(" -> "))
         error += "Invalid route!\n";
 
+        try {
 
         if(Double.parseDouble(price.getText()) < 10)
             error+="Invalid base price!\n";
-        else try{
             Double.parseDouble(price.getText());
         }
         catch(NumberFormatException e){

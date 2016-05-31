@@ -1,5 +1,7 @@
 package Presentation;
 
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -43,13 +45,17 @@ public class BookingEditScene {
     private static Button cancelButton;
     private static Label priceLabelObs;
 
+    private static HBox buttons;
+
 
     //initialization of objects
     public static void initialize(){
 
         //bookingLabel
         bookingLabel = new Label("Booking details");
-        bookingLabel.relocate(41,51);
+        bookingLabel.relocate(190,51);
+        bookingLabel.setStyle("-fx-font-size:20pt");
+
 
         //customer label
         customerLabel = new Label("Select customer");
@@ -71,23 +77,26 @@ public class BookingEditScene {
 
         //labelsLayout
         labelsLayout = new VBox();
-        labelsLayout.getChildren().addAll(customerLabel,addCustomerLabel, new Label(" "), routeLabel,departure_dateLabel,categoryLabel,priceLabel);
-        labelsLayout.setSpacing(35);
+        labelsLayout.getChildren().addAll(customerLabel,addCustomerLabel, routeLabel,departure_dateLabel,categoryLabel,priceLabel);
+        labelsLayout.setSpacing(34);
         labelsLayout.relocate(41,138);
 
 
         //customer box
         customerBox = new ComboBox<>();
+        customerBox.setMinWidth(245);
 
         //add customer button
         addCustomer = new Button("New customer");
+        addCustomer.setMinWidth(170);
 
         //route
         routeBox = new ComboBox<>();
+        routeBox.setMinWidth(245);
 
         //departure date
         departure_datePicker = new DatePicker();
-
+        departure_datePicker.setMinWidth(242);
 
         //fare_class radio buttons
         firstC = new RadioButton("First class");
@@ -107,24 +116,31 @@ public class BookingEditScene {
 
         //price label obs
         priceLabelObs = new Label("");
-
-        //details layout
-        detailsLayout = new VBox();
-        detailsLayout.getChildren().addAll(customerBox,addCustomer, new Label(" "), routeBox,departure_datePicker,toggleBox,priceLabelObs);
-        detailsLayout.setSpacing(29);
-        detailsLayout.relocate(210,139);
-
         //cancel button
         cancelButton = new Button("Cancel");
-        cancelButton.relocate(370,550);
 
         //ok button
         okButton = new Button("OK");
-        okButton.relocate(310,550);
+        okButton.setDefaultButton(true);
+
+        buttons = new HBox(10);
+        buttons.getChildren().addAll(okButton, cancelButton);
+        buttons.setAlignment(Pos.CENTER);
+
+        //details layout
+        detailsLayout = new VBox();
+        detailsLayout.getChildren().addAll(customerBox,addCustomer, routeBox,departure_datePicker,toggleBox,priceLabelObs,buttons);
+        detailsLayout.setSpacing(24);
+        detailsLayout.relocate(210,139);
+        toggleBox.setPadding(new Insets(10,0,0,0));
+        priceLabelObs.setPadding(new Insets(10,0,0,0));
+
+
+
 
         //layout
         layout = new Pane();
-        layout.getChildren().addAll(bookingLabel,labelsLayout,detailsLayout,okButton,cancelButton);
+        layout.getChildren().addAll(bookingLabel,labelsLayout,detailsLayout);
 
         //Scene
         scene = new Scene(layout,500,600);

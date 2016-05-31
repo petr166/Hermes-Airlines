@@ -67,19 +67,17 @@ public class ViewBookingScene {
         //table columns
         dateColumn=new TableColumn<>("Departure date");
         dateColumn.setCellValueFactory(cellData -> cellData.getValue().departure_dateProperty());
-        dateColumn.setMinWidth(180);
 
         nameColumn=new TableColumn<>("Customer name");
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().customerProperty());
-        nameColumn.setMinWidth(180);
 
         routeColumn=new TableColumn<>("Route");
         routeColumn.setCellValueFactory(cellData -> cellData.getValue().routeProperty());
-        routeColumn.setMinWidth(180);
 
 
         //table
         table=new TableView<>();
+        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         table.getColumns().addAll(dateColumn, routeColumn, nameColumn);
         table.relocate(32,34);
         table.setMinWidth(540);
@@ -176,6 +174,7 @@ public class ViewBookingScene {
 
         //Scene
         scene = new Scene(layout,1200,700);
+        scene.getStylesheets().add("/Presentation/style.css");
 
 
         System.out.println("bookings scene initialized");

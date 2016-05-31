@@ -44,29 +44,26 @@ public class ViewPlaneScene {
         //ID
         plane_idColumn=new TableColumn("ID");
         plane_idColumn.setCellValueFactory(cellData -> cellData.getValue().plane_idProperty().asObject());
-        plane_idColumn.setMinWidth(190);
-
+        plane_idColumn.setMinWidth(60);
+        plane_idColumn.setMaxWidth(70);
 
         //plane_name
         plane_nameColumn=new TableColumn("Name");
         plane_nameColumn.setCellValueFactory(cellData->cellData.getValue().plane_nameProperty());
-        plane_nameColumn.setMinWidth(190);
 
 
         //fare classes
         first_classColumn = new TableColumn("First Class");
         first_classColumn.setCellValueFactory(cellData -> cellData.getValue().first_classProperty().asObject());
-        first_classColumn.setMinWidth(190);
 
         coachColumn = new TableColumn("Coach Class");
         coachColumn.setCellValueFactory(cellData->cellData.getValue().coachProperty().asObject());
-        coachColumn.setMinWidth(190);
 
         economyColumn = new TableColumn("Economy Class");
         economyColumn.setCellValueFactory(cellData->cellData.getValue().economyProperty().asObject());
-        economyColumn.setMinWidth(190);
 
         table.getColumns().addAll(plane_idColumn,plane_nameColumn,first_classColumn,coachColumn,economyColumn);
+        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         //add
         addButton = new Button("Add..");
@@ -93,6 +90,7 @@ public class ViewPlaneScene {
 
         //scene
         scene = new Scene(layout,1200,700);
+        scene.getStylesheets().add("/Presentation/style.css");
 
         System.out.println("planes scene initialized");
 

@@ -50,7 +50,7 @@ public class CustomerEditScene {
 
         //Title Label
         title.setText("\n\nCustomer Information");
-        title.setStyle("-fx-font-size:28pt");
+        title.setStyle("-fx-font-size:20pt");
 
         //Information Label
         fName.setText("First Name");
@@ -61,11 +61,13 @@ public class CustomerEditScene {
 
         //button setup
         okB = new Button("Ok");
+        okB.setDefaultButton(true);
         cancelB = new Button("Cancel");
 
         //layout
-        buttons = new HBox();
+        buttons = new HBox(10);
         buttons.getChildren().addAll(okB,cancelB);
+        buttons.setAlignment(Pos.CENTER);
         gridPane = new GridPane();
         borderPane = new BorderPane();
         gridPane.setAlignment(Pos.CENTER);
@@ -73,7 +75,7 @@ public class CustomerEditScene {
         vboxText = new VBox();
         gridPane.setHgap(10);
         vboxText.setSpacing(25);
-        vboxLabel.setSpacing(40);
+        vboxLabel.setSpacing(34);
         vboxLabel.getChildren().addAll(fName,lName,age,phone_nr,passport_nr);
         vboxText.getChildren().addAll(fNameT,lNameT,ageT,phone_nrT, passport_nrT,buttons);
         gridPane.add(vboxLabel, 0, 0);
@@ -83,6 +85,7 @@ public class CustomerEditScene {
         borderPane.setAlignment(title, Pos.CENTER);
 
         //stage setup
+        borderPane.getStylesheets().add("/Presentation/syle.css");
         scene = new Scene(borderPane, 500, 600);
         scene.getStylesheets().addAll("/Presentation/style.css");
 

@@ -80,7 +80,7 @@ public class ViewPlaneScene {
         //buttons layout
         buttonsVbox = new VBox();
         buttonsVbox.getChildren().addAll(addButton,editButton,backButton,exportPlaneB);
-        buttonsVbox.setSpacing(25);
+        buttonsVbox.setSpacing(20);
         buttonsVbox.relocate(1020,250);
 
 

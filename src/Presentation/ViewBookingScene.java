@@ -85,75 +85,96 @@ public class ViewBookingScene {
 
         //flightLabel
         flightLabel=new Label("Flight Details");
-        flightLabel.relocate(708,61);
+        flightLabel.getStyleClass().add("label-simple");
+        flightLabel.setStyle("-fx-font-size: 20pt");
+        flightLabel.relocate(700, 40);
 
         //departure_label
         departure_dateLabel = new Label("Departure");
+        departure_dateLabel.getStyleClass().add("label-simple");
+
         departure_dateObs = new Label("");
+
 
         //arrival_dateLabel
         arrival_dateLabel = new Label("Arrival");
+        arrival_dateLabel.getStyleClass().add("label-simple");
+
         arrival_dateObs = new Label("");
 
         //categoryLabel
         categoryLabel = new Label("Category");
+        categoryLabel.getStyleClass().add("label-simple");
+
         categoryObs = new Label("");
 
         //priceLabel
         priceLabel = new Label("Price");
+        priceLabel.getStyleClass().add("label-simple");
         priceObs = new Label("");
 
         //flight vboxs
         flight_details = new VBox();
         flight_details.getChildren().addAll(departure_dateLabel,arrival_dateLabel,categoryLabel,priceLabel);
-        flight_details.relocate(708,132);
+        flight_details.relocate(700,100);
         flight_details.setSpacing(25);
 
         flight_detailsObs = new VBox();
         flight_detailsObs.getChildren().addAll(departure_dateObs,arrival_dateObs,categoryObs,priceObs);
-        flight_detailsObs.relocate(932,132);
+        flight_detailsObs.relocate(930,100);
         flight_detailsObs.setSpacing(25);
 
         //customer_details
         customer_detailsLabel=new Label("Customer Details");
-        customer_detailsLabel.relocate(708,342);
+        customer_detailsLabel.getStyleClass().add("label-simple");
+        customer_detailsLabel.setStyle("-fx-font-size:20pt");
+        customer_detailsLabel.relocate(700,310);
 
         //first_nameLabel
         first_nameLabel = new Label("First Name");
+        first_nameLabel.getStyleClass().add("label-simple");
+
         first_nameObs = new Label("");
 
         //last_nameLabel
         last_nameLabel = new Label("Last name");
+        last_nameLabel.getStyleClass().add("label-simple");
         last_nameObs=new Label("");
 
         //age
         ageLabel=new Label("Age");
+        ageLabel.getStyleClass().add("label-simple");
+
         ageObs = new Label("");
 
         //passport
         passportLabel=new Label("Passport");
+        passportLabel.getStyleClass().add("label-simple");
+
         passportObs=new Label("");
 
         //phone
         phone_numberLabel=new Label("Phone number");
+        phone_numberLabel.getStyleClass().add("label-simple");
+
         phone_numberObs=new Label("");
 
         //customer Vboxes
         customer_detailsVertical = new VBox();
         customer_detailsVertical.getChildren().addAll(first_nameLabel,last_nameLabel,ageLabel,passportLabel,phone_numberLabel);
-        customer_detailsVertical.relocate(708,417);
+        customer_detailsVertical.relocate(700,370);
         customer_detailsVertical.setSpacing(25);
 
         customer_detailsVerticalObs=new VBox();
         customer_detailsVerticalObs.getChildren().addAll(first_nameObs,last_nameObs,ageObs,passportObs,phone_numberObs);
-        customer_detailsVerticalObs.relocate(932,417);
+        customer_detailsVerticalObs.relocate(930,370);
         customer_detailsVerticalObs.setSpacing(25);
 
         //searchField
         searchField=new TextField();
         searchField.setPromptText("Search");
         searchField.setAlignment(Pos.CENTER);
-        searchField.relocate(32,648);
+        searchField.relocate(32,650);
         searchField.setMinWidth(540);
 
         //buttons
@@ -162,10 +183,11 @@ public class ViewBookingScene {
         editButton=new Button("Edit..");
         cancelButton=new Button("Remove");
 
+
         // layout for buttons
         buttonLayout=new HBox();
         buttonLayout.getChildren().addAll(backButton,add_bookingButton,editButton,cancelButton);
-        buttonLayout.relocate(900,648);
+        buttonLayout.relocate(720,650);
         buttonLayout.setSpacing(20);
 
         //LAYOUT

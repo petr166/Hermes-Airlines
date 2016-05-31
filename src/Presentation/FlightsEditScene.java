@@ -1,12 +1,14 @@
 package Presentation;
 
 import Application.Control.MainControl;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -34,13 +36,17 @@ public class FlightsEditScene {
     private static Button okB, cancelB;
     private static VBox vBox1, vBox2;
 
+    private static HBox timeBox,buttons;
+
 
     //initialization of objects
     public static void initialize(){
 
         //labels
         flightL = new Label("Flight details");
-        flightL.relocate(250,100);
+        flightL.relocate(190,100);
+        flightL.setAlignment(Pos.CENTER);
+        flightL.setStyle("-fx-font-size:20pt");
 
         priceL = new Label("Base price");
         routeL = new Label("Route");
@@ -49,7 +55,7 @@ public class FlightsEditScene {
         planeL = new Label ("Plane ID");
 
         toL = new Label("to");
-        toL.relocate(289,302);
+   //     toL.relocate(289,302);
 
         //labels layout
         vBox1 = new VBox();
@@ -64,6 +70,10 @@ public class FlightsEditScene {
         arrival_time = new ComboBox<>();
         plane_id = new ComboBox<>();
 
+        //hBox
+        timeBox = new HBox(20);
+        timeBox.getChildren().addAll(departure_time,toL,arrival_time);
+
         //price field
         price = new TextField();
 
@@ -71,29 +81,34 @@ public class FlightsEditScene {
         departure_date = new DatePicker();
         departure_date.setMaxWidth(120);
 
-        //selectors layout
-        vBox2 = new VBox();
-        vBox2.getChildren().addAll(routeC,departure_date,departure_time,plane_id, price);
-        vBox2.setSpacing(25);
-        vBox2.relocate(145,200);
-
-        //arrival time box
-        arrival_time = new ComboBox<>();
-        arrival_time.relocate(350,302);
-
-
         //buttons
         okB = new Button("Ok");
-        okB.relocate(220,450);
+        okB.setDefaultButton(true);
 
         cancelB = new Button("Cancel");
-        cancelB.relocate(260,450);
+
+        buttons = new HBox(10);
+        buttons.setAlignment(Pos.CENTER);
+        buttons.getChildren().addAll(okB,cancelB);
+
+        //selectors layout
+        vBox2 = new VBox();
+        vBox2.getChildren().addAll(routeC,departure_date,timeBox,plane_id, price, buttons);
+        vBox2.setSpacing(24);
+        vBox2.relocate(160,200);
+
+        //arrival time box
+       // arrival_time = new ComboBox<>();
+       // arrival_time.relocate(350,302);
+
+
+
 
 
         //layout
         layout = new Pane();
-        layout.getChildren().addAll(flightL, vBox1, vBox2, toL, arrival_time, okB, cancelB);
-
+        layout.getChildren().addAll(flightL, vBox1, vBox2);
+        layout.getStylesheets().add("/Presentation/style.css");
         //stage setup
         scene = new Scene(layout,500,600);
         scene.getStylesheets().addAll("/Presentation/style.css");

@@ -84,7 +84,6 @@ public class ViewCustomersScene {
             //layout setup
             layout = new Pane();
             layout.getChildren().addAll(table,search,buttonLayout);
-
             //scene
             scene = new Scene(layout, 1200, 700);
             scene.getStylesheets().add("/Presentation/style.css");

@@ -8,6 +8,9 @@
     -fx-text-fill: #1d1d1d;
     -fx-opacity: 1;
 }
+.label-simple{
+    -fx-font-family:"Seagoe UI";
+}
 
 @font-face {
     font-family: 'MKX Title';
@@ -25,7 +28,13 @@
     -fx-font-family: "MKX Title";
     -fx-text-fill: #1d1d1d;
 }
+.combo-box{
 
+    -fx-font-size: 13pt;
+    -fx-border-color: #008287;
+    -fx-font-family: "Segoe UI"
+
+}
 .table-view {
     -fx-base:  whitesmoke;
     -fx-control-inner-background:whitesmoke;
@@ -82,6 +91,9 @@
     -fx-font-size: 13pt;
     -fx-text-fill: black;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+#exit-button{
+    -fx-max-width: 80;
 }
 .menu-button{
     -fx-max-width: 145;

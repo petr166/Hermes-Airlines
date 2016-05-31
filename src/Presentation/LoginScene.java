@@ -64,6 +64,7 @@ public class LoginScene {
         scene.getStylesheets().add("Presentation/style.css");
 
 
+
         System.out.println("login screen initialized");
     }
 

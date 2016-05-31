@@ -48,7 +48,8 @@ public class PlaneEditScene {
 
         //title Label
         titleLabell = new Label();
-        titleLabell.setText("\n\n\n\nPlane details");
+        titleLabell.setText("\n\nPlane details");
+        titleLabell.setStyle("-fx-font-size:20pt");
 
         //button setup
         okB = new Button("Ok");
@@ -66,6 +67,7 @@ public class PlaneEditScene {
 
         buttons.setSpacing(10);
         buttons.getChildren().addAll(okB,cancelB);
+        buttons.setAlignment(Pos.CENTER);
 
         gridPane.setHgap(10);
         vboxText.setSpacing(25);
@@ -73,15 +75,17 @@ public class PlaneEditScene {
 
         vboxLabel.getChildren().addAll(plane_nameLabel,firstClassLabel,coachLabel,economyLabel);
         vboxText.getChildren().addAll(plane_nameT,firstClassT,coachT,economyT, buttons);
+        //vboxText.setAlignment(Pos.CENTER);
         gridPane.add(vboxLabel, 0, 0);
         gridPane.add(vboxText, 1, 0);
         borderPane.setCenter(gridPane);
         borderPane.setTop(titleLabell);
         borderPane.setAlignment(titleLabell, Pos.CENTER);
 
-
         //stage setup
         scene = new Scene(borderPane, 500, 600);
+        scene.getStylesheets().add("/Presentation/style.css");
+
 
         dialogStage = new Stage();
         dialogStage.getIcons().add(new Image("/Presentation/icon.png"));

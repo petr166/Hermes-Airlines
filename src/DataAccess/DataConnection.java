@@ -13,7 +13,7 @@ public class DataConnection {
     private static Connection connection;
     private static String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/hermes_airline?autoReconnect=true&useSSL=false";
-    private static String userName = UserPass.getUserName();
+    private static String userName = UserPass.getUserName(); //user credentials sored in UserPass
     private static String password = UserPass.getPassword();
 
 

@@ -67,20 +67,24 @@
 .text-field {
     -fx-font-size: 13pt;
     -fx-border-color: #008287;
-    -fx-font-family: "Segoe UI Semibold"
+    -fx-font-family: "Segoe UI"
 }
 
 
 .button {
     -fx-padding: 5 22 5 22;
+    -fx-max-width: 110;
     -fx-border-color: #e2e2e2;
     -fx-border-width: 2;
     -fx-background-radius: 0;
     -fx-background-color: #cccccc;
     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-    -fx-font-size: 15pt;
+    -fx-font-size: 13pt;
     -fx-text-fill: black;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+.menu-button{
+    -fx-max-width: 145;
 }
 
 .button:hover {

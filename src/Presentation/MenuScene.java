@@ -51,21 +51,25 @@ public class MenuScene {
         bookingsB.setAlignment(Pos.CENTER);
         bookingsB.setPrefWidth(145);
         bookingsB.setDefaultButton(true);
+        bookingsB.getStyleClass().add("menu-button");
 
         //customersB
         customersB = new Button("Customers");
         customersB.setPrefWidth(145);
         customersB.setAlignment(Pos.CENTER);
+        customersB.getStyleClass().add("menu-button");
 
         //flightsB
         flightsB = new Button("Flights");
         flightsB.setPrefWidth(145);
         flightsB.setAlignment(Pos.CENTER);
+        flightsB.getStyleClass().add("menu-button");
 
         //planesB
         planesB = new Button("Planes");
         planesB.setPrefWidth(145);
         planesB.setAlignment(Pos.CENTER);
+        planesB.getStyleClass().add("menu-button");
 
         //EXITB
         exitB = new Button("Exit");

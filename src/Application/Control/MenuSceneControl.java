@@ -58,9 +58,7 @@ public class MenuSceneControl {
     }
 
     //handle planesB
-    public static void handle_planesB(){
-        MainControl.showPlaneScene();
-    }
+    public static void handle_planesB(){    MainControl.showPlaneScene();   }
 
     //handle exitB
     public static void handle_exitsB(){

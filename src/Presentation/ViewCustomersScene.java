@@ -90,7 +90,7 @@ public class ViewCustomersScene {
 
             //scene
             scene = new Scene(layout, 1200, 700);
-
+            scene.getStylesheets().add("/Presentation/style.css");
             System.out.println("customers who are flying scene initialized");
         }
 

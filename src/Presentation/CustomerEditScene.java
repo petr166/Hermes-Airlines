@@ -47,6 +47,7 @@ public class CustomerEditScene {
 
         //Title Label
         title.setText("\n\nCustomer Information");
+        title.setStyle("-fx-font-size:28pt");
 
         //Information Label
         fName.setText("First Name");
@@ -69,7 +70,7 @@ public class CustomerEditScene {
         vboxText = new VBox();
         gridPane.setHgap(10);
         vboxText.setSpacing(25);
-        vboxLabel.setSpacing(34);
+        vboxLabel.setSpacing(40);
         vboxLabel.getChildren().addAll(fName,lName,age,phone_nr,passport_nr);
         vboxText.getChildren().addAll(fNameT,lNameT,ageT,phone_nrT, passport_nrT,buttons);
         gridPane.add(vboxLabel, 0, 0);
@@ -81,6 +82,7 @@ public class CustomerEditScene {
         //scene
         dialogStage = new Stage();
         scene = new Scene(borderPane, 500, 600);
+        scene.getStylesheets().addAll("/Presentation/style.css");
         dialogStage.setScene(scene);
         System.out.println("Customer into initialized");
     }

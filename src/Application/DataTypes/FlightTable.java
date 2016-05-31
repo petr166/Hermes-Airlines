@@ -7,45 +7,51 @@ import java.util.Date;
 /**
  * Created by Administrator on 5/24/2016.
  */
+
 public class FlightTable {
     //fields
-    private IntegerProperty flight_id;
-    private StringProperty departure_date, arrival_date, departure_city, arrival_city;
+    private IntegerProperty flight_id, economyLeft, coachLeft, first_classLeft;
+    private StringProperty departure_date, departure_city, arrival_city;
     private DoubleProperty price;
 
 
     //constructors
     public FlightTable() {
         flight_id = new SimpleIntegerProperty(0);
+        economyLeft = new SimpleIntegerProperty(0);
+        coachLeft = new SimpleIntegerProperty(0);
+        first_classLeft = new SimpleIntegerProperty(0);
         departure_date = new SimpleStringProperty("");
-        arrival_date = new SimpleStringProperty("");
         departure_city = new SimpleStringProperty("");
         arrival_city = new SimpleStringProperty("");
         price = new SimpleDoubleProperty(0);
     }
 
-    public FlightTable(String departure_date, String arrival_date) {
+    public FlightTable(String departure_date) {
         this.departure_date = new SimpleStringProperty(departure_date);
-        this.arrival_date = new SimpleStringProperty(arrival_date);
-        departure_city = new SimpleStringProperty("");
-        arrival_city = new SimpleStringProperty("");
-        price = new SimpleDoubleProperty(0);
         flight_id = new SimpleIntegerProperty(0);
+        economyLeft = new SimpleIntegerProperty(0);
+        coachLeft = new SimpleIntegerProperty(0);
+        first_classLeft = new SimpleIntegerProperty(0);
+        departure_city = new SimpleStringProperty("");
+        arrival_city = new SimpleStringProperty("");
+        price = new SimpleDoubleProperty(0);
+
     }
 
-    public FlightTable(String departure_date, String arrival_date, String departure_city, String arrival_city, double price, int flight_id){
+    public FlightTable(String departure_date, String departure_city, String arrival_city, double price, int flight_id, int economyLeft, int coachLeft, int first_classLeft){
         this.departure_date = new SimpleStringProperty(departure_date);
-        this.arrival_date = new SimpleStringProperty(arrival_date);
         this.departure_city = new SimpleStringProperty(departure_city);
         this.arrival_city = new SimpleStringProperty(arrival_city);
         this.price = new SimpleDoubleProperty(price);
         this.flight_id = new SimpleIntegerProperty(flight_id);
-
+        this.first_classLeft = new SimpleIntegerProperty(first_classLeft);
+        this.coachLeft = new SimpleIntegerProperty(coachLeft);
+        this.economyLeft = new SimpleIntegerProperty(economyLeft);
     }
 
+
     //getters setters
-
-
     public int getFlight_id() {
         return flight_id.get();
     }
@@ -58,6 +64,42 @@ public class FlightTable {
         this.flight_id.set(flight_id);
     }
 
+    public int getEconomyLeft() {
+        return economyLeft.get();
+    }
+
+    public IntegerProperty economyLeftProperty() {
+        return economyLeft;
+    }
+
+    public void setEconomyLeft(int economyLeft) {
+        this.economyLeft.set(economyLeft);
+    }
+
+    public int getCoachLeft() {
+        return coachLeft.get();
+    }
+
+    public IntegerProperty coachLeftProperty() {
+        return coachLeft;
+    }
+
+    public void setCoachLeft(int coachLeft) {
+        this.coachLeft.set(coachLeft);
+    }
+
+    public int getFirst_classLeft() {
+        return first_classLeft.get();
+    }
+
+    public IntegerProperty first_classLeftProperty() {
+        return first_classLeft;
+    }
+
+    public void setFirst_classLeft(int first_classLeft) {
+        this.first_classLeft.set(first_classLeft);
+    }
+
     public String getDeparture_date() {
         return departure_date.get();
     }
@@ -68,18 +110,6 @@ public class FlightTable {
 
     public void setDeparture_date(String departure_date) {
         this.departure_date.set(departure_date);
-    }
-
-    public String getArrival_date() {
-        return arrival_date.get();
-    }
-
-    public StringProperty arrival_dateProperty() {
-        return arrival_date;
-    }
-
-    public void setArrival_date(String arrival_date) {
-        this.arrival_date.set(arrival_date);
     }
 
     public String getDeparture_city() {
@@ -118,16 +148,19 @@ public class FlightTable {
         this.price.set(price);
     }
 
-    //toString
-
+    //toString method
     @Override
     public String toString() {
         return "FlightTable{" +
-                "departure_date=" + departure_date +
-                ", arrival_date=" + arrival_date +
+                "flight_id=" + flight_id +
+                ", economyLeft=" + economyLeft +
+                ", coachLeft=" + coachLeft +
+                ", first_classLeft=" + first_classLeft +
+                ", departure_date=" + departure_date +
                 ", departure_city=" + departure_city +
                 ", arrival_city=" + arrival_city +
                 ", price=" + price +
                 '}';
     }
+
 }

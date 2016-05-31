@@ -25,7 +25,7 @@ public class FlightEditSceneControl {
     private static TextField price;
     private static ComboBox<String> routeC,departure_time, arrival_time;
     private static ComboBox<Integer> plane_id;
-    private static DatePicker departure_date, arrival_date;
+    private static DatePicker departure_date;
     private static Button okB, cancelB;
     private static boolean okPressed = false;
     private static Flight flight;
@@ -57,7 +57,6 @@ public class FlightEditSceneControl {
         }
 
         departure_date = FlightsEditScene.getDeparture_date();
-        arrival_date = FlightsEditScene.getArrival_date();
 
         okB = FlightsEditScene.getOkB();
         okB.setOnAction( e -> handle_okB());
@@ -78,10 +77,9 @@ public class FlightEditSceneControl {
                     flight = fl;
             }
 
-            routeC.setValue(flightTable.getDeparture_city() + " -> " + flightTable.getArrival_city());
+            routeC.setValue(flightTable.getDeparture_city() + " -> " + f.getArrival_city());
             plane_id.setValue(flight.getPlane_id());
             departure_date.setValue(LocalDate.parse(flightTable.getDeparture_date()));
-            arrival_date.setValue(LocalDate.parse(flightTable.getArrival_date()));
             departure_time.setValue("10:00");
             arrival_time.setValue("12:00");
             price.setText(Double.toString(flightTable.getPrice()));
@@ -96,13 +94,6 @@ public class FlightEditSceneControl {
     public static void handle_okB(){
         if(isInputValid()){
         flight.setPlane_id(plane_id.getValue());
-      /*  for(Plane p: PlaneData.getPlanes()){
-            if(p.getPlane_id()==plane_id.getValue()){
-                flight.setFirst_class_left(p.getFirst_class());
-                flight.setCoach_left(p.getCoach());
-                flight.setEconomy_left(p.getEconomy());
-            }
-        }*/
         String route = routeC.getValue();
 
 
@@ -116,7 +107,7 @@ public class FlightEditSceneControl {
         schedule.setDeparture_time(departure_time.getValue());
         schedule.setArrival_time(arrival_time.getValue());
         schedule.setDeparture_date(Date.valueOf(departure_date.getValue()));
-        schedule.setArrival_date(Date.valueOf(arrival_date.getValue()));
+        schedule.setArrival_date(Date.valueOf(departure_date.getValue()));
         ScheduleData.insertSchedule(schedule);
 
         for(Schedule s: ScheduleData.getSchedules())
@@ -124,6 +115,7 @@ public class FlightEditSceneControl {
                flight.setSchedule_id(s.getSchedule_id());
 
             flight.setPrice(Double.parseDouble(price.getText()));
+
         okPressed = true;
         FlightsEditScene.getDialogStage().close();
         }
@@ -161,6 +153,7 @@ public class FlightEditSceneControl {
         }
 
     }
+
 
     //getters
     public static Flight getFlight() {

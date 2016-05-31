@@ -25,10 +25,10 @@ public class Main extends Application{
     //start method
     public void start(Stage primaryStage)throws Exception {
 
-        ViewFlightsScene.initialize();
+        /*ViewFlightsScene.initialize();
         ViewFlightSceneControl.initialize();
         FlightsEditScene.initialize();
-        FlightEditSceneControl.initialize();
+        FlightEditSceneControl.initialize();*/
         //start app
         MainControl.showLoginScene();
 

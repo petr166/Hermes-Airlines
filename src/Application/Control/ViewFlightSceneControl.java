@@ -53,10 +53,11 @@ public class ViewFlightSceneControl {
 
     //handle_addB
     public static void handle_addB() {
-        FlightTable flightTable = new FlightTable("2016-07-15", "2016-07-15");
+        FlightTable flightTable = new FlightTable("2016-07-15");
         Flight flight = new Flight();
 
         boolean okPressed = MainControl.showFlightEditScene(flightTable,flight);
+
         if(okPressed) {
             flight = FlightEditSceneControl.getFlight();
             for(Plane p: PlaneData.getPlanes()){
@@ -66,7 +67,9 @@ public class ViewFlightSceneControl {
                     flight.setEconomy_left(p.getEconomy());
                 }
             }
+
             FlightData.insertFlight(flight);
+
             table.setItems(FlightTableData.getFlightTableItems());
             flights = table.getItems();
 
@@ -107,8 +110,10 @@ public class ViewFlightSceneControl {
 
     }
 
+
     //back button action
     public static void handle_backB(){ MainControl.showMenuScene(); }
+
 
     //export button action
     public static void handle_exportFlightsB() {
@@ -131,8 +136,7 @@ public class ViewFlightSceneControl {
 
                 for(FlightTable f : flights){
                     if(f.getDeparture_city().toUpperCase().contains(search.getText().toUpperCase()) ||
-                    f.getArrival_city().toUpperCase().contains(search.getText().toUpperCase())){
-
+                            f.getArrival_city().toUpperCase().contains(search.getText().toUpperCase())){
                         tableItems.add(f);
                     }
                 }
@@ -141,7 +145,5 @@ public class ViewFlightSceneControl {
             }
         });
     }
-    public static TableView<FlightTable> getTable() {
-        return table;
-    }
+
 }

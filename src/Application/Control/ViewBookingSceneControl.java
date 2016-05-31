@@ -10,6 +10,8 @@ import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 
+import java.time.LocalDate;
+
 /**
  * Created by Petru on 26-May-16.
  */
@@ -125,6 +127,7 @@ public class ViewBookingSceneControl {
             }
 
             boolean okPressed = MainControl.showBookingEditScene(bookingTable, booking);
+
             if (okPressed) {
                 booking = BookingEditSceneControl.getBooking();
 
@@ -200,9 +203,11 @@ public class ViewBookingSceneControl {
                 if(c.getCustomer_id() == booking.getCustomer_id())
                     customer = c;
 
-            departure_dateObs.setText(flight.getDeparture_date() + ", from " + flight.getDeparture_city());
-            arrival_dateObs.setText(flight.getArrival_date() + ", from " + flight.getArrival_city());
+
+            departure_dateObs.setText(flight.getDeparture_date() + ", " + flight.getDeparture_city());
+            arrival_dateObs.setText(flight.getDeparture_date() + ", " + flight.getArrival_city());
             categoryObs.setText(booking.getFare_class());
+
             if(booking.getFare_class().equalsIgnoreCase("first class"))
             priceObs.setText(String.valueOf(flight.getPrice()+flight.getPrice()*1/2));
             else if(booking.getFare_class().equalsIgnoreCase("coach"))

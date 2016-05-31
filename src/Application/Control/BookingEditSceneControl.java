@@ -3,17 +3,9 @@ package Application.Control;
 import Application.DataTypes.*;
 import DataAccess.*;
 import Presentation.BookingEditScene;
-import Presentation.FlightsEditScene;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.util.Callback;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemListener;
-import java.awt.print.Book;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -27,16 +19,10 @@ public class BookingEditSceneControl {
     private static ComboBox<String> customerBox;
     private static ComboBox<String> routeBox;
     private static DatePicker departure_datePicker;
-  //  private static ComboBox<String> categoryBox;
-
-    //dd
 
     private static RadioButton firstC;
     private static RadioButton coachC;
     private static RadioButton economyC;
-   // private static ToggleGroup g;
-
-    //dd
 
 
     private static Button addCustomer;
@@ -54,17 +40,13 @@ public class BookingEditSceneControl {
     public static void initialize() {
 
         customerBox = BookingEditScene.getCustomerBox();
-        ObservableList<String> ca = FXCollections.observableArrayList();
 
         for(Customer c : CustomerData.getCustomers())
             if(!customerBox.getItems().contains(c.getFirst_name() + " " + c.getLast_name()))
             customerBox.getItems().add(c.getFirst_name() + " " + c.getLast_name());
 
         routeBox = BookingEditScene.getRouteBox();
-        routeBox.setOnAction(e-> {
-            setDatePicker();
-        });
-
+        routeBox.setOnAction(e -> setDatePicker());
 
 
 
@@ -74,16 +56,9 @@ public class BookingEditSceneControl {
 
 
         departure_datePicker = BookingEditScene.getDeparture_datePicker();
-        departure_datePicker.setOnAction(e->
-        {
-            handleRouteAction();
-         //   handle_disableCategory();
-        }
-        );
+        departure_datePicker.setOnAction(e-> handleRouteAction());
 
-      /*  categoryBox = BookingEditScene.getCategoryBox();
-        categoryBox.setOnAction(e->handleRouteAction());
-*/
+
         //dd
         firstC = BookingEditScene.getFirstC();
         firstC.setOnAction(e->handleRouteAction1());
@@ -109,6 +84,7 @@ public class BookingEditSceneControl {
         okButton = BookingEditScene.getOkButton();
         okButton.setOnAction(e -> handle_okButton());
     }
+
 
     public static void handleRouteAction() {
 
@@ -151,6 +127,7 @@ public class BookingEditSceneControl {
         } catch(Exception e){}
 
     }
+
 
     public static void handleRouteAction1() {
 
@@ -252,6 +229,7 @@ public class BookingEditSceneControl {
                 break;
             }
         }
+
         //dd
         if(firstC.isSelected())
         booking.setFare_class("First class");
@@ -290,7 +268,8 @@ public class BookingEditSceneControl {
         ArrayList<String> flightDates = new ArrayList<>();
 
         for (FlightTable f : FlightTableData.getFlightTableItems()) {
-            if(routeBox.getValue().equalsIgnoreCase(f.getDeparture_city() + " -> " + f.getArrival_city()))
+            if(routeBox.getValue().equalsIgnoreCase(f.getDeparture_city() + " -> " + f.getArrival_city()) &&
+                    LocalDate.parse(f.getDeparture_date()).isAfter(LocalDate.now()))
                 flightDates.add(f.getDeparture_date());
         }
 
@@ -330,18 +309,6 @@ public class BookingEditSceneControl {
 
     public static boolean isOkPressed() {
         return okPressed;
-    }
-
-    public static ComboBox<String> getCustomerBox() {
-        return customerBox;
-    }
-
-    public static Button getAddCustomer() {
-        return addCustomer;
-    }
-
-    public static BookingTable getBookingTable() {
-        return bookingTable;
     }
 
 }

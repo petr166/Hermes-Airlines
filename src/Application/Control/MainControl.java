@@ -74,10 +74,10 @@ public class MainControl {
 
     public static void showFlightsScene(){
         //initialization of scene
-      //  ViewFlightsScene.initialize();
+        ViewFlightsScene.initialize();
 
         //initialization of controller
-       // ViewFlightSceneControl.initialize();
+        ViewFlightSceneControl.initialize();
 
         //set scene
         window.setScene(ViewFlightsScene.getScene());
@@ -128,13 +128,13 @@ public class MainControl {
 
     public static boolean showFlightEditScene(FlightTable flightTable, Flight flight){
         //initialization of scene
-        //FlightsEditScene.initialize();
+        FlightsEditScene.initialize();
 
         //initialization of controller
-      //  FlightEditSceneControl.initialize();
+        FlightEditSceneControl.initialize();
         FlightEditSceneControl.setFlight(flightTable,flight);
 
-      //  FlightsEditScene.getDialogStage().initOwner(window);
+        FlightsEditScene.getDialogStage().initOwner(window);
         //FlightsEditScene.getDialogStage().initModality(Modality.WINDOW_MODAL);
         FlightsEditScene.getDialogStage().showAndWait();
         return FlightEditSceneControl.isOkPressed();

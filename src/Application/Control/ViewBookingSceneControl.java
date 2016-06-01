@@ -189,11 +189,11 @@ public class ViewBookingSceneControl {
                         if (booking.getFare_class().equalsIgnoreCase("First class"))
                                 refund = f.getPrice() + f.getPrice() * 1/2;
                         else if (booking.getFare_class().equalsIgnoreCase("Coach"))
-                            refund = f.getPrice() + f.getPrice() * 1/4;
+                            refund = (f.getPrice() + f.getPrice() * 1/4) * 85/100;
                         else if (LocalDate.parse(bookingTable.getDeparture_date()).isBefore(LocalDate.now().plusWeeks(2)))
                             refund = 0;
                         else
-                            refund = f.getPrice();
+                            refund = f.getPrice() * 70/100;
 
                         break;
                     }

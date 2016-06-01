@@ -1,6 +1,7 @@
 package Application.Control;
 
 import Application.DataTypes.*;
+import DataAccess.DataConnection;
 import Presentation.*;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
@@ -35,6 +36,9 @@ public class MainControl {
 
     //login scene
     public static void showLoginScene() {
+        //connect to database
+        DataConnection.connect();
+
         //initialization of scene
         LoginScene.initialize();
 

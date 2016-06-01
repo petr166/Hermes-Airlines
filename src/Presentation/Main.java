@@ -20,9 +20,6 @@ public class Main extends Application{
     //start method
     public void start(Stage primaryStage)throws Exception {
 
-        //connect to database
-        DataConnection.connect();
-
         //show the login screen
         MainControl.showLoginScene();
 

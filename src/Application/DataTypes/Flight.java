@@ -141,7 +141,7 @@ public class Flight {
     //toString method
     @Override
     public String toString() {
-        return String.format("%-2s",getFlight_id())+","+String.format("%-2s", getAirline_id())+","+String.format("%-2s",getPlane_id())+","+String.format("%-2s",getSchedule_id())+","+String.format("%-3s",getCoach_left())+","+String.format("%-3s",getEconomy_left())+","+String.format("%-3s",getFirst_class_left())+","+String.format("%8s",getPrice())+"\n";
+        return getFlight_id()+","+getAirline_id()+","+getPlane_id()+","+getSchedule_id()+","+getCoach_left()+","+getEconomy_left()+","+getFirst_class_left()+","+getPrice()+"\n";
     }
 
 }

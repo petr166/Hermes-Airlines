@@ -100,7 +100,7 @@ public class Plane {
     //toString method
     @Override
     public String toString() {
-        return String.format("%-2s",getPlane_id())+","+String.format("%-8s",getPlane_name())+","+String.format("%-3s",getCoach())+","+String.format("%-3s",getEconomy())+","+String.format("%3s",getFirst_class())+"\n";
+        return getPlane_id()+","+getPlane_name()+","+getCoach()+","+getEconomy()+","+getFirst_class()+"\n";
     }
 
 }

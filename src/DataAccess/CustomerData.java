@@ -52,7 +52,8 @@ public class CustomerData {
     public static void insertCustomer(Customer customer)
     {
         try{
-            statement.executeUpdate("INSERT INTO customer VALUE(default, '" + customer.getFirst_name() + "', '" + customer.getLast_name() + "', " + customer.getAge() + ", '" + customer.getPassport_number() + "', '" + customer.getPhone_nr() + "');");
+            statement.executeUpdate("INSERT INTO customer VALUE(default, '" + customer.getFirst_name() + "', '" + customer.getLast_name() + "', "
+                    + customer.getAge() + ", '" + customer.getPassport_number() + "', '" + customer.getPhone_nr() + "');");
             customers.add(customer);
             customer.setCustomer_id(customers.indexOf(customer) + 1);
         }

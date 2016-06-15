@@ -81,7 +81,7 @@ public class FlightData {
     //method to export flight list to .txt
     public static void exportFlights()
     {
-        String filePath = "C:/Exported_Flights.txt";
+        String filePath = "C:\\test.txt";
         try{
             FileOutputStream out = new FileOutputStream(filePath);
             for(Flight f : flights)

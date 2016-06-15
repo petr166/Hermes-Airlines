@@ -78,7 +78,7 @@ public class PlaneData {
     //method to export plane list to .txt
     public static void exportPlanes()
     {
-        String filePath = "C:/Exported_Planes.txt";
+        String filePath = "C:\\Exported_Planes.txt";
         try{
             FileOutputStream out = new FileOutputStream(filePath);
             for(Plane p : planes)
